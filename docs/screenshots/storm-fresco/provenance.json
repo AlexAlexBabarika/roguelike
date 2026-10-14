@@ -1,0 +1,395 @@
+{
+  "source_session": "https://app.devin.ai/sessions/5d876fef59694cb9b9b23a09e4e845b8",
+  "blender_version": "4.5.3 LTS",
+  "godot_version": "4.5.1.stable.official.f62fdbde1",
+  "renderer": "GL Compatibility, real OpenGL window via Xvfb / Mesa llvmpipe",
+  "scope": "Curated evidence only; full engine project, diagnostic masks and pan pairs are not archived here. Measurements below are recorded results, not independently remeasurable from this subset.",
+  "board": {
+    "path": "boards/storm-fresco-engine-comparison-board.jpg",
+    "kind": "script-derived comparison board",
+    "generator": "tools/build_storm_fresco_board.py",
+    "combat_detail_crop": [
+      750,
+      390,
+      1230,
+      710
+    ],
+    "processing": "Lanczos resizing / cropping, labels and layout; JPEG quality 95, no paint-over"
+  },
+  "accessibility": {
+    "greyscale": "Linear-light Rec.709 luminance re-encoded to sRGB",
+    "deuteranopia": "Machado et al. (2009), severity-1 matrix in linear light, clipped and re-encoded to sRGB; not certification",
+    "matrix": [
+      [
+        0.367322,
+        0.860646,
+        -0.227968
+      ],
+      [
+        0.280085,
+        0.672501,
+        0.047413
+      ],
+      [
+        -0.01182,
+        0.04294,
+        0.968881
+      ]
+    ]
+  },
+  "captures": [
+    {
+      "path": "screenshots/storm-fresco/A_october_wind_up.png",
+      "kind": "Godot capture",
+      "sha256": "ff86e039626069322a6fbb7dd711f17b041d9140de6c2b479d757edc84b507cb",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "A_october_wind_up.png",
+      "options": {
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "A"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/B_month_august.png",
+      "kind": "Godot capture",
+      "sha256": "dfbb650f98854abcfceeeb5daf2d86ea661af58c57b2955adac2811f7078fd8e",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "B_month_august.png",
+      "options": {
+        "month": "august",
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "B"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/B_month_may.png",
+      "kind": "Godot capture",
+      "sha256": "830fa961a083fa888a994586536e57463a762c401d4c1fda4977b9110e7bd1c8",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "B_month_may.png",
+      "options": {
+        "month": "may",
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "B"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/B_month_november.png",
+      "kind": "Godot capture",
+      "sha256": "c2b690069572d08ea1426862140d28dd6995c1c8f21d2ed2497f4f76c8997236",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "B_month_november.png",
+      "options": {
+        "month": "november",
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "B"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/B_october_strike_echo.png",
+      "kind": "Godot capture",
+      "sha256": "366a20bfe597b06178a8edb7edb3cb6607b8909bf9ceee6ff558acf6e4a2a71a",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "B_october_strike_echo.png",
+      "options": {
+        "pose": "strike",
+        "rain": 0.65,
+        "variant": "B"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/B_october_title_card.png",
+      "kind": "Godot capture",
+      "sha256": "46cf2889740aeffefb9f6e27e38b9996281e2417eacdad4d7f571933661c4abf",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "B_october_title_card.png",
+      "options": {
+        "title": true,
+        "variant": "B"
+      },
+      "camera": {
+        "camera_size": 6.19999980926514,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 365.326416015625
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/B_october_wind_up.png",
+      "kind": "Godot capture",
+      "sha256": "c9811fe12d89473f42cabb4a89edf60cdccd8f2075f74c867f8653102db1c3f8",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "B_october_wind_up.png",
+      "options": {
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "B"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/C_october_mid_dodge.png",
+      "kind": "Godot capture",
+      "sha256": "0c8f9b8abe09646d9d44e9695edec0d87f210df042bc1c59cf8490466065726d",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "C_october_mid_dodge.png",
+      "options": {
+        "pose": "dodge",
+        "rain": 0.65,
+        "variant": "C"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/C_october_wind_up.png",
+      "kind": "Godot capture",
+      "sha256": "35ae7c38b6da77b6ab548fee44e4ef368f7f6f8339efca92df7f2419a53f4be0",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "C_october_wind_up.png",
+      "options": {
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "C"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/derived_deuteranopia_C_october_wind_up.png",
+      "kind": "script-derived accessibility image",
+      "sha256": "7f55fe2700931b64ceb4ed5035b815e772f060a95ac95656247320747cac5ea5",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "C_october_wind_up.png",
+      "options": {
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "C"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    },
+    {
+      "path": "screenshots/storm-fresco/derived_greyscale_C_october_wind_up.png",
+      "kind": "script-derived accessibility image",
+      "sha256": "89762690eab1acfc65d9745f117b1c37f9c8c7aee50f62048561c6fe10aaa090",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "source_capture": "C_october_wind_up.png",
+      "options": {
+        "pose": "wind_up",
+        "rain": 0.65,
+        "variant": "C"
+      },
+      "camera": {
+        "camera_size": 19.0,
+        "yaw_degrees": 16.0428182636631,
+        "elevation_degrees": 39.8055710922652,
+        "player_rest_height_px": 119.211700439453
+      },
+      "overlay_ignores_world_occlusion": true
+    }
+  ],
+  "recorded_full_suite_measurements": {
+    "swim": {
+      "anchored": {
+        "mean_absolute_difference_srgb_0_255": 0.0004553293250011654,
+        "changed_percent": 0.0012369182450819056,
+        "alignment_px": 37,
+        "crop_shape": [
+          1020,
+          1823,
+          3
+        ]
+      },
+      "unanchored": {
+        "mean_absolute_difference_srgb_0_255": 15.025758732822073,
+        "changed_percent": 42.333311821711675,
+        "alignment_px": 37,
+        "crop_shape": [
+          1020,
+          1823,
+          3
+        ]
+      }
+    },
+    "palette_audit": {
+      "B_october_wind_up": {
+        "danger_pixels": 5991,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_october_strike_echo": {
+        "danger_pixels": 10534,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_october_mid_dodge": {
+        "danger_pixels": 5957,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_october_dry": {
+        "danger_pixels": 5999,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_october_soaked": {
+        "danger_pixels": 5991,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_month_may": {
+        "danger_pixels": 5991,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_month_august": {
+        "danger_pixels": 5991,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_month_october": {
+        "danger_pixels": 5991,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      },
+      "B_month_november": {
+        "danger_pixels": 5991,
+        "danger_outside_telegraph": 0,
+        "outside_percent_all_pixels": 0.0,
+        "outside_percent_danger_pixels": 0.0
+      }
+    },
+    "normal_lamp_difference": {
+      "A_0": {
+        "different_pixels": 15490
+      },
+      "A_90": {
+        "different_pixels": 16487
+      },
+      "A_180": {
+        "different_pixels": 17144
+      },
+      "A_270": {
+        "different_pixels": 12816
+      },
+      "B_0": {
+        "different_pixels": 15460
+      },
+      "B_90": {
+        "different_pixels": 16455
+      },
+      "B_180": {
+        "different_pixels": 17107
+      },
+      "B_270": {
+        "different_pixels": 12782
+      }
+    },
+    "captures": 63,
+    "combat": 19,
+    "derived": 38
+  }
+}

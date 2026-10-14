@@ -6,6 +6,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import struct
 import unittest
 
 
@@ -19,6 +20,26 @@ REPORT_NAMES = {
     "new-art-directions.html",
     "shader-production-guide.html",
     "game-loop-design-report.html",
+}
+BOARD_NAMES = {
+    "three-directions.png",
+    "art-directions-board.jpg",
+    "isometric-art-directions-board.jpg",
+    "new-art-directions-board.jpg",
+    "storm-fresco-engine-comparison-board.jpg",
+}
+CAPTURE_NAMES = {
+    "A_october_wind_up.png",
+    "B_october_wind_up.png",
+    "C_october_wind_up.png",
+    "B_october_strike_echo.png",
+    "C_october_mid_dodge.png",
+    "B_month_may.png",
+    "B_month_august.png",
+    "B_month_november.png",
+    "B_october_title_card.png",
+    "derived_greyscale_C_october_wind_up.png",
+    "derived_deuteranopia_C_october_wind_up.png",
 }
 MECHANICS_BRIEF = (
     "You know I was also thinking about building a souls like game with isometric "
@@ -51,7 +72,9 @@ class ResearchArchiveTests(unittest.TestCase):
             {path.name for path in (DOCS / "reports").glob("*.html")},
             REPORT_NAMES,
         )
-        self.assertEqual(len(MANIFEST["boards"]), 4)
+        self.assertEqual(len(MANIFEST["boards"]), len(BOARD_NAMES))
+        self.assertEqual({Path(item["path"]).name for item in MANIFEST["boards"]}, BOARD_NAMES)
+        self.assertEqual({path.name for path in (DOCS / "boards").iterdir()}, BOARD_NAMES)
         for item in MANIFEST["reports"]:
             with self.subTest(report=item["path"]):
                 self.assertTrue(item["title"])
@@ -59,7 +82,8 @@ class ResearchArchiveTests(unittest.TestCase):
                 self.assertTrue(item["description"])
 
     def test_fingerprints_and_local_paths(self):
-        for item in MANIFEST["reports"] + MANIFEST["boards"]:
+        for item in (MANIFEST["reports"] + MANIFEST["boards"]
+                     + MANIFEST["captures"] + MANIFEST["supporting_documents"]):
             with self.subTest(path=item["path"]):
                 path = (DOCS / item["path"]).resolve()
                 self.assertTrue(path.is_relative_to(DOCS))
@@ -67,6 +91,32 @@ class ResearchArchiveTests(unittest.TestCase):
                 self.assertEqual(
                     hashlib.sha256(path.read_bytes()).hexdigest(), item["sha256"]
                 )
+
+    def test_engine_capture_inventory_and_provenance(self):
+        folder = DOCS / "screenshots" / "storm-fresco"
+        self.assertEqual({path.name for path in folder.glob("*.png")}, CAPTURE_NAMES)
+        self.assertEqual(len(MANIFEST["captures"]), len(CAPTURE_NAMES))
+        self.assertEqual({Path(item["path"]).name for item in MANIFEST["captures"]}, CAPTURE_NAMES)
+        provenance = json.loads((folder / "provenance.json").read_text())
+        records = {item["path"]: item for item in provenance["captures"]}
+        self.assertEqual(len(records), len(CAPTURE_NAMES))
+        self.assertEqual(sum(item["kind"] == "Godot capture" for item in records.values()), 9)
+        self.assertEqual(sum(item["kind"] == "script-derived accessibility image"
+                             for item in records.values()), 2)
+        for item in MANIFEST["captures"]:
+            with self.subTest(capture=item["path"]):
+                record = records[item["path"]]
+                self.assertEqual(record["sha256"], item["sha256"])
+                self.assertEqual(record["kind"], item["kind"])
+                data = (DOCS / item["path"]).read_bytes()
+                self.assertEqual(data[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(data[12:16], b"IHDR")
+                self.assertEqual(struct.unpack(">II", data[16:24]), (1920, 1080))
+                self.assertEqual(record["resolution"], [1920, 1080])
+                self.assertIn(record["source_capture"], CAPTURE_NAMES)
+                self.assertTrue(record["overlay_ignores_world_occlusion"])
+        self.assertTrue((DOCS / provenance["board"]["generator"]).is_file())
+        self.assertTrue((DOCS / provenance["board"]["path"]).is_file())
 
     def test_complete_self_contained_documents(self):
         for item in MANIFEST["reports"]:

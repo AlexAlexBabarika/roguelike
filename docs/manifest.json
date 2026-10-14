@@ -60,6 +60,83 @@
     {
       "path": "boards/new-art-directions-board.jpg",
       "sha256": "a4fefec4dbcdca8777ba0cb55c6bfcd385ee1b8470fc4a235c65717749c8748d"
+    },
+    {
+      "path": "boards/storm-fresco-engine-comparison-board.jpg",
+      "sha256": "0ba5c94e148d9013311bfbf30416958abcb9981895f232bc715ff9fe24eb00b5",
+      "kind": "derived Godot screenshot comparison",
+      "source_session": "https://app.devin.ai/sessions/5d876fef59694cb9b9b23a09e4e845b8"
+    }
+  ],
+  "captures": [
+    {
+      "path": "screenshots/storm-fresco/A_october_wind_up.png",
+      "kind": "Godot capture",
+      "sha256": "ff86e039626069322a6fbb7dd711f17b041d9140de6c2b479d757edc84b507cb"
+    },
+    {
+      "path": "screenshots/storm-fresco/B_month_august.png",
+      "kind": "Godot capture",
+      "sha256": "dfbb650f98854abcfceeeb5daf2d86ea661af58c57b2955adac2811f7078fd8e"
+    },
+    {
+      "path": "screenshots/storm-fresco/B_month_may.png",
+      "kind": "Godot capture",
+      "sha256": "830fa961a083fa888a994586536e57463a762c401d4c1fda4977b9110e7bd1c8"
+    },
+    {
+      "path": "screenshots/storm-fresco/B_month_november.png",
+      "kind": "Godot capture",
+      "sha256": "c2b690069572d08ea1426862140d28dd6995c1c8f21d2ed2497f4f76c8997236"
+    },
+    {
+      "path": "screenshots/storm-fresco/B_october_strike_echo.png",
+      "kind": "Godot capture",
+      "sha256": "366a20bfe597b06178a8edb7edb3cb6607b8909bf9ceee6ff558acf6e4a2a71a"
+    },
+    {
+      "path": "screenshots/storm-fresco/B_october_title_card.png",
+      "kind": "Godot capture",
+      "sha256": "46cf2889740aeffefb9f6e27e38b9996281e2417eacdad4d7f571933661c4abf"
+    },
+    {
+      "path": "screenshots/storm-fresco/B_october_wind_up.png",
+      "kind": "Godot capture",
+      "sha256": "c9811fe12d89473f42cabb4a89edf60cdccd8f2075f74c867f8653102db1c3f8"
+    },
+    {
+      "path": "screenshots/storm-fresco/C_october_mid_dodge.png",
+      "kind": "Godot capture",
+      "sha256": "0c8f9b8abe09646d9d44e9695edec0d87f210df042bc1c59cf8490466065726d"
+    },
+    {
+      "path": "screenshots/storm-fresco/C_october_wind_up.png",
+      "kind": "Godot capture",
+      "sha256": "35ae7c38b6da77b6ab548fee44e4ef368f7f6f8339efca92df7f2419a53f4be0"
+    },
+    {
+      "path": "screenshots/storm-fresco/derived_deuteranopia_C_october_wind_up.png",
+      "kind": "script-derived accessibility image",
+      "sha256": "7f55fe2700931b64ceb4ed5035b815e772f060a95ac95656247320747cac5ea5"
+    },
+    {
+      "path": "screenshots/storm-fresco/derived_greyscale_C_october_wind_up.png",
+      "kind": "script-derived accessibility image",
+      "sha256": "89762690eab1acfc65d9745f117b1c37f9c8c7aee50f62048561c6fe10aaa090"
+    }
+  ],
+  "supporting_documents": [
+    {
+      "path": "STORM_FRESCO.md",
+      "sha256": "66ce1cdb073395b47351286062dad19f9b4618217222a4467e2f400a245a0137"
+    },
+    {
+      "path": "screenshots/storm-fresco/provenance.json",
+      "sha256": "c867b8997a338f3ed5558dc54ed33e21a6fe45861724f45d0ca49d9e18bdb717"
+    },
+    {
+      "path": "tools/build_storm_fresco_board.py",
+      "sha256": "cdeb6943d53c676d613c87849e06bfd295a1dd37e0ad768b758006743ae17a63"
     }
   ]
 }
