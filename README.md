@@ -9,8 +9,9 @@ system yet. The final art direction has not been selected.
 
 ## Research
 
-See the [report library](docs/README.md) for all six complete reports and four
-comparison boards. Recommended reading order:
+See the [report library](docs/README.md) for all six complete reports, four
+concept boards and the [Storm Fresco engine comparison](docs/STORM_FRESCO.md).
+Recommended reading order:
 
 1. [Game loop and mechanics](docs/reports/game-loop-design-report.html)
 2. [Four new art directions](docs/reports/new-art-directions.html)

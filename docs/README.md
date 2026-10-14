@@ -28,13 +28,17 @@ in the reports, including the game-loop report's optional detail sections.
 
 ## Comparison boards
 
+- [Storm Fresco: actual Godot A/B/C comparison](boards/storm-fresco-engine-comparison-board.jpg) —
+  derived from captured PNGs; [selected originals, measurements and limitations](STORM_FRESCO.md).
 - [Four new styles](boards/new-art-directions-board.jpg)
 - [Isometric combat studies](boards/isometric-art-directions-board.jpg)
 - [Earlier non-ASCII alternatives](boards/art-directions-board.jpg)
 - [Historical Last Window studies](boards/three-directions.png)
 
-The boards are AI-generated concept comparisons, not Godot screenshots or
-production assets. Individual reports distinguish concept studies from
+The four earlier boards are AI-generated concept comparisons, not Godot
+screenshots or production assets. The Storm Fresco board is separate engine
+look-dev evidence; it does not validate combat motion or performance.
+Individual reports distinguish concept studies from
 credited third-party references. Source links and limitations are retained.
 
 ## What this archive does not imply
