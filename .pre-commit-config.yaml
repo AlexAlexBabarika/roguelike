@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^docs/reports/.*\.html$
+      - id: end-of-file-fixer
+        exclude: ^docs/reports/.*\.html$
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=6000]
+  - repo: local
+    hooks:
+      - id: research-archive
+        name: validate offline research archive
+        language: system
+        entry: python3 -m unittest discover -s tests -v
+        pass_filenames: false
+        always_run: true
+      - id: gdlint
+        name: GDScript lint
+        language: system
+        entry: gdlint
+        files: ^prototype/.*\.gd$
+      - id: gdformat
+        name: GDScript format
+        language: system
+        entry: gdformat --check
+        files: ^prototype/.*\.gd$

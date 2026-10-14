@@ -1,0 +1,2751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Devin artifact kit" />
+    <title>Combat, combinations and dread</title>
+    <style>
+/* Devin artifact kit — self-contained styles for standalone HTML artifacts.
+   Tokens are translated from the Devin product design system. Light is the
+   default; dark is applied from `prefers-color-scheme` unless a host theme
+   signal (`?theme=`, `data-theme`, or a `devin:theme` message) says otherwise. */
+
+:root {
+  color-scheme: light;
+
+  --bg-page: 252 252 252;
+  --bg-wash: 248 248 248;
+  --bg-elevated: 255 255 255;
+  --tint-tertiary: 0 0 0 / 0.04;
+  --tint-secondary: 0 0 0 / 0.06;
+  --tint-primary: 0 0 0 / 0.08;
+  --text-primary: 25 25 25;
+  --text-secondary: 25 25 25 / 0.64;
+  --text-tertiary: 25 25 25 / 0.4;
+  --text-accent: 49 124 255;
+  --bg-accent: 49 124 255;
+  --border-secondary: 0 0 0 / 0.08;
+  --border-primary: 0 0 0 / 0.1;
+  --text-green: 0 165 88;
+  --text-orange: 245 142 58;
+  --text-red: 245 59 58;
+  --text-blue: 51 125 244;
+  --text-purple: 149 108 222;
+  --shadow-l1: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-l2: 0 4px 12px rgb(0 0 0 / 0.08);
+
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Roboto Mono", ui-monospace, monospace;
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --unit: 4px;
+  --max-width: 1120px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-page: 20 20 20;
+  --bg-wash: 25 25 25;
+  --bg-elevated: 31 31 31;
+  --tint-tertiary: 255 255 255 / 0.03;
+  --tint-secondary: 255 255 255 / 0.05;
+  --tint-primary: 255 255 255 / 0.08;
+  --text-primary: 255 255 255 / 0.9;
+  --text-secondary: 255 255 255 / 0.52;
+  --text-tertiary: 255 255 255 / 0.4;
+  --text-accent: 73 176 255;
+  --bg-accent: 68 137 255;
+  --border-secondary: 255 255 255 / 0.04;
+  --border-primary: 255 255 255 / 0.08;
+  --text-green: 0 236 126;
+  --text-orange: 245 142 58;
+  --text-red: 255 108 107;
+  --text-blue: 92 154 255;
+  --text-purple: 178 145 240;
+  --shadow-l1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-l2: 0 4px 12px rgb(0 0 0 / 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --bg-page: 20 20 20;
+    --bg-wash: 25 25 25;
+    --bg-elevated: 31 31 31;
+    --tint-tertiary: 255 255 255 / 0.03;
+    --tint-secondary: 255 255 255 / 0.05;
+    --tint-primary: 255 255 255 / 0.08;
+    --text-primary: 255 255 255 / 0.9;
+    --text-secondary: 255 255 255 / 0.52;
+    --text-tertiary: 255 255 255 / 0.4;
+    --text-accent: 73 176 255;
+    --bg-accent: 68 137 255;
+    --border-secondary: 255 255 255 / 0.04;
+    --border-primary: 255 255 255 / 0.08;
+    --text-green: 0 236 126;
+    --text-orange: 245 142 58;
+    --text-red: 255 108 107;
+    --text-blue: 92 154 255;
+    --text-purple: 178 145 240;
+    --shadow-l1: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-l2: 0 4px 12px rgb(0 0 0 / 0.5);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--bg-page));
+  color: rgb(var(--text-primary));
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(button, a, input, select, summary, [tabindex]):focus-visible {
+  outline: 1px solid rgb(var(--bg-accent));
+  outline-offset: 1px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- layout ---------- */
+
+.a-shell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--unit) * 8) calc(var(--unit) * 6) calc(var(--unit) * 16);
+}
+
+.a-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  padding-bottom: calc(var(--unit) * 4);
+  border-bottom: 1px solid rgb(var(--border-primary));
+}
+
+.a-header__title {
+  margin: 0;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.a-header__subtitle {
+  margin: calc(var(--unit) * 1) 0 0;
+  color: rgb(var(--text-secondary));
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 68ch;
+}
+
+.a-section {
+  margin-top: calc(var(--unit) * 9);
+}
+
+.a-section__title {
+  margin: 0 0 calc(var(--unit) * 1);
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.a-section__note,
+.a-prose {
+  margin: 0 0 calc(var(--unit) * 4);
+  color: rgb(var(--text-secondary));
+  font-size: 13px;
+  line-height: 20px;
+  max-width: 72ch;
+}
+
+.a-grid {
+  display: grid;
+  gap: calc(var(--unit) * 3);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.a-grid--halves {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* ---------- surfaces ---------- */
+
+.a-panel {
+  background: rgb(var(--bg-elevated));
+  border: 1px solid rgb(var(--border-secondary));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-l1);
+  padding: calc(var(--unit) * 4);
+}
+
+.a-panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 2);
+  margin-bottom: calc(var(--unit) * 3);
+}
+
+.a-panel__title {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.a-label {
+  color: rgb(var(--text-tertiary));
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: none;
+}
+
+/* ---------- metrics ---------- */
+
+.a-metric {
+  background: rgb(var(--tint-tertiary));
+  border: 1px solid rgb(var(--border-secondary));
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 3);
+}
+
+.a-metric__label {
+  color: rgb(var(--text-secondary));
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.a-metric__value {
+  margin-top: calc(var(--unit) * 1);
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.a-metric__delta {
+  margin-top: calc(var(--unit) * 1);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(var(--text-secondary));
+}
+
+.a-metric__delta[data-trend="up"] {
+  color: rgb(var(--text-green));
+}
+
+.a-metric__delta[data-trend="down"] {
+  color: rgb(var(--text-red));
+}
+
+/* ---------- status ---------- */
+
+.a-status {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--unit) * 1.5);
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(var(--text-secondary));
+  white-space: nowrap;
+}
+
+.a-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.a-status[data-state="done"] {
+  color: rgb(var(--text-green));
+}
+
+.a-status[data-state="active"] {
+  color: rgb(var(--text-blue));
+}
+
+.a-status[data-state="at-risk"] {
+  color: rgb(var(--text-orange));
+}
+
+.a-status[data-state="blocked"] {
+  color: rgb(var(--text-red));
+}
+
+.a-status[data-state="planned"] {
+  color: rgb(var(--text-tertiary));
+}
+
+/* ---------- tables ---------- */
+
+.a-table-scroll {
+  overflow-x: auto;
+  border: 1px solid rgb(var(--border-secondary));
+  border-radius: var(--radius);
+  background: rgb(var(--bg-elevated));
+}
+
+.a-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.a-table th,
+.a-table td {
+  text-align: left;
+  padding: calc(var(--unit) * 2) calc(var(--unit) * 3);
+  border-bottom: 1px solid rgb(var(--border-secondary));
+  vertical-align: top;
+}
+
+.a-table thead th {
+  position: sticky;
+  top: 0;
+  background: rgb(var(--bg-wash));
+  color: rgb(var(--text-secondary));
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  z-index: 1;
+}
+
+.a-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.a-table tbody tr:hover td {
+  background: rgb(var(--tint-tertiary));
+}
+
+.a-table td[data-numeric],
+.a-table th[data-numeric] {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+/* Pinned columns: `data-a-sticky-columns="N"` keeps the first N columns in
+   view while the table scrolls sideways. CSS alone pins the first column, so
+   N=1 works without script; kit.js measures the leading columns, marks each
+   pinned cell `data-a-sticky` with its `--a-sticky-left` offset, and flags the
+   table `data-a-sticky-ready`. Pinned cells need opaque backgrounds or the
+   scrolled columns show through them. */
+.a-table[data-a-sticky-columns]:not([data-a-sticky-ready]):not([data-a-sticky-columns="0"])
+  tr
+  > :first-child,
+.a-table[data-a-sticky-ready] [data-a-sticky] {
+  position: sticky;
+  left: var(--a-sticky-left, 0);
+  z-index: 1;
+  background-color: rgb(var(--bg-elevated));
+}
+
+/* Header row above pinned body cells; the pinned corner above both. */
+.a-table[data-a-sticky-columns] thead th {
+  z-index: 2;
+}
+
+.a-table[data-a-sticky-columns]:not([data-a-sticky-ready]):not([data-a-sticky-columns="0"])
+  thead
+  tr
+  > :first-child,
+.a-table[data-a-sticky-ready] thead [data-a-sticky] {
+  z-index: 3;
+  background-color: rgb(var(--bg-wash));
+}
+
+/* The row tint is translucent, so layer it over the opaque surface. */
+.a-table[data-a-sticky-columns]:not([data-a-sticky-ready]):not([data-a-sticky-columns="0"])
+  tbody
+  tr:hover
+  > td:first-child,
+.a-table[data-a-sticky-ready] tbody tr:hover > td[data-a-sticky] {
+  background: linear-gradient(
+      rgb(var(--tint-tertiary)),
+      rgb(var(--tint-tertiary))
+    )
+    rgb(var(--bg-elevated));
+}
+
+/* Divider on the last pinned column. Table cells don't paint box-shadow when
+   borders collapse, so it is a pseudo-element. Without script there is no
+   scroll state and it is always shown; with it, only while scrolled. */
+.a-table[data-a-sticky-columns]:not([data-a-sticky-ready]):not([data-a-sticky-columns="0"])
+  tr
+  > :first-child::after,
+.a-table[data-a-sticky-ready] [data-a-sticky="edge"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 8px;
+  border-left: 1px solid rgb(var(--border-primary));
+  background: linear-gradient(to right, rgb(0 0 0 / 0.08), transparent);
+  pointer-events: none;
+}
+
+.a-table-scroll:not([data-a-scrolled])
+  .a-table[data-a-sticky-ready]
+  [data-a-sticky="edge"]::after {
+  display: none;
+}
+
+/* ---------- charts (inline SVG + CSS bars) ---------- */
+
+.a-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.a-chart__grid line {
+  stroke: rgb(var(--border-primary));
+  stroke-dasharray: 2 3;
+}
+
+.a-chart__axis text {
+  fill: rgb(var(--text-tertiary));
+  font-size: 10px;
+  font-family: var(--font-mono);
+}
+
+.a-chart__series {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.a-chart__point {
+  stroke: rgb(var(--bg-elevated));
+  stroke-width: 1.5;
+}
+
+.a-bars {
+  display: grid;
+  gap: calc(var(--unit) * 2);
+  margin: 0;
+}
+
+.a-bars__row {
+  display: grid;
+  grid-template-columns: minmax(88px, 22%) 1fr auto;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  font-size: 13px;
+}
+
+.a-bars__track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(var(--tint-secondary));
+  overflow: hidden;
+}
+
+.a-bars__fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: rgb(var(--bg-accent));
+}
+
+.a-bars__value {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgb(var(--text-secondary));
+}
+
+.a-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 3);
+  margin: calc(var(--unit) * 3) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: rgb(var(--text-secondary));
+}
+
+.a-legend li {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 1.5);
+}
+
+.a-legend__swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex: none;
+}
+
+/* Series colors stay stable across themes so legends keep meaning. */
+.a-series-1 {
+  --series: 49 124 255;
+}
+.a-series-2 {
+  --series: 0 165 88;
+}
+.a-series-3 {
+  --series: 149 108 222;
+}
+.a-series-4 {
+  --series: 245 142 58;
+}
+
+.a-chart__series.a-series-1,
+.a-chart__series.a-series-2,
+.a-chart__series.a-series-3,
+.a-chart__series.a-series-4 {
+  stroke: rgb(var(--series));
+}
+
+.a-chart__point.a-series-1,
+.a-chart__point.a-series-2,
+.a-chart__point.a-series-3,
+.a-chart__point.a-series-4 {
+  fill: rgb(var(--series));
+}
+
+.a-series-1 .a-legend__swatch,
+.a-series-2 .a-legend__swatch,
+.a-series-3 .a-legend__swatch,
+.a-series-4 .a-legend__swatch {
+  background: rgb(var(--series));
+}
+
+.a-chart__bar.a-series-1,
+.a-chart__bar.a-series-2,
+.a-chart__bar.a-series-3,
+.a-chart__bar.a-series-4 {
+  fill: rgb(var(--series));
+}
+
+/* Dimming the rest of the plot reads as "this is the value you asked for"
+   without moving anything, which keeps the highlight legible under
+   reduced motion. */
+.a-chart__bar,
+.a-chart__point,
+.a-chart__series {
+  transition: opacity 120ms ease;
+}
+
+.a-chart__plot:has([data-a-active]) .a-chart__bar:not([data-a-active]) {
+  opacity: 0.45;
+}
+
+.a-chart__point[data-a-active] {
+  r: 4.25;
+}
+
+.a-chart__crosshair {
+  stroke: rgb(var(--border-primary));
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.a-chart__band {
+  fill: transparent;
+  /* Vertical scrolling must still work when a finger lands on the plot. */
+  touch-action: pan-y;
+}
+
+.a-chart__band[data-a-active] {
+  fill: rgb(var(--tint-secondary));
+}
+
+.a-chart__band:focus-visible {
+  outline: 1px solid rgb(var(--bg-accent));
+  outline-offset: -2px;
+}
+
+.a-chart {
+  touch-action: pan-y;
+}
+
+/* Shown in place of the plot when a filter leaves the source table empty. */
+.a-chart__empty {
+  margin: 0 0 calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 6) 0;
+  border: 1px dashed rgb(var(--border-secondary));
+  border-radius: var(--radius);
+  color: rgb(var(--text-secondary));
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- tooltip ---------- */
+
+.a-tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  min-width: 120px;
+  max-width: 260px;
+  padding: calc(var(--unit) * 2) calc(var(--unit) * 2.5);
+  border: 1px solid rgb(var(--border-secondary));
+  border-radius: var(--radius);
+  background: rgb(var(--bg-elevated));
+  box-shadow: var(--shadow-l2);
+  color: rgb(var(--text-primary));
+  font-size: 12px;
+  line-height: 16px;
+  pointer-events: none;
+}
+
+.a-tip__title {
+  margin-bottom: var(--unit);
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+}
+
+.a-tip__text {
+  color: rgb(var(--text-secondary));
+}
+
+.a-tip__row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 1.5);
+  white-space: nowrap;
+}
+
+.a-tip__swatch {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 2px;
+  background: rgb(var(--series, var(--bg-accent)));
+}
+
+.a-tip__name {
+  color: rgb(var(--text-secondary));
+}
+
+.a-tip__value {
+  margin-left: auto;
+  padding-left: calc(var(--unit) * 2);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- controls: tabs, filters, toggles ---------- */
+
+.a-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.a-tabs {
+  display: flex;
+  gap: calc(var(--unit) * 1);
+  padding: 2px;
+  background: rgb(var(--tint-tertiary));
+  border: 1px solid rgb(var(--border-secondary));
+  border-radius: var(--radius);
+}
+
+.a-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgb(var(--text-secondary));
+  font: inherit;
+  font-size: 13px;
+  padding: calc(var(--unit) * 1) calc(var(--unit) * 2.5);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.a-btn:hover {
+  background: rgb(var(--tint-secondary));
+  color: rgb(var(--text-primary));
+}
+
+.a-btn[aria-selected="true"],
+.a-btn[aria-pressed="true"] {
+  background: rgb(var(--bg-elevated));
+  border-color: rgb(var(--border-primary));
+  color: rgb(var(--text-primary));
+  box-shadow: var(--shadow-l1);
+}
+
+.a-btn--outline {
+  border-color: rgb(var(--border-primary));
+  background: rgb(var(--bg-elevated));
+}
+
+.a-btn--icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+}
+
+.a-theme-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.a-theme-icon--moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .a-theme-icon--sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .a-theme-icon--moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .a-theme-icon--sun {
+    display: none;
+  }
+
+  :root:not([data-theme]) .a-theme-icon--moon {
+    display: block;
+  }
+}
+
+.a-select {
+  appearance: none;
+  font: inherit;
+  font-size: 13px;
+  color: rgb(var(--text-primary));
+  background: rgb(var(--bg-elevated));
+  border: 1px solid rgb(var(--border-primary));
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 1) calc(var(--unit) * 2);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- diagram ---------- */
+
+.a-diagram {
+  position: relative;
+  background: rgb(var(--bg-wash));
+  border: 1px solid rgb(var(--border-secondary));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.a-diagram__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+  cursor: grab;
+}
+
+.a-diagram__canvas:active {
+  cursor: grabbing;
+}
+
+.a-group rect {
+  fill: rgb(var(--tint-tertiary));
+  stroke: rgb(var(--border-primary));
+  stroke-dasharray: 4 4;
+  rx: 10;
+}
+
+.a-group text {
+  fill: rgb(var(--text-tertiary));
+  font-size: 10px;
+  font-family: var(--font-mono);
+}
+
+.a-node rect {
+  fill: rgb(var(--bg-elevated));
+  stroke: rgb(var(--border-primary));
+  rx: 8;
+}
+
+.a-node__title {
+  fill: rgb(var(--text-primary));
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.a-node__sub {
+  fill: rgb(var(--text-secondary));
+  font-size: 10px;
+  font-family: var(--font-mono);
+}
+
+.a-node {
+  cursor: pointer;
+}
+
+.a-node:hover rect,
+.a-node:focus-visible rect {
+  stroke: rgb(var(--bg-accent));
+}
+
+.a-node[aria-current="true"] rect {
+  stroke: rgb(var(--bg-accent));
+  stroke-width: 2;
+}
+
+.a-edge {
+  fill: none;
+  stroke: rgb(var(--text-tertiary));
+  stroke-width: 1.25;
+}
+
+.a-edge--dim {
+  stroke: rgb(var(--border-primary));
+}
+
+.a-edge__label {
+  fill: rgb(var(--text-tertiary));
+  font-size: 10px;
+  font-family: var(--font-mono);
+}
+
+.a-inspector {
+  border-top: 1px solid rgb(var(--border-secondary));
+  background: rgb(var(--bg-elevated));
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.a-inspector__title {
+  margin: 0 0 calc(var(--unit) * 1);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ---------- plan / process ---------- */
+
+.a-phase {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 4) 0;
+  border-bottom: 1px solid rgb(var(--border-secondary));
+}
+
+.a-phase:last-child {
+  border-bottom: none;
+}
+
+.a-phase__index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgb(var(--text-tertiary));
+  padding-top: 2px;
+}
+
+.a-phase__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: calc(var(--unit) * 2);
+  justify-content: space-between;
+}
+
+.a-phase__title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.a-meta-list {
+  display: grid;
+  gap: calc(var(--unit) * 1);
+  margin: calc(var(--unit) * 2) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: rgb(var(--text-secondary));
+}
+
+.a-meta-list li,
+.a-meta-list > div {
+  display: grid;
+  grid-template-columns: minmax(96px, 15%) 1fr;
+  gap: calc(var(--unit) * 2);
+}
+
+.a-meta-list dt,
+.a-meta-list .a-meta-list__key {
+  color: rgb(var(--text-tertiary));
+  font-size: 12px;
+}
+
+.a-meta-list dd {
+  margin: 0;
+}
+
+.a-timeline {
+  display: grid;
+  gap: calc(var(--unit) * 1);
+  margin: 0;
+  font-size: 12px;
+}
+
+.a-timeline__row {
+  display: grid;
+  grid-template-columns: minmax(120px, 20%) 1fr;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+}
+
+.a-timeline__track {
+  position: relative;
+  height: 10px;
+  background: rgb(var(--tint-tertiary));
+  border-radius: var(--radius-sm);
+}
+
+.a-timeline__span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--radius-sm);
+  background: rgb(var(--bg-accent) / 0.75);
+}
+
+.a-timeline__span[data-state="at-risk"] {
+  background: rgb(var(--text-orange) / 0.75);
+}
+
+.a-timeline__span[data-state="done"] {
+  background: rgb(var(--text-green) / 0.7);
+}
+
+.a-timeline__scale {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  color: rgb(var(--text-tertiary));
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.a-callout {
+  border: 1px solid rgb(var(--border-secondary));
+  border-left: 2px solid rgb(var(--text-orange));
+  border-radius: var(--radius-sm);
+  background: rgb(var(--tint-tertiary));
+  padding: calc(var(--unit) * 3);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.a-callout--decision {
+  border-left-color: rgb(var(--bg-accent));
+}
+
+.a-callout--risk {
+  border-left-color: rgb(var(--text-red));
+}
+
+.a-callout__title {
+  margin: 0 0 calc(var(--unit) * 1);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+details.a-disclosure {
+  border-top: 1px solid rgb(var(--border-secondary));
+  padding: calc(var(--unit) * 2) 0;
+}
+
+details.a-disclosure > summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: rgb(var(--text-secondary));
+  list-style: none;
+}
+
+details.a-disclosure > summary::marker,
+details.a-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.a-disclosure > summary::before {
+  content: "+ ";
+  font-family: var(--font-mono);
+}
+
+details.a-disclosure[open] > summary::before {
+  content: "− ";
+}
+
+/* ---------- empty and error states ---------- */
+
+.a-empty,
+.a-error {
+  border: 1px dashed rgb(var(--border-primary));
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 6);
+  text-align: center;
+  color: rgb(var(--text-secondary));
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.a-error {
+  border-style: solid;
+  border-color: rgb(var(--text-red) / 0.4);
+  color: rgb(var(--text-primary));
+  text-align: left;
+}
+
+.a-error__title {
+  margin: 0 0 calc(var(--unit) * 1);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(var(--text-red));
+}
+
+.a-footnote {
+  margin-top: calc(var(--unit) * 10);
+  padding-top: calc(var(--unit) * 4);
+  border-top: 1px solid rgb(var(--border-secondary));
+  color: rgb(var(--text-tertiary));
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.a-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 640px) {
+  .a-shell {
+    padding: calc(var(--unit) * 5) calc(var(--unit) * 4)
+      calc(var(--unit) * 12);
+  }
+
+  .a-header__title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .a-bars__row,
+  .a-timeline__row,
+  .a-meta-list li,
+  .a-meta-list > div {
+    grid-template-columns: 1fr;
+    gap: calc(var(--unit) * 1);
+  }
+
+  .a-phase {
+    grid-template-columns: 1fr;
+  }
+
+  .a-phase__index {
+    padding-top: 0;
+  }
+
+  .a-toolbar {
+    align-items: stretch;
+  }
+
+  .a-tabs {
+    overflow-x: auto;
+  }
+}
+
+/* ---------- motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- print / export ---------- */
+
+@media print {
+  :root[data-theme],
+  :root:not([data-theme]) {
+    color-scheme: light only;
+    --bg-page: 252 252 252;
+    --bg-wash: 248 248 248;
+    --bg-elevated: 255 255 255;
+    --tint-tertiary: 0 0 0 / 0.04;
+    --tint-secondary: 0 0 0 / 0.06;
+    --tint-primary: 0 0 0 / 0.08;
+    --text-primary: 25 25 25;
+    --text-secondary: 25 25 25 / 0.64;
+    --text-tertiary: 25 25 25 / 0.4;
+    --text-accent: 49 124 255;
+    --bg-accent: 49 124 255;
+    --border-secondary: 0 0 0 / 0.08;
+    --border-primary: 0 0 0 / 0.1;
+    --text-green: 0 165 88;
+    --text-orange: 245 142 58;
+    --text-red: 245 59 58;
+    --text-blue: 51 125 244;
+    --text-purple: 149 108 222;
+    --shadow-l1: none;
+    --shadow-l2: none;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .a-no-print,
+  .a-toolbar,
+  .a-diagram__hint {
+    display: none !important;
+  }
+
+  .a-panel,
+  .a-table-scroll,
+  .a-diagram {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .a-table[data-a-sticky-columns] tr > :first-child,
+  .a-table [data-a-sticky] {
+    position: static !important;
+  }
+
+  .a-table[data-a-sticky-columns] tr > :first-child::after,
+  .a-table [data-a-sticky]::after {
+    display: none !important;
+  }
+
+  .a-section {
+    break-inside: avoid;
+    margin-top: 24px;
+  }
+
+  [hidden].a-print-reveal {
+    display: revert !important;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <main class="a-shell">
+      <header class="a-header">
+        <div>
+          <h1 class="a-header__title">Combat, combinations and dread</h1>
+          <p class="a-header__subtitle">A sourced game-loop proposal for an isometric forest-and-clinic action roguelite, with a small interactive synergy example.</p>
+        </div>
+        <button
+          type="button"
+          class="a-btn a-btn--icon a-no-print"
+          data-a-theme-toggle
+          aria-label="Switch to dark mode"
+          title="Switch to dark mode"
+        >
+          <svg
+            class="a-theme-icon a-theme-icon--moon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" />
+          </svg>
+          <svg
+            class="a-theme-icon a-theme-icon--sun"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <section
+        class="a-section a-error"
+        data-a-error
+        role="alert"
+        aria-live="polite"
+        hidden
+      >
+        <p class="a-error__title">Something in this artifact failed to run</p>
+        <p>
+          The content below is still readable, but an interactive control may
+          not respond.
+          <span data-a-error-detail></span>
+        </p>
+      </section>
+
+<style>
+@media print {
+  [data-a-tabs] [role="tabpanel"][hidden] { display: block !important; }
+  [data-a-tabs] [role="tablist"] { display: none !important; }
+  .combo-controls { display: none !important; }
+}
+.combo-controls { display: flex; flex-wrap: wrap; gap: 1rem; margin-block: 1rem; }
+.combo-controls label { display: inline-flex; align-items: center; gap: .4rem; }
+.combo-result { font-variant-numeric: tabular-nums; }
+blockquote { margin-inline: 0; }
+</style>
+
+<section class="a-section">
+  <h2 class="a-section__title">The recommendation in one paragraph</h2>
+  <div class="a-callout a-callout--decision"><strong>Build a short-run action roguelite with deliberate combat and conditional, explosive synergies.</strong> A bounded rain-soaked forest leads into a deserted rural clinic. Learn enemy openings, assemble a four-slot build, use the environment to prepare an oversized strike, and choose whether the next reward is worth your remaining health. Let dread dominate the approach, precision dominate the fight, and power dominate the payoff. Do not demand all three emotions at maximum intensity at once.</div>
+  <p class="a-prose"><strong>Status:</strong> exploratory design report, not an approved game design or an implementation. Your requested ingredients are below; the particular loop, numbers, item names, enemies and progression rules are my proposals. The Blender/Godot graphics demo remains a separate rendering experiment. No game code was changed for this report.</p>
+  <p class="a-prose"><strong>The essential test:</strong> is one enemy enjoyable to fight without upgrades, and do a few upgrades change how you fight rather than only how fast its health disappears? If either answer is no, producing more art or procedural content is premature.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">1. Your original mechanics brief</h2>
+  <blockquote class="a-panel a-prose">“You know I was also thinking about building a souls like game with isometric perspective which would combine some rogue like elements from games like Dead Cells. It would also combine scaling/multiplication mechanics from Balatro where the games forces a player to experiment with builds, effects (such as card effects), buffs, and right experiments would lead to crazily fun experience”</blockquote>
+  <p class="a-section__note">Verbatim from your original mechanics message, including its wording. The earlier forest/clinic and low-writing constraints also remain part of the brief.</p>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>Requirements versus design proposals</caption>
+    <thead><tr><th scope="col">From you</th><th scope="col">Proposed interpretation—not yet decided</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Souls-like, isometric</th><td>Committed attacks, stamina management, readable wind-ups and directional dodging; not a full Souls equipment, leveling and corpse-recovery system.</td></tr>
+      <tr><th scope="row">Dead Cells-like roguelike elements</th><td>Run-specific equipment, changing reward choices and encounter routes, loss of the current build on death; not necessarily platforming or fully generated geometry.</td></tr>
+      <tr><th scope="row">Balatro-like multiplication and experimentation</th><td>Small effects interact through explicit conditions. Burst damage can become disproportionate, but assembling and executing the chain is the play.</td></tr>
+      <tr><th scope="row">Boreal forest, abandoned small hospitals</th><td>Two contrasting environments within one bounded route: exposed wet clearings and enclosed dry/wet clinic rooms.</td></tr>
+      <tr><th scope="row">Genuine horror without much dialogue or lore</th><td>Uneasy approaches, risky commitments, sound and physical threat behavior. No required conversations, quest cast or lore-document progression.</td></tr>
+      <tr><th scope="row">Rain, wind, reflections; affordable authored 3D assets</th><td>Water affects positioning and builds; reflections supply coherent spatial information; wind is mostly presentation initially. Combat remains readable through any chosen art direction.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">2. What the research actually supports</h2>
+  <p class="a-section__note">The left column summarizes published sources. The right column is my application to this project, not a claim that those developers endorse this design. Sources are indexed at the end.</p>
+  <div class="a-table-scroll"><table class="a-table" data-a-sticky-columns="1">
+    <caption>Design evidence and project implications</caption>
+    <thead><tr><th scope="col">Source</th><th scope="col">Observed finding</th><th scope="col">Design implication</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Dead Cells <a href="#source-s1">[S1]</a></th><td>The developer material emphasizes tiny control details, player-friendly forgiveness and the quality advantages of handcrafted rooms within generated level structures.</td><td>Prove responsiveness and one excellent combat space first. Later shuffle authored rooms and encounters rather than assuming a generator will create good pacing.</td></tr>
+      <tr><th scope="row">Balatro <a href="#source-s2">[S2]</a> <a href="#source-s9">[S9]</a></th><td>LocalThunk describes interlocking mechanics and synergies that steer a run. The timeline shows a core chip × multiplier prototype before many later systems.</td><td>Borrow combinatorial depth, not poker, a huge card catalog or the entire scoring structure. Start with a small interaction grammar.</td></tr>
+      <tr><th scope="row">Slay the Spire <a href="#source-s3">[S3]</a></th><td>The GDC overview describes metrics-driven balance alongside community feedback, game feel and difficulty.</td><td>Log which effects actually activate and why runs end. Use player observation as well as damage totals; do not balance solely by spreadsheet.</td></tr>
+      <tr><th scope="row">MDA <a href="#source-s4">[S4]</a></th><td>Mechanics, dynamics and aesthetics are distinct lenses for analyzing how rules produce play and experience.</td><td>“Wet targets take amplified damage” is a rule. Luring an enemy into water is the behavior. Dread, mastery and surprise are the intended feelings. Test all three levels.</td></tr>
+      <tr><th scope="row">Lenticular design <a href="#source-s5">[S5]</a></th><td>Rosewater distinguishes readable surface rules from deeper strategic implications, and warns about different kinds of complexity.</td><td>A card can be one short sentence yet open several tactics. Avoid making every fight a simultaneous inventory, arithmetic and status-reading task.</td></tr>
+      <tr><th scope="row">Frictional Games <a href="#source-s6">[S6]</a></th><td>Rewarding, attention-heavy gameplay can displace fear; players also optimize threatening systems until they lose their power. The article additionally argues for narrative's importance.</td><td>This is a real tension, not proof that combat automatically creates horror. Use alternating emotional states and modest environmental context; acknowledge that low writing limits some horror techniques.</td></tr>
+      <tr><th scope="row">Darkwood <a href="#source-s7">[S7]</a></th><td>Official material describes exploration, preparation and refuge under danger. It also explicitly includes characters, quests and story.</td><td>Borrow preparation and the contrast between unsafe ground and shelter—not its entire open world, survival economy or narrative workload.</td></tr>
+      <tr><th scope="row">Tunic <a href="#source-s8">[S8]</a></th><td>Shouldice describes technical isometric combat and a nontraditional stamina/dodge rule, as well as extensive iteration.</td><td>Camera perspective does not dictate a single defense model. Choose rules for this game's feel rather than importing every Souls convention. Do not copy its hidden-manual onboarding.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="a-callout a-callout--risk"><strong>Research is not validation.</strong> These sources suggest useful practices; they do not demonstrate that this particular genre mixture will be fun, frightening or economical to make. That requires a playable prototype and observed players.</div>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">3. The identity: master the threat, then break its scale</h2>
+  <p class="a-prose">The player should alternate between <strong>“I understand its attack”</strong> and <strong>“I discovered something outrageous.”</strong> The first comes from stable enemy rules and execution. The second comes from effects that reinforce one another. Horror lives partly in what happens before that understanding, and in the cost of committing to a setup while vulnerable.</p>
+  <ol class="a-prose">
+    <li><strong>Deliberate, not sluggish.</strong> Positioning and attack commitments matter; movement and inputs should still feel immediate.</li>
+    <li><strong>Conditional power, not automatic power.</strong> An enormous result needs a target state, an opening, a location or a timing achievement.</li>
+    <li><strong>Discoverable interactions.</strong> Clearly explain rules. The surprise is recognizing a combination, not learning that an undocumented exception exists.</li>
+    <li><strong>The environment is part of the build.</strong> A puddle is useful or dangerous depending on your equipment and the enemy, rather than always a flat bonus.</li>
+    <li><strong>Fear without a writing dependency.</strong> A dry doorway, a body that has moved since your last glance, or a risky healing pause can carry tension without a conversation.</li>
+  </ol>
+  <p class="a-prose"><strong>Emotional contract:</strong> this is horror-flavored action with moments of genuine dread, not constant helpless survival horror. A successful late-run build should sometimes turn a frightening enemy into a victim. Preventing that payoff to preserve fear would contradict your experimentation goal. If sustained helplessness becomes the main priority, this recommendation would need to change.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">4. Choose a run structure, not three games at once</h2>
+  <p class="a-section__note">These are alternative architectures. The first is the recommendation; the other two show what we are deliberately not adding.</p>
+  <div data-a-tabs>
+    <div role="tablist" aria-label="Alternative run structures">
+      <button type="button" class="a-btn" role="tab" id="tab-run" aria-controls="panel-run" aria-selected="true">Short complete runs</button>
+      <button type="button" class="a-btn" role="tab" id="tab-extract" aria-controls="panel-extract" aria-selected="false">Extraction trips</button>
+      <button type="button" class="a-btn" role="tab" id="tab-expedition" aria-controls="panel-expedition" aria-selected="false">Long expeditions</button>
+    </div>
+    <article role="tabpanel" id="panel-run" aria-labelledby="tab-run">
+      <h3>Recommended: a complete short run</h3>
+      <p class="a-prose">Start in a quiet clinic vestibule, take a forest route, re-enter through the flooded service rooms, and finish with the guardian encounter in the clinic's rear wing. That is a proposed spatial loop, not a story requirement. For a later MVP, target roughly <strong>20–30 minutes</strong>; the first playable slice should be much shorter. These are pacing hypotheses, not measured durations.</p>
+      <ol class="a-prose">
+        <li><strong>Prepare:</strong> choose a weapon and one simple starting alteration; practice on a target. See the run objective without dialogue.</li>
+        <li><strong>Read the next route:</strong> choose between visible encounter/reward types, such as exposed wet clearing, narrow interior or optional elite cache.</li>
+        <li><strong>Approach:</strong> a short uneasy traversal establishes the threat before the arena. No upgrade shopping while an attack is imminent.</li>
+        <li><strong>Fight:</strong> learn or recall patterns, create a setup, execute it, survive recovery.</li>
+        <li><strong>Choose one of three rewards:</strong> extend the current engine, pivot it or take a useful defensive alternative. Comparison pauses the game after the encounter.</li>
+        <li><strong>Spend at a safe workbench:</strong> healing competes with an upgrade or reroll. Refit slots and inspect an example damage breakdown.</li>
+        <li><strong>Commit to the end:</strong> attempt an optional dangerous reward, then face the guardian with the assembled build.</li>
+        <li><strong>Finish or die:</strong> the build and run currency reset; learned rules and selected horizontal unlocks remain. A summary explains the strongest interaction and failure cause.</li>
+      </ol>
+      <p class="a-prose"><strong>Why this fits:</strong> builds have a beginning, a middle and a payoff; difficulty can be paced around a known finale. Death is costly enough to matter without requiring a persistent world economy.</p>
+    </article>
+    <article role="tabpanel" id="panel-extract" aria-labelledby="tab-extract" hidden>
+      <h3>Alternative: return whenever you dare</h3>
+      <p class="a-prose">Explore from a shelter, gather resources and decide when to bank them. This naturally creates frightening returns and strong “one more room” decisions. However, it also creates retreat exploits, farming incentives, persistent economy balancing and tension between banking safely and experimenting with a risky build.</p>
+      <p class="a-prose"><strong>Defer it.</strong> It could support the forest horror well, but is less direct for the requested Balatro-like complete-run arc. It would replace the recommended run architecture, not be an extra mechanic casually bolted onto it.</p>
+    </article>
+    <article role="tabpanel" id="panel-expedition" aria-labelledby="tab-expedition" hidden>
+      <h3>Alternative: a persistent Souls-like expedition</h3>
+      <p class="a-prose">Open shortcuts, recover lost currency and maintain long-lived equipment across a connected forest/hospital world. This supports place familiarity and exploration mastery, but requires more interconnected level design, save states and progression content. It weakens the reason to rebuild from scratch every run.</p>
+      <p class="a-prose"><strong>Do not start here.</strong> It is closer to a full action RPG than the bounded roguelite proposed in this report.</p>
+    </article>
+  </div>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">5. The encounter loop and combat rules</h2>
+  <div class="a-panel"><p class="a-prose"><strong>Observe → position → prepare → evade → punish → reassess.</strong><br>Example: identify the long sweep; land a heavy marking attack during the earlier recovery; lure the marked enemy toward water; dodge the sweep; spend the next opening on an amplified release. If the setup is unavailable, ordinary attacks remain useful.</p></div>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>Proposed first combat vocabulary</caption>
+    <thead><tr><th scope="col">Action or rule</th><th scope="col">Purpose</th><th scope="col">Constraint</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Normal movement</th><td>Circle, retreat and choose an angle.</td><td>No stamina cost. Do not make basic repositioning compete with defense.</td></tr>
+      <tr><th scope="row">Light strike</th><td>Reliable low-commitment punish and a way to release prepared effects.</td><td>Modest reach/damage; still has a readable active interval and recovery.</td></tr>
+      <tr><th scope="row">Heavy strike</th><td>Higher commitment, stronger stagger or a setup effect.</td><td>Longer exposure. Its wind-up cannot be erased after the commitment point.</td></tr>
+      <tr><th scope="row">Directional dodge</th><td>Avoid an attack and reposition.</td><td>Stamina cost, bounded invulnerability, recovery. No unlimited canceling out of active attacks.</td></tr>
+      <tr><th scope="row">Perfect dodge</th><td>Optional skill condition for some builds.</td><td>Must evade an actual threatening attack during the designated short window, not merely roll near an enemy. Each hostile attack can award it once.</td></tr>
+      <tr><th scope="row">Heal</th><td>Recover health at a tactical cost.</td><td>Limited charges; a committed action. Initial tuning should avoid making safe healing impossible or instant.</td></tr>
+      <tr><th scope="row">Stagger</th><td>Create an understandable punish opening.</td><td>Visible buildup and recovery. Test boss loop prevention through recovery rules, not blanket immunity to all player effects.</td></tr>
+      <tr><th scope="row">Soft targeting</th><td>Reduce isometric aiming frustration.</td><td>Assist within intended facing; never snap an attack behind the player. Compare this with optional lock-on during testing.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose"><strong>Only health, stamina and limited healing at first.</strong> No separate mana, hunger, temperature, sanity or crafting meters. An effect may have a short displayed charge, but that is not another resource economy. Normal movement permits stamina recovery; attack/dodge costs and the regeneration delay must be tuned together so the player can usually preserve one escape.</p>
+  <details class="a-disclosure"><summary>Responsiveness, commitments and fair failures</summary>
+    <ul class="a-prose">
+      <li>Define startup, commitment, active hit and recovery explicitly. A dodge can cancel only the designated early startup or late recovery regions—not every animation frame.</li>
+      <li>Buffer one next command near an action's end, rather than queueing a string of attacks the player cannot retract. The duration is a playtest parameter, not a sourced universal constant.</li>
+      <li>Display insufficient stamina clearly. Test whether the conventional “cannot dodge below cost” rule feels fair; a Tunic-like alternative is an experiment, not an automatic addition.</li>
+      <li>Enemy telegraphs, collision and facing must agree. Once an attack commits, do not let it invisibly rotate through the player to correct a miss.</li>
+      <li>Use visible poses as the primary attack information, with sound and ground cues as reinforcement. A sound-only tell is not accessible enough.</li>
+      <li>Death explanations distinguish poor timing, greed, hazard exposure, missed setup and unreadable feedback. A reported “I could not see it” death is a design issue to investigate, not a player-skill verdict.</li>
+    </ul>
+  </details>
+  <p class="a-prose"><strong>Camera rule:</strong> begin with a fixed three-quarter camera over mostly planar arenas. Cut away roofs, fade occluding branches and keep hit-critical space in frame. Do not introduce jumping, stacked walkable floors or camera rotation until grounded combat is clear. Test actual weapon silhouettes at the intended display size, including any reduced-resolution treatment.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">6. The build system: a small grammar, not a hundred cards</h2>
+  <p class="a-prose">Equip <strong>one weapon and four alteration slots</strong>. Present alterations as readable reward cards, but make their identity material and physical once equipped. Four slots is a starting hypothesis: enough for a complete chain, few enough to remember during combat. A basic weapon must work with no alterations. The first prototype has four test effects; a later MVP might have twelve, not hundreds.</p>
+  <dl class="a-meta-list">
+    <div><dt>Primer</dt><dd>Create a target state or store potential: mark a body, load a heavy strike, accumulate a bounded stack.</dd></div>
+    <div><dt>Amplifier</dt><dd>Increase a prepared result under a stated condition: wet target, successful dodge, uninterrupted commitment or close-range exposure.</dd></div>
+    <div><dt>Converter</dt><dd>Change the result's use: focused damage becomes a line, burst becomes stagger, stored potential becomes protection. Defer most conversions until the core chain is readable.</dd></div>
+    <div><dt>Echo</dt><dd>Repeat a bounded part of the prepared result, potentially after a delay or at a marked location.</dd></div>
+  </dl>
+  <p class="a-prose"><strong>Begin with fixed resolution phases:</strong> existing target state → direct-hit bonuses → conditional multipliers → bounded repeat. Do not initially require free-form slot ordering in the middle of real-time combat. Balatro-like combinatorics do not require copying every Joker-order rule. Add player-controlled ordering only if a later test shows that it creates useful choices and can be explained in the preview.</p>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>A concrete four-alteration test set—all values provisional</caption>
+    <thead><tr><th scope="col">Alteration</th><th scope="col">Readable rule</th><th scope="col">New player behavior</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Needle seal — primer</th><td>A heavy hit marks an unmarked enemy as Conductive. A later direct hit consumes that mark for +20 base damage. A consuming hit does not also reapply it. Example mark lifetime: six seconds.</td><td>Create an opening for a heavy setup, then preserve access to that target.</td></tr>
+      <tr><th scope="row">Rain conductor — amplifier</th><td>A hit consuming Conductive deals ×1.5 damage if the target is Wet.</td><td>Choose wet ground or pull an enemy into it. Rain is useful, but not necessary for the primer to work.</td></tr>
+      <tr><th scope="row">Counterweight — amplifier</th><td>A perfect dodge charges your next direct hit for ×2 damage. Example expiry: three seconds. One charge; no accumulation from repeated dodges.</td><td>Turn a defense into a short opportunity. The charge can benefit an ordinary hit even without Conductive.</td></tr>
+      <tr><th scope="row">Standing echo — repeat</th><td>A hit consuming Conductive repeats 50% of its resolved damage at the impact location after a short delay. The echo is terminal in this prototype.</td><td>Time the release when the enemy will remain in reach. A delayed hit can miss.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose"><strong>Sequence:</strong> heavy hit to mark → lure into water → perfect dodge → direct hit to consume the mark and charge → delayed echo. The first marking hit is separate from the release below. A target already marked before the release may qualify; a mark created by that same release cannot retroactively qualify. This avoids same-event ambiguity.</p>
+
+  <div class="a-panel" id="combo-lab">
+    <div class="a-panel__head"><h3 class="a-panel__title">A small synergy laboratory</h3></div>
+    <p class="a-section__note">Illustrative arithmetic, not a combat simulation. Starting release hit: 100 damage. Toggle the setup to see why the payoff requires several conditions. All four alteration rules above are assumed equipped.</p>
+    <div class="combo-controls" role="group" aria-label="Combo conditions">
+      <label><input id="condition-mark" type="checkbox" checked> Mark present</label>
+      <label><input id="condition-wet" type="checkbox" checked> Target wet</label>
+      <label><input id="condition-dodge" type="checkbox" checked> Dodge charge</label>
+      <label><input id="condition-echo" type="checkbox" checked> Echo connects</label>
+      <button type="button" class="a-btn" id="combo-reset">Reset example</button>
+    </div>
+    <div class="combo-result" aria-live="polite" aria-atomic="true">
+      <p class="a-prose" id="combo-formula">(100 + 20) × 2 × 1.5 = 360 direct damage.</p>
+      <p class="a-prose" id="combo-total"><strong>360 direct + 180 echo = 540 damage, or 5.4× the unmodified release hit.</strong></p>
+      <p class="a-section__note" id="combo-note">All setup conditions met. The initial marking hit, time spent preparing and a possible missed echo are not included in this burst comparison.</p>
+    </div>
+    <p class="a-prose"><strong>Important:</strong> 5.4× burst damage is not 5.4× damage per second. Setup can cost an earlier attack and multiple enemy openings. Compare the entire encounter, not only the largest number. This example is not a proposed ceiling; later, rarer chains can be much stronger.</p>
+  </div>
+
+  <details class="a-disclosure"><summary>How to avoid infinite loops without removing the fun</summary>
+    <ul class="a-prose">
+      <li>Give each event a root attack identity, origin, target and tags such as direct, repeated and environmental. A card states which tags it accepts.</li>
+      <li>Resolve flat additions before multipliers. The echo snapshots the resolved release once; it does not spend the dodge charge again or reapply all multipliers.</li>
+      <li>In the first test, only direct hits create marks or start echoes. Echoes cannot echo themselves, mark new targets or grant another dodge charge.</li>
+      <li>This is a first-prototype simplification, not a permanent ban on proc interactions. Later effects can explicitly allow bounded propagation, a stated number of repeats or an acyclic chain of event types.</li>
+      <li>A single animation hit cannot damage the same body every frame. Define whether a multi-hit weapon spends a charge per swing or per hit before offering it.</li>
+      <li>Keep damage numbers free to grow. Prevent accidental recursion through rules and event validation rather than silently clamping a successful combo's damage.</li>
+      <li>A developer safety guard against runaway event processing is not a balance rule; if it fires, log and fix the offending interaction. Player-facing repeat limits must be stated on the card.</li>
+    </ul>
+  </details>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">7. Builds should differ in tactics, not just colors</h2>
+  <p class="a-section__note">The first row is the concrete prototype above. The other families are future comparison proposals, not additional first-prototype scope or fully balanced item specifications.</p>
+  <div class="a-table-scroll"><table class="a-table" data-a-sticky-columns="1">
+    <caption>Candidate tactical families</caption>
+    <thead><tr><th scope="col">Family</th><th scope="col">Setup and payoff</th><th scope="col">Risk / trade-off</th><th scope="col">What makes it distinct</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Storm release</th><td>Mark, water, timed dodge, repeated release.</td><td>Heavy setup and a short follow-up window; exposed wet ground may also enable a hostile electrical hazard.</td><td>Target preparation and environmental positioning.</td></tr>
+      <tr><th scope="row">Fracture chain</th><td>Heavy blows accumulate a visible, bounded fracture state; a stagger opening consumes it for a large burst.</td><td>Greed and long recovery; stored value can expire if the player disengages.</td><td>Commitment and sustained focus on one enemy; viable in dry rooms.</td></tr>
+      <tr><th scope="row">Afterstrike</th><td>Place a delayed strike where a dodged enemy will finish its attack; amplify when the repeat lands on the same target.</td><td>Predict movement correctly or lose the repeat.</td><td>Space and timing rather than a status checklist.</td></tr>
+      <tr><th scope="row">Last reserve</th><td>Trade a safe resource margin for a visible short burst, with a recovery effect earned by completing it.</td><td>Higher danger at low reserve; must not reward intentionally taking unavoidable damage.</td><td>A later risk-reward experiment. Defer until basic defense and resource feedback are stable.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose"><strong>Cross-build pieces matter.</strong> Counterweight works without water; a repeat effect can support a different primer; defense can buy time to assemble a slower chain. Avoid twelve cards split into three rigid four-card sets that only function when the entire matching set appears.</p>
+  <p class="a-prose"><strong>A good card text:</strong> “Your next hit after a perfect dodge deals ×2 damage.” The depth comes from choosing which hit receives it. <strong>A bad first card:</strong> multiple hidden status exceptions, random conversions and a long formula that must be read during an attack. Rules stay explicit even when strategic consequences are subtle <a href="#source-s5">[S5]</a>.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">8. Rewards, economy and progression</h2>
+  <ol class="a-prose">
+    <li><strong>Give the first run a foundation.</strong> Offer a simple starter alteration and enough compatible early choices to form a partial engine. Do not make understanding the system depend on an exceptionally lucky four-card roll.</li>
+    <li><strong>After meaningful encounters, offer three visible choices.</strong> An extension, a pivot or an independently useful option is a design goal—not a promise that every generated offer will complete the player's build. Show condition tags and a comparison preview.</li>
+    <li><strong>Use one run currency initially.</strong> Salvage can buy healing, a card upgrade or a limited reroll at a workbench. Run-specific salvage disappears at the end; no premium-style currency layers.</li>
+    <li><strong>Let refitting be safe and cheap.</strong> Pause in reward screens and workbenches. Swaps occur outside combat, not while maintaining an active temporary buff. Start with a small reserve—such as two unequipped cards—if pivots otherwise become too punitive.</li>
+    <li><strong>Make upgrades qualitative where possible.</strong> Wider setup opportunity, another explicitly bounded repeat or altered coverage can compete with raw multiplication. Start with one upgrade tier, not an extensive rarity ladder.</li>
+    <li><strong>Make route previews honest.</strong> Tell the player encounter type, likely environmental conditions and reward category. Do not reveal every attack or exact item; do not conceal the information needed for a meaningful route decision.</li>
+    <li><strong>End with a useful recap.</strong> Show the largest chain, how often each alteration triggered, and a concrete death cause. “Rain conductor: equipped for four encounters, triggered zero times” suggests a learning opportunity or a bad design.</li>
+  </ol>
+  <p class="a-prose"><strong>Meta-progression:</strong> unlock alternative weapons, starters, alterations and challenge routes; avoid permanent damage/health grinding initially. Discovering a new option should not make the offer pool progressively worse: provide opt-in unlock groups or curated pools later if dilution becomes visible. Prototype without meta-progression so base combat is not rescued by grinding.</p>
+  <p class="a-prose"><strong>Death:</strong> lose the current loadout and salvage, retain discovered rules and unlocks. No corpse run in the first version. <strong>Victory:</strong> complete the guardian and exit the route; optionally record the seed/build. Add difficulty variants only after the baseline has several viable tactics. Save-and-quit at safe nodes is valuable; offline operation does not require live services.</p>
+  <div class="a-callout a-callout--risk"><strong>Do not “force experimentation” by withholding usable choices.</strong> Encourage it through visible synergies, safe comparison, varied route conditions and attractive alternatives. A player who wants a straightforward defensive build should still have a viable run.</div>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">9. Give weather one clear gameplay job at a time</h2>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>Environmental mechanics and the boundary between gameplay and graphics</caption>
+    <thead><tr><th scope="col">Feature</th><th scope="col">Proposed rule</th><th scope="col">Readability and scope limit</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Rain and puddles</th><td>Standing in a wet zone applies Wet; a short, displayed persistence allows movement into shelter. Some alterations or hostile hazards interact with it.</td><td>Wet is not a universal “takes more damage” state. Show who is wet using an icon/material cue. Use authored zones, not fluid simulation.</td></tr>
+      <tr><th scope="row">Dry shelter</th><td>Changes available setups and creates pauses. Roofed doorways let the player reassess exposure.</td><td>Not an invisible safe aura during every fight. Clearly distinguish genuinely safe workbenches from ordinary cover.</td></tr>
+      <tr><th scope="row">Reflections</th><td>Reinforce enemy position, movement and approach through selected pools or windows. A reflected silhouette can foreshadow a threat.</td><td>Reflective imagery must agree with active combat truth. Essential attack cues have a direct-view equivalent. No reflection-only unavoidable damage.</td></tr>
+      <tr><th scope="row">Wind</th><td>Move branches, rain and cloth; support the storm's changing intensity.</td><td>Mostly visual/audio initially. Defer gust-based aim drift, knockback and physics. Never make controls randomly unreliable.</td></tr>
+      <tr><th scope="row">Weather noise</th><td>Make approaches uncertain and quiet interiors feel different.</td><td>Mask anticipation, not the only warning of an active attack. Add visual equivalents and an adjustable ambience mix.</td></tr>
+      <tr><th scope="row">Clinic leaks and drainage</th><td>Local wet/dry patches create interior route and combat choices.</td><td>Start with fixed patches. A discrete switch that changes a few zones is a later experiment; no dynamic flood system in the first slice.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose"><strong>Example choice:</strong> the wet clearing helps Storm release but contains a visibly telegraphed electrical hazard; the dry clinic route gives Fracture chain cleaner setup opportunities but tighter movement. Neither route should be a mandatory hard counter. Every combat arena needs usable space for builds that do not exploit water.</p>
+  <p class="a-prose"><strong>Production boundary:</strong> gameplay wet zones are authored independently of a reflection shader. The game must remain fair with reduced reflection quality. The existing demo's live reflected-camera technique is not real-time ray tracing and does not prove the eventual combat scene's performance.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">10. Horror with low writing: anticipation, cost and release</h2>
+  <p class="a-prose">Frictional's warning is especially relevant: constant aiming, loot evaluation and satisfying optimization consume the same attention that could support fear <a href="#source-s6">[S6]</a>. We cannot simply add more fog and expect a math-heavy combat loop to behave like Amnesia. We also do not need to remove combat to satisfy your brief.</p>
+  <ol class="a-prose">
+    <li><strong>Approach:</strong> the storm conceals whether a shape is occupied; a ripple or dragging sound establishes movement. The player can stop and watch before commitment.</li>
+    <li><strong>Commit:</strong> crossing a threshold or opening an optional cache reveals a visible threat and its escape/arena boundaries. No instant unavoidable hit upon interaction.</li>
+    <li><strong>Confront:</strong> the threat becomes legible. Combat emphasizes mastery rather than hiding rules.</li>
+    <li><strong>Break through:</strong> the build's release provides a brief reversal of power. Let the player enjoy it.</li>
+    <li><strong>Relief:</strong> reward selection and a genuinely safe rest. The next approach restores uncertainty about configuration or position—not whether the game has secretly changed the damage rules.</li>
+  </ol>
+  <h3>A small signature horror interaction</h3>
+  <p class="a-prose"><strong>The occupied cache:</strong> an optional supply case stands beside a clearly visible inert shape. The player can inspect the reward category before opening it. Opening the case starts a short, readable awakening and an elite encounter; walking away leaves it alone. A reflection can reveal movement hidden by the direct viewing angle or a foreground prop; it should still show the same physical actor, not an independently animated false pose. Reuse one existing enemy rig with an authored awakening, not a new narrative character.</p>
+  <p class="a-prose">This supplies a physical question—<strong>“Is that reward worth waking it?”</strong>—and joins build greed to dread without dialogue. It is a proposed slice experiment, not a guaranteed scary mechanic. On repeat runs, the surprise will become knowledge; preserve the meaningful health/reward decision rather than pretending the same reveal stays shocking forever.</p>
+  <details class="a-disclosure"><summary>What to avoid, and where the writing work still exists</summary>
+    <ul class="a-prose">
+      <li>No sanity meter that randomly lies about active attack positions. No off-screen punishment justified as horror.</li>
+      <li>No global pursuer, noise economy or darkness simulation initially; those create AI, encounter and balance systems beyond the core loop.</li>
+      <li>No forced full-screen flash, constant camera shake or visual grain covering the weapon. Offer effect-intensity and accessibility controls.</li>
+      <li>Use compact environmental context: abandoned equipment, signs of recent movement, a broken barrier. This is still authored communication, but not a dialogue script or a lore archive.</li>
+      <li>Card text, tutorials, UI terminology and short objective labels still require clear writing. “Low narrative workload” is not “zero writing or zero sound/level-design work.”</li>
+      <li>If players consistently feel only excitement, do not label it frightening because the setting is gloomy. Test fear separately from satisfaction and be prepared to change pacing.</li>
+    </ul>
+  </details>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">11. Enemies and the boss should test the setup</h2>
+  <p class="a-section__note">Functional enemy roles, not a cast or lore commitment. For the toy prototype, implement only the first role.</p>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>Reusable combat problems</caption>
+    <thead><tr><th scope="col">Role</th><th scope="col">Readable behavior</th><th scope="col">What it tests</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Sweep sentinel</th><td>Approaches, plants its feet, winds up a wide sweep, then recovers. Limited tracking after commitment.</td><td>Dodge direction, ordinary punish, heavy marking and a follow-up release.</td></tr>
+      <tr><th scope="row">Rush attacker</th><td>Distinct crouch/lean, straight committed rush, recovery beyond its target.</td><td>Space prediction and delayed echoes; not just reflexively dodging in place.</td></tr>
+      <tr><th scope="row">Ground controller</th><td>Telegraphs a line or small zone, leaving a safe repositioning route.</td><td>When to abandon a prepared location. Never cover all dry ground to mandate one build.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose"><strong>First guardian proposal:</strong> combine the sentinel's sweep with a clear forward attack and one ground-denial action. Give it longer, readable recoveries after its most dangerous commitments. A powerful chain may skip substantial health or end the fight quickly; that is acceptable if the setup was earned.</p>
+  <p class="a-prose">Do not solve overpowering builds with universal status immunity, invisible damage caps or a scripted one-hit-per-phase gate. First examine how often the setup succeeds, how much exposure it requires and whether the player can ignore all movement. If stagger locks the boss indefinitely, try a <strong>communicated recovery interval</strong> before another full stagger—not immunity to the rest of the build. Boss phase rules, if later added, must be explicit and should not erase a legitimate pending echo without explanation.</p>
+  <p class="a-prose"><strong>Encounter composition:</strong> begin with one enemy, then two complementary roles. Three separate wind-ups, reflection highlights, rain and four proc visuals can overwhelm a fixed camera. Difficulty should first come from combinations of understandable problems, not denser visual clutter or endlessly inflated health.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">12. Procedural variation and artistic directions</h2>
+  <p class="a-prose"><strong>Authored rooms, variable routes.</strong> First build arenas with reliable sightlines, wet/dry space, entry views and enemy placement rules. Later vary a small route graph, encounter combinations, reward offers and selected weather states. Seed those choices for repeatable tests. Do not begin with arbitrary procedural forest geometry or clinic layouts <a href="#source-s1">[S1]</a>.</p>
+  <p class="a-prose"><strong>All four recent art directions remain compatible.</strong> The mechanical grammar should work with plain debug materials. Once it does, use the selected construction language to make the same states recognizable; avoid changing rules merely to suit a concept image.</p>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>Mechanics presentation under the four existing directions</caption>
+    <thead><tr><th scope="col">Direction</th><th scope="col">Possible build/effect language</th><th scope="col">Non-negotiable limit</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Storm Fresco</th><td>One distinct paint mark for the primer; a thicker crescent for amplification; a delayed repeat of the same shape.</td><td>Stable surface treatment and quiet ground around fighters. Painted detail cannot camouflage a wind-up.</td></tr>
+      <tr><th scope="row">Woven Blight</th><td>A tightened seam marks the target; a knot visibly stores charge; a released loop traces the amplified hit.</td><td>Large readable forms, not a cloud of simulated threads. Wrapped joints do not excuse poor animation.</td></tr>
+      <tr><th scope="row">Amber Archive</th><td>A contained inclusion lights for the primer; a clean fracture-like shape identifies release and echo.</td><td>Mostly opaque combatants. Transparency, refraction and highlights cannot obscure actual body or weapon position.</td></tr>
+      <tr><th scope="row">Cold Flash</th><td>Stable, high-contrast silhouettes and one restrained repeated attack contour.</td><td>No full-screen strobing; resolution must preserve weapons, poses and wet-state indicators.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose">These are visual proposals, not tested shaders. Do not use old-position afterimages for the enemy's current hitbox. Give marks, charge and echoes different shapes and labels rather than distinguishing them only by color. Scale spectacular effects mostly outside the hit-critical silhouette.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">13. The smallest useful prototype—and what comes after</h2>
+  <div class="a-table-scroll"><table class="a-table" data-a-sticky-columns="1">
+    <caption>Scope gates; advance only when the preceding question is answered</caption>
+    <thead><tr><th scope="col">Stage</th><th scope="col">Build only</th><th scope="col">Question to answer</th><th scope="col">Do not add yet</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">A. Combat and combo toy</th><td>One planar arena with wet and dry patches; one weapon; light/heavy/dodge/heal; one sentinel; the four test alterations; a root-event damage breakdown. Reuse a simple rig. Compare base and equipped combat.</td><td>Are attacks, defense and enemy tells good before buffs? Does the full chain feel earned, understandable and worth attempting?</td><td>Forest production art, full reflection pipeline, procedural routes, economy, meta-progression, dialogue.</td></tr>
+      <tr><th scope="row">B. Short run slice</th><td>Two environment kits; roughly four encounters, one safe workbench, an optional occupied cache and one guardian; a small reward pool with an alternative tactic. Provisional duration: 10–15 minutes.</td><td>Do choices produce a build arc? Does approaching danger feel different from fighting and shopping? Does wet/dry routing matter without forcing one build?</td><td>Large map, dozens of statuses, dynamic floods, roaming global pursuer, extensive unlocks.</td></tr>
+      <tr><th scope="row">C. Small MVP candidate</th><td>Potentially two weapons, about twelve alterations, three regular enemy roles, one guardian, authored room/route variation and modest horizontal unlocks. Provisional run target: 20–30 minutes.</td><td>Can several different tactics win and remain interesting across repeated runs? Does the visual style work in motion within an agreed performance budget?</td><td>Open world, multiplayer, crafting tree, major narrative, arbitrary procedural level geometry.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="a-prose"><strong>These are content budgets, not completion dates.</strong> A second weapon needs distinct animations and effect interactions; even twelve alterations create many combinations. Add content only when repeated play has identified the gap it fills.</p>
+  <h3>Concrete tests for stage A</h3>
+  <ol class="a-prose">
+    <li>Fight the sentinel with no alterations. Observe whether players can identify startup, commitment and recovery, and can explain a death.</li>
+    <li>Equip Needle seal alone. Check whether marking changes the attack choice without making ordinary damage useless.</li>
+    <li>Add Rain conductor. Observe whether players deliberately reposition the enemy, rather than only notice a larger number.</li>
+    <li>Add Counterweight and Standing echo. Ask players to predict the release, then watch whether they can actually perform it. A correct prediction with frequent failed execution suggests a timing/setup issue, not a tooltip issue.</li>
+    <li>Repeat on dry ground and with a missed echo. The partial engine should remain viable; show why the total changed.</li>
+    <li>Test terminal echo and one-charge rules mechanically: no self-repeat, no same-hit mark consumption, no multiple charges from one enemy attack.</li>
+    <li>Only then add rain, selected reflections and the candidate style. Repeat the same tasks; visual treatment must not make them harder to read.</li>
+  </ol>
+  <div class="a-callout a-callout--decision"><strong>Recommended next implementation, only after your approval:</strong> stage A in Godot with plain or very simple styled materials. Do not start by constructing the entire forest or producing a dozen enemies.</div>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">14. What to measure, and when to redesign</h2>
+  <p class="a-prose">Use a small number of observed sessions first; descriptive logs diagnose problems, but a few testers do not establish statistical balance. Later compare matched encounter seeds and players of different skill levels. The lesson from the Slay the Spire material is to combine data with feedback, not to choose a universal win-rate target from another genre <a href="#source-s3">[S3]</a>.</p>
+  <div class="a-table-scroll"><table class="a-table">
+    <caption>Prototype evidence to collect</caption>
+    <thead><tr><th scope="col">Evidence</th><th scope="col">Why it matters</th><th scope="col">Potential response</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Inputs rejected, queued attacks, missed dodges</th><td>Separate intentional commitment from control friction.</td><td>Revise buffering/cancel windows before adding difficulty.</td></tr>
+      <tr><th scope="row">Damage per encounter and setup time</th><td>A spectacular burst may have low practical value; a passive build may dominate total output.</td><td>Adjust opportunities and setup cost, not just the displayed multiplier.</td></tr>
+      <tr><th scope="row">Alteration triggers and unused conditions</th><td>Find dead rewards or rules players did not understand.</td><td>Improve clarity, offer composition or encounter support.</td></tr>
+      <tr><th scope="row">Choices, rerolls and build changes</th><td>Determine whether experimentation actually happens.</td><td>Create stronger alternative tactics; investigate weak options before enforcing random swaps.</td></tr>
+      <tr><th scope="row">Deaths and near misses by cause</th><td>Distinguish greed, failed execution and unreadable hazards.</td><td>Repair unclear tells and camera/occlusion failures.</td></tr>
+      <tr><th scope="row">Boss health removed per opening; repeated stagger</th><td>Distinguish earned overpowering from a no-counterplay lock.</td><td>Keep exciting bursts; fix loops and communicate recovery rules.</td></tr>
+      <tr><th scope="row">Observed pause, hesitation and self-reported dread</th><td>Determine whether horror exists beyond visual decoration.</td><td>Rework approaches and stakes; reduce constant activity before adding more visual noise.</td></tr>
+      <tr><th scope="row">Frame time with weather and full effects</th><td>Check legibility and performance under the intended worst case.</td><td>Reduce effect density/reflection cost without changing gameplay truth.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Redesign signals</h3>
+  <ul class="a-prose">
+    <li><strong>Base combat is dull:</strong> stop content production and repair movement, enemy openings and hit response.</li>
+    <li><strong>Players cannot explain the combo:</strong> simplify state transitions and improve the damage preview.</li>
+    <li><strong>One family removes every positioning decision:</strong> improve tactical trade-offs and alternative opportunities; do not immediately forbid strong results.</li>
+    <li><strong>Every reward feels like a small percentage upgrade:</strong> add a behavior-changing interaction, not more rarities.</li>
+    <li><strong>Everyone ignores water:</strong> its rule may not create a real decision. Improve the interaction or leave water as presentation rather than pretending it matters.</li>
+    <li><strong>The setting is gloomy but nobody feels tension:</strong> the horror hypothesis is failing. Adjust pacing and risky commitments, or honestly position the game as dark action.</li>
+  </ul>
+  <p class="a-prose"><strong>Review decisions before implementation:</strong> approve or revise the short-run architecture; agree that temporary overpowering is desirable; choose whether stamina/dodge is conventional for the initial test; defer the final art direction until motion comparison. None of these choices is silently settled by this report.</p>
+</section>
+
+<section class="a-section">
+  <h2 class="a-section__title">15. Sources and limits</h2>
+  <p class="a-section__note">Developer testimony, official descriptions and design frameworks are not interchangeable kinds of evidence. The GDC links below were checked through their public overviews; I am not claiming to have watched the full talks. No external source contains this proposed game design, and no report example is a measured playtest result.</p>
+  <ol class="a-prose">
+    <li id="source-s1"><strong>[S1] Dead Cells.</strong> <a href="https://www.gdcvault.com/play/1025788/-Dead-Cells-What-the">Sébastien Bénard, “Dead Cells: What the F*n!?” — GDC Vault</a> (public session overview), and <a href="https://cdn.arstechnica.net/wp-content/uploads/2019/07/dead_cells_tscript.txt">developer presentation transcript hosted by Ars Technica</a>. Used for control fairness, small-detail iteration and handcrafted-room strategy. Not evidence for a particular dodge timing in this game.</li>
+    <li id="source-s2"><strong>[S2] Balatro.</strong> <a href="https://rogueliker.com/balatro-interview/">LocalThunk interview — Rogueliker, 7 March 2024</a>. Direct developer answers on interlocking systems, synergies, onboarding and Joker iteration. Published through an interview outlet.</li>
+    <li id="source-s3"><strong>[S3] Slay the Spire.</strong> <a href="https://www.gdcvault.com/play/1025731/-Slay-the-Spire-Metrics">Anthony Giovannetti, “Slay the Spire: Metrics Driven Design and Balance” — GDC Vault</a>. Public overview, not a full-video review. Supports measuring outcomes together with community feedback and game feel.</li>
+    <li id="source-s4"><strong>[S4] MDA.</strong> Robin Hunicke, Marc LeBlanc and Robert Zubek, <a href="https://www.cs.northwestern.edu/~hunicke/MDA.pdf">“MDA: A Formal Approach to Game Design and Game Research”</a> (2004); <a href="https://aaai.org/papers/ws04-04-001-mda-a-formal-approach-to-game-design-and-game-research/">AAAI paper entry</a>. A conceptual framework, not a formula that guarantees fun.</li>
+    <li id="source-s5"><strong>[S5] Lenticular design.</strong> <a href="https://magic.wizards.com/en/news/making-magic/lenticular-design-2014-03-31">Mark Rosewater, “Lenticular Design” — Wizards of the Coast, 31 March 2014</a>. Used to distinguish readable rules from strategic depth and to limit on-board complexity. Its card-game context needs adaptation to real-time combat.</li>
+    <li id="source-s6"><strong>[S6] Horror and attention.</strong> <a href="https://frictionalgames.com/2019-10-9-years-9-lessons-on-horror/">Thomas Grip / Frictional Games, “9 Years, 9 Lessons on Horror”</a> (October 2019). Direct developer argument about attention, optimization, scares and narrative. Its priorities favor fear; this report intentionally keeps your combat/power goal rather than adopting those priorities wholesale.</li>
+    <li id="source-s7"><strong>[S7] Darkwood.</strong> <a href="https://store.steampowered.com/app/274520/Darkwood/">Official Steam description</a>; <a href="https://darkwoodgame.com/">official site</a>. Establishes the exploration/preparation/refuge contrast and the original game's narrative scope. Marketing description, not an implementation study.</li>
+    <li id="source-s8"><strong>[S8] Isometric combat.</strong> <a href="https://gamerant.com/tunic-interview-andrew-shouldice-development-journey-zelda-inspirations/">Andrew Shouldice interview — Game Rant, 27 February 2022</a>. Developer testimony on Tunic's combat, stamina/dodge behavior and iterative design. This report does not propose its manual/language system.</li>
+    <li id="source-s9"><strong>[S9] Small core before expansion.</strong> <a href="https://localthunk.com/blog/balatro-timeline-3aarh">LocalThunk, “The Balatro Timeline”</a>. First-person development history: chip × multiplier mechanics preceded many later features. A chronology, not a claim that this project should follow the same schedule.</li>
+  </ol>
+  <p class="a-prose"><strong>Bottom line:</strong> borrow responsiveness and authored encounter quality from Dead Cells, interlocking conditional power from Balatro, iterative evidence from Slay the Spire, and preparation/anticipation from horror design. Validate the collision between those goals with one arena before committing to a full game.</p>
+</section>
+
+<script>
+(() => {
+  const ids = ['condition-mark', 'condition-wet', 'condition-dodge', 'condition-echo'];
+  const controls = ids.map(id => document.getElementById(id));
+  function update() {
+    const [marked, wet, charged, connects] = controls.map(input => input.checked);
+    const flat = marked ? 20 : 0;
+    const execution = charged ? 2 : 1;
+    const environment = marked && wet ? 1.5 : 1;
+    const direct = (100 + flat) * execution * environment;
+    const echo = marked && connects ? direct * .5 : 0;
+    const total = direct + echo;
+    document.getElementById('combo-formula').textContent = `(100 + ${flat}) × ${execution} × ${environment} = ${direct} direct damage.`;
+    const line = document.getElementById('combo-total');
+    line.replaceChildren();
+    const strong = document.createElement('strong');
+    strong.textContent = `${direct} direct + ${echo} echo = ${total} damage, or ${(total / 100).toFixed(1)}× the unmodified release hit.`;
+    line.append(strong);
+    const reasons = [];
+    if (!marked) reasons.push('No existing mark: no flat setup bonus, no wet amplification and no echo.');
+    if (marked && !wet) reasons.push('Dry target: the ×1.5 wet amplifier is inactive.');
+    if (!charged) reasons.push('No dodge charge: the ×2 execution amplifier is inactive.');
+    if (marked && !connects) reasons.push('The delayed echo misses: it contributes no damage.');
+    document.getElementById('combo-note').textContent = `${reasons.length ? reasons.join(' ') : 'All setup conditions met.'} The initial marking hit, time spent preparing and a possible missed echo are not included in this burst comparison.`;
+  }
+  controls.forEach(input => input.addEventListener('change', update));
+  document.getElementById('combo-reset').addEventListener('click', () => {
+    controls.forEach(input => { input.checked = true; });
+    update();
+  });
+  let printOpened = [];
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details.a-disclosure').forEach(details => {
+      if (!details.open) {
+        printOpened.push(details);
+        details.open = true;
+      }
+    });
+  });
+  window.addEventListener('afterprint', () => {
+    printOpened.forEach(details => { details.open = false; });
+    printOpened = [];
+  });
+  update();
+})();
+</script>
+
+
+      <footer class="a-footnote">Research synthesis and original proposals by Devin. All mechanics, numbers and scope estimates are unimplemented and unvalidated. Source links are references only; the document works offline.</footer>
+    </main>
+    <script>
+/* Devin artifact kit — self-contained behavior for standalone HTML artifacts.
+   No build step, no imports, no network calls. Every widget is progressive
+   enhancement: the markup stays readable and printable with scripting off. */
+(function () {
+  "use strict";
+
+  var root = document.documentElement;
+  var THEMES = { light: 1, dark: 1 };
+
+  function showError(message) {
+    document.querySelectorAll("[data-a-error]").forEach(function (region) {
+      region.hidden = false;
+      var detail = region.querySelector("[data-a-error-detail]");
+      if (detail && message) detail.textContent = message;
+    });
+  }
+
+  window.addEventListener("error", function (event) {
+    showError(event.message);
+  });
+  window.addEventListener("unhandledrejection", function (event) {
+    showError(String(event.reason || "An interactive control failed."));
+  });
+
+  /* ---------- theme ----------
+     Order of precedence:
+       1. an explicit host signal (`?theme=`/`#theme=`, a `devin:theme`
+          message from an embedding page, or a preset `data-theme`),
+       2. a reader's in-document choice,
+       3. the OS/browser preference via `prefers-color-scheme`.
+     Hosts that expose no signal simply fall through to step 3. */
+  function hostTheme() {
+    var search = new URLSearchParams(
+      window.location.search + "&" + window.location.hash.replace(/^#/, "")
+    );
+    var fromUrl = search.get("theme");
+    if (fromUrl && THEMES[fromUrl]) return fromUrl;
+    var preset = root.getAttribute("data-theme");
+    if (preset && THEMES[preset]) return preset;
+    return null;
+  }
+
+  function systemTheme() {
+    return window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  var pinned = hostTheme();
+
+  function apply(theme) {
+    root.setAttribute("data-theme", theme);
+    document.querySelectorAll("[data-a-theme-toggle]").forEach(function (el) {
+      var label =
+        theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+      el.setAttribute("aria-label", label);
+      el.setAttribute("title", label);
+    });
+  }
+
+  apply(pinned || systemTheme());
+
+  if (window.matchMedia) {
+    var media = window.matchMedia("(prefers-color-scheme: dark)");
+    var onChange = function () {
+      if (!pinned) apply(systemTheme());
+    };
+    if (media.addEventListener) media.addEventListener("change", onChange);
+    else if (media.addListener) media.addListener(onChange);
+  }
+
+  window.addEventListener("message", function (event) {
+    if (window.parent === window || event.source !== window.parent) return;
+    var data = event.data;
+    if (!data || data.type !== "devin:theme" || !THEMES[data.theme]) return;
+    pinned = data.theme;
+    apply(pinned);
+  });
+
+  document.addEventListener("click", function (event) {
+    var toggle = event.target.closest("[data-a-theme-toggle]");
+    if (!toggle) return;
+    pinned = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    apply(pinned);
+  });
+
+  /* ---------- tabs ----------
+     <div data-a-tabs role="tablist">
+       <button class="a-btn" role="tab" aria-controls="panel-id">Label</button>
+     Panels are plain elements toggled with `hidden`, so print reveals the
+     active one and `.a-print-reveal` can opt others in. */
+  function selectTab(list, tab) {
+    list.querySelectorAll('[role="tab"]').forEach(function (candidate) {
+      var selected = candidate === tab;
+      candidate.setAttribute("aria-selected", String(selected));
+      candidate.tabIndex = selected ? 0 : -1;
+      var panel = document.getElementById(
+        candidate.getAttribute("aria-controls") || ""
+      );
+      if (panel) panel.hidden = !selected;
+    });
+  }
+
+  document.querySelectorAll("[data-a-tabs]").forEach(function (list) {
+    var tabs = Array.prototype.slice.call(
+      list.querySelectorAll('[role="tab"]')
+    );
+    if (!tabs.length) return;
+    var active =
+      tabs.filter(function (t) {
+        return t.getAttribute("aria-selected") === "true";
+      })[0] || tabs[0];
+    selectTab(list, active);
+
+    list.addEventListener("click", function (event) {
+      var tab = event.target.closest('[role="tab"]');
+      if (tab) selectTab(list, tab);
+    });
+
+    list.addEventListener("keydown", function (event) {
+      var step =
+        event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+      if (!step) return;
+      event.preventDefault();
+      var current = tabs.indexOf(document.activeElement);
+      var next = tabs[(current + step + tabs.length) % tabs.length];
+      next.focus();
+      selectTab(list, next);
+    });
+  });
+
+  /* ---------- row filters ----------
+     <select data-a-filter="#table-id" data-a-filter-key="team">
+     Rows opt in with a matching `data-team` attribute; "all" clears it. */
+  document.querySelectorAll("[data-a-filter]").forEach(function (control) {
+    var target = document.querySelector(control.getAttribute("data-a-filter"));
+    var key = control.getAttribute("data-a-filter-key") || "filter";
+    if (!target) return;
+
+    var emptySelector = control.getAttribute("data-a-filter-empty");
+    var empty = emptySelector ? document.querySelector(emptySelector) : null;
+
+    var applyFilter = function () {
+      var value = control.value;
+      var shown = 0;
+      /* Re-read the rows every time: a script may have replaced them since
+         the last pass, and those rows must obey the current selection too. */
+      target.querySelectorAll("[data-" + key + "]").forEach(function (row) {
+        var match = value === "all" || row.getAttribute("data-" + key) === value;
+        row.hidden = !match;
+        if (match) shown += 1;
+      });
+      if (empty) empty.hidden = shown !== 0;
+      target.hidden = shown === 0 && !!empty;
+    };
+
+    control.addEventListener("change", applyFilter);
+    applyFilter();
+
+    /* Rows swapped in by a script are filtered as soon as they land, so a
+       redraw never shows rows the current selection excludes. Only childList
+       is watched, so the `hidden` writes above cannot retrigger this. */
+    new MutationObserver(function () {
+      applyFilter();
+    }).observe(target, { childList: true, subtree: true });
+  });
+
+  /* ---------- pinned columns ----------
+     <table class="a-table" data-a-sticky-columns="2">
+     CSS pins the first column on its own. The kit measures the leading
+     columns so every pinned cell gets its cumulative `--a-sticky-left`, and
+     re-measures when the table resizes, its rows change, or a filter hides
+     rows. Cells spanning past the last pinned column stay unpinned. The
+     scroll wrapper carries `data-a-scrolled` while the table is scrolled
+     sideways, so the divider only shows with columns underneath it. */
+  function stickyCount(table) {
+    var count = parseInt(table.getAttribute("data-a-sticky-columns"), 10);
+    return count > 0 ? count : 0;
+  }
+
+  function layoutSticky(table) {
+    var count = stickyCount(table);
+    var pinned = [];
+    var widths = [];
+    var columns = 0;
+    /* Rows spanned into from above shift where later cells start. */
+    var carried = [];
+    Array.prototype.forEach.call(table.rows, function (row, index) {
+      var taken = carried[index] || [];
+      var column = 0;
+      Array.prototype.forEach.call(row.cells, function (cell) {
+        while (taken[column]) column += 1;
+        var end = column + Math.max(1, cell.colSpan || 1);
+        if (end <= count) {
+          pinned.push({ cell: cell, start: column, end: end });
+          /* Hidden rows measure 0, so a later visible row fills the gap. */
+          if (end === column + 1 && !widths[column]) {
+            widths[column] = cell.getBoundingClientRect().width;
+          }
+        }
+        for (var below = 1; below < (cell.rowSpan || 1); below += 1) {
+          var next = (carried[index + below] = carried[index + below] || []);
+          for (var spanned = column; spanned < end; spanned += 1) {
+            next[spanned] = true;
+          }
+        }
+        column = end;
+        columns = Math.max(columns, end);
+      });
+    });
+
+    var edge = Math.min(count, columns);
+    var offsets = [0];
+    for (var position = 1; position < edge; position += 1) {
+      /* Not rendered yet (a closed disclosure or hidden tab): keep the last
+         layout and measure again once the table has a size. */
+      if (!widths[position - 1]) return;
+      offsets[position] = offsets[position - 1] + widths[position - 1];
+    }
+
+    var keep = new Set();
+    pinned.forEach(function (entry) {
+      keep.add(entry.cell);
+      entry.cell.setAttribute("data-a-sticky", entry.end === edge ? "edge" : "");
+      entry.cell.style.setProperty(
+        "--a-sticky-left",
+        offsets[entry.start] + "px"
+      );
+    });
+    table.querySelectorAll("[data-a-sticky]").forEach(function (cell) {
+      if (keep.has(cell)) return;
+      cell.removeAttribute("data-a-sticky");
+      cell.style.removeProperty("--a-sticky-left");
+    });
+    if (count) table.setAttribute("data-a-sticky-ready", "");
+    else table.removeAttribute("data-a-sticky-ready");
+  }
+
+  document
+    .querySelectorAll(".a-table[data-a-sticky-columns]")
+    .forEach(function (table) {
+      var queued = false;
+      var schedule = function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () {
+          queued = false;
+          layoutSticky(table);
+        });
+      };
+      layoutSticky(table);
+      if (window.ResizeObserver) new ResizeObserver(schedule).observe(table);
+      /* Only structure and content are watched, so the kit's own
+         `data-a-sticky` and offset writes cannot retrigger this. */
+      new MutationObserver(schedule).observe(table, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: ["hidden", "colspan", "rowspan", "data-a-sticky-columns"]
+      });
+
+      /* The wrapper element survives a chart moving it into its "Data
+         table" disclosure, so the listener does too. */
+      var scroller = table.closest(".a-table-scroll");
+      if (!scroller) return;
+      var syncScrolled = function () {
+        scroller.toggleAttribute("data-a-scrolled", scroller.scrollLeft > 0);
+      };
+      scroller.addEventListener("scroll", syncScrolled, { passive: true });
+      syncScrolled();
+    });
+
+  /* ---------- tooltips ----------
+     One shared tooltip serves every chart and any element carrying
+     `data-a-tip`. Pointer, keyboard focus, and touch all route through the
+     same show/hide pair, so an exact value is never hover-only. */
+  var tipEl = null;
+  var tipRelease = null;
+  var tipHost = null;
+
+  function tipNode() {
+    if (tipEl) return tipEl;
+    tipEl = document.createElement("div");
+    tipEl.className = "a-tip a-no-print";
+    tipEl.setAttribute("role", "tooltip");
+    tipEl.hidden = true;
+    document.body.appendChild(tipEl);
+    return tipEl;
+  }
+
+  function hideTip() {
+    var release = tipRelease;
+    tipRelease = null;
+    tipHost = null;
+    if (release) release();
+    if (tipEl) tipEl.hidden = true;
+  }
+
+  function positionTip(anchor, pointer) {
+    var el = tipNode();
+    var width = el.offsetWidth;
+    var height = el.offsetHeight;
+    var edge = 8;
+    var x = pointer ? pointer.x + 14 : anchor.left + anchor.width / 2 - width / 2;
+    var y = pointer ? pointer.y - height - 16 : anchor.top - height - 10;
+    if (y < edge) y = pointer ? pointer.y + 22 : anchor.bottom + 10;
+    x = Math.max(edge, Math.min(x, window.innerWidth - width - edge));
+    y = Math.max(edge, Math.min(y, window.innerHeight - height - edge));
+    el.style.transform =
+      "translate(" + Math.round(x) + "px, " + Math.round(y) + "px)";
+  }
+
+  function tipRow(row) {
+    var line = document.createElement("div");
+    line.className =
+      "a-tip__row" + (row.series ? " a-series-" + row.series : "");
+    if (row.series) {
+      var swatch = document.createElement("span");
+      swatch.className = "a-tip__swatch";
+      line.appendChild(swatch);
+    }
+    var name = document.createElement("span");
+    name.className = "a-tip__name";
+    name.textContent = row.name || "";
+    line.appendChild(name);
+    var value = document.createElement("span");
+    value.className = "a-tip__value";
+    value.textContent = row.value == null || row.value === "" ? "—" : row.value;
+    line.appendChild(value);
+    return line;
+  }
+
+  /* `content` is { title, text, rows: [{ name, value, series }] }. `release`
+     runs when the tooltip is replaced or dismissed so the owner can drop its
+     highlight state. */
+  function showTip(content, host, anchor, pointer, release) {
+    if (tipRelease && tipRelease !== release) {
+      var previous = tipRelease;
+      tipRelease = null;
+      previous();
+    }
+    tipRelease = release || null;
+    tipHost = host || null;
+    var el = tipNode();
+    el.textContent = "";
+    if (content.title) {
+      var title = document.createElement("div");
+      title.className = "a-tip__title";
+      title.textContent = content.title;
+      el.appendChild(title);
+    }
+    if (content.text) {
+      var text = document.createElement("div");
+      text.className = "a-tip__text";
+      text.textContent = content.text;
+      el.appendChild(text);
+    }
+    (content.rows || []).forEach(function (row) {
+      el.appendChild(tipRow(row));
+    });
+    el.hidden = false;
+    positionTip(anchor, pointer);
+  }
+
+  /* Escape hatch for hand-authored marks: `data-a-tip` holds the value text
+     and the optional `data-a-tip-title` holds a heading. */
+  function annotatedHost(node) {
+    return node && node.closest ? node.closest("[data-a-tip]") : null;
+  }
+
+  function showAnnotatedTip(host, pointer) {
+    showTip(
+      {
+        title: host.getAttribute("data-a-tip-title") || "",
+        text: host.getAttribute("data-a-tip") || ""
+      },
+      host,
+      host.getBoundingClientRect(),
+      pointer,
+      null
+    );
+  }
+
+  document.addEventListener("pointerover", function (event) {
+    var host = annotatedHost(event.target);
+    if (!host) return;
+    showAnnotatedTip(
+      host,
+      event.pointerType === "touch" ? null : { x: event.clientX, y: event.clientY }
+    );
+  });
+
+  document.addEventListener("pointermove", function (event) {
+    if (!tipHost || event.pointerType === "touch") return;
+    if (!tipHost.hasAttribute || !tipHost.hasAttribute("data-a-tip")) return;
+    if (annotatedHost(event.target) !== tipHost) return;
+    positionTip(tipHost.getBoundingClientRect(), {
+      x: event.clientX,
+      y: event.clientY
+    });
+  });
+
+  document.addEventListener("pointerout", function (event) {
+    var host = annotatedHost(event.target);
+    if (!host || host !== tipHost) return;
+    if (event.relatedTarget && host.contains(event.relatedTarget)) return;
+    hideTip();
+  });
+
+  document.addEventListener("focusin", function (event) {
+    var host = annotatedHost(event.target);
+    if (host) showAnnotatedTip(host, null);
+  });
+
+  document.addEventListener("focusout", function (event) {
+    var host = annotatedHost(event.target);
+    if (!host || host !== tipHost) return;
+    /* A still-hovered mark keeps its tooltip; `pointerout` closes that one. */
+    if (host.matches && host.matches(":hover")) return;
+    hideTip();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") hideTip();
+  });
+
+  window.addEventListener("scroll", hideTip, true);
+  window.addEventListener("resize", hideTip);
+
+  /* ---------- charts ----------
+     <figure class="a-figure" data-a-chart="bar|stacked-bar|line"> wrapping a
+     plain <table> of the same numbers. The table is both the data source and
+     the no-script fallback: the kit draws the chart from it and then keeps it
+     under a disclosure as the exact-value equivalent. Each category gets a
+     hover band that also takes keyboard focus, so pointer, arrow keys, and
+     tap all produce the same readout. */
+  var SVG_NS = "http://www.w3.org/2000/svg";
+  var CHART_WIDTH = 640;
+  var CHART_TYPES = { bar: 1, "stacked-bar": 1, line: 1 };
+
+  function svgNode(name, attrs) {
+    var node = document.createElementNS(SVG_NS, name);
+    Object.keys(attrs || {}).forEach(function (key) {
+      node.setAttribute(key, String(attrs[key]));
+    });
+    return node;
+  }
+
+  /* `data-value` wins so cells can stay human-readable ("1,284", "18m 24s"). */
+  function cellNumber(cell) {
+    var explicit = cell.getAttribute("data-value");
+    var text = (explicit === null ? cell.textContent : explicit) || "";
+    var match = text
+      .replace(/\u2212/g, "-")
+      .replace(/,/g, "")
+      .match(/-?\d*\.?\d+/);
+    return match ? parseFloat(match[0]) : null;
+  }
+
+  function readChartTable(table) {
+    var headCells = table.querySelectorAll("thead th");
+    if (headCells.length < 2) return null;
+    var series = [];
+    for (var column = 1; column < headCells.length; column += 1) {
+      series.push(headCells[column].textContent.trim());
+    }
+    var categories = [];
+    table.querySelectorAll("tbody tr").forEach(function (row) {
+      var cells = row.children;
+      if (cells.length < 2) return;
+      /* A hidden row is filtered out, so the chart matches what is listed. */
+      if (row.hidden || row.hasAttribute("data-a-excluded")) return;
+      var point = {
+        label: cells[0].textContent.trim(),
+        row: row,
+        values: [],
+        texts: []
+      };
+      series.forEach(function (name, position) {
+        var cell = cells[position + 1];
+        point.values.push(cell ? cellNumber(cell) : null);
+        point.texts.push(cell ? cell.textContent.trim() : "");
+      });
+      categories.push(point);
+    });
+    return categories.length
+      ? { series: series, categories: categories }
+      : null;
+  }
+
+  function niceCeil(value) {
+    if (!(value > 0)) return 1;
+    var magnitude = Math.pow(10, Math.floor(Math.log(value) / Math.LN10));
+    var steps = [1, 1.5, 2, 2.5, 3, 4, 5, 7.5, 10];
+    for (var i = 0; i < steps.length; i += 1) {
+      if (value <= steps[i] * magnitude) return steps[i] * magnitude;
+    }
+    return 10 * magnitude;
+  }
+
+  function formatTick(value) {
+    var size = Math.abs(value);
+    if (size >= 1000000) {
+      return (value / 1000000).toFixed(size % 1000000 ? 1 : 0) + "M";
+    }
+    if (size >= 1000) return (value / 1000).toFixed(size % 1000 ? 1 : 0) + "k";
+    return String(Math.round(value * 100) / 100);
+  }
+
+  /* Per-figure render state so a chart can be drawn more than once: the
+     nodes from the previous pass are thrown away and rebuilt from whatever
+     the table says now. */
+  var chartState = new WeakMap();
+
+  function chartTable(figure) {
+    var details = figure.querySelector(".a-chart__data");
+    return (details || figure).querySelector("table");
+  }
+
+  /* The table is the source of truth, so any change to it — a filter hiding
+     rows, new rows, an edited cell — redraws the chart on its own. */
+  function watchChartTable(figure, state) {
+    if (state.observer) return;
+    var queued = false;
+    state.observer = new MutationObserver(function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        renderChart(figure);
+      });
+    });
+    /* Watching the disclosure rather than the table keeps the chart live even
+       when a script replaces the whole <table>. */
+    state.observer.observe(state.details, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["hidden", "data-a-excluded", "data-value"]
+    });
+  }
+
+  function renderChart(figure) {
+    var type = figure.getAttribute("data-a-chart");
+    var table = chartTable(figure);
+    if (!CHART_TYPES[type] || !table) return;
+
+    var state = chartState.get(figure);
+    if (!state) {
+      state = { nodes: [], details: null, observer: null, focused: null };
+      chartState.set(figure, state);
+    }
+
+    /* Keeping the reader's place: a re-render restores keyboard focus to the
+       same category when it survives. */
+    var hadFocus = state.nodes.some(function (node) {
+      return node.contains(document.activeElement);
+    });
+    var refocus = hadFocus ? state.focused : null;
+    if (tipHost && figure.contains(tipHost)) hideTip();
+    state.nodes.forEach(function (node) {
+      if (node.parentNode) node.parentNode.removeChild(node);
+    });
+    state.nodes = [];
+
+    if (!state.details) {
+      var source = table.closest(".a-table-scroll") || table;
+      var details = document.createElement("details");
+      details.className = "a-disclosure a-chart__data";
+      var summary = document.createElement("summary");
+      summary.textContent = "Data table";
+      details.appendChild(summary);
+      source.parentNode.insertBefore(details, source);
+      details.appendChild(source);
+      state.details = details;
+    }
+    watchChartTable(figure, state);
+
+    var data = readChartTable(table);
+    if (!data) {
+      var empty = document.createElement("p");
+      empty.className = "a-chart__empty";
+      empty.textContent =
+        figure.getAttribute("data-a-chart-empty") ||
+        "No data for this selection.";
+      figure.insertBefore(empty, state.details);
+      state.nodes.push(empty);
+      state.focused = null;
+      return;
+    }
+
+    var stacked = type === "stacked-bar";
+    var isLine = type === "line";
+    var height = parseFloat(figure.getAttribute("data-a-chart-height")) || 220;
+    var unit = figure.getAttribute("data-a-chart-unit") || "";
+    var tickUnit = unit.length <= 2 ? unit : "";
+    var pad = { top: 14, right: 14, bottom: 30, left: 46 };
+    var plotWidth = CHART_WIDTH - pad.left - pad.right;
+    var plotHeight = height - pad.top - pad.bottom;
+    var bandWidth = plotWidth / data.categories.length;
+
+    var high = 0;
+    var low = 0;
+    data.categories.forEach(function (point) {
+      var sum = 0;
+      point.values.forEach(function (value) {
+        if (value === null) return;
+        sum += value > 0 ? value : 0;
+        low = Math.min(low, value);
+        if (!stacked) high = Math.max(high, value);
+      });
+      if (stacked) high = Math.max(high, sum);
+    });
+    var declaredMax = parseFloat(figure.getAttribute("data-a-chart-max"));
+    var maxY = isFinite(declaredMax) ? declaredMax : niceCeil(high);
+    var minY = low < 0 ? -niceCeil(-low) : 0;
+    var span = maxY - minY || 1;
+
+    var scaleY = function (value) {
+      return pad.top + ((maxY - value) / span) * plotHeight;
+    };
+    var centerX = function (index) {
+      return pad.left + bandWidth * (index + 0.5);
+    };
+    var describe = function (index) {
+      var point = data.categories[index];
+      return (
+        point.label +
+        ": " +
+        data.series
+          .map(function (name, position) {
+            return name + " " + (point.texts[position] || "no value");
+          })
+          .join(", ")
+      );
+    };
+
+    var caption = figure.querySelector("figcaption");
+    var svg = svgNode("svg", {
+      class: "a-chart",
+      viewBox: "0 0 " + CHART_WIDTH + " " + height,
+      role: "group",
+      "aria-label":
+        (figure.getAttribute("data-a-chart-label") ||
+          (caption ? caption.textContent.trim() : "Chart")) +
+        ". Use the arrow keys to read each value."
+    });
+
+    var grid = svgNode("g", { class: "a-chart__grid" });
+    var axis = svgNode("g", { class: "a-chart__axis" });
+    for (var tick = 0; tick <= 4; tick += 1) {
+      var value = minY + (span * tick) / 4;
+      var y = scaleY(value);
+      grid.appendChild(
+        svgNode("line", {
+          x1: pad.left,
+          y1: y,
+          x2: CHART_WIDTH - pad.right,
+          y2: y
+        })
+      );
+      var tickLabel = svgNode("text", {
+        x: pad.left - 8,
+        y: y + 3.5,
+        "text-anchor": "end"
+      });
+      tickLabel.textContent = formatTick(value) + tickUnit;
+      axis.appendChild(tickLabel);
+    }
+
+    var labelStep = Math.ceil(data.categories.length / 8);
+    data.categories.forEach(function (point, index) {
+      if (index % labelStep) return;
+      var text = svgNode("text", {
+        x: centerX(index),
+        y: height - 10,
+        "text-anchor": "middle"
+      });
+      text.textContent = point.label;
+      axis.appendChild(text);
+    });
+
+    var plot = svgNode("g", { class: "a-chart__plot" });
+    /* Past ~30 points a marker per category reads as a scatter plot instead
+       of a line, so dense series drop to a bare stroke and only the active
+       point is drawn (CSS gives it a radius again). */
+    var pointRadius = data.categories.length > 30 ? 0 : 2.75;
+    if (isLine) {
+      data.series.forEach(function (name, position) {
+        /* A missing value breaks the line rather than bridging the gap. */
+        var segments = [[]];
+        data.categories.forEach(function (point, index) {
+          var value = point.values[position];
+          if (value === null) {
+            if (segments[segments.length - 1].length) segments.push([]);
+            return;
+          }
+          segments[segments.length - 1].push(
+            centerX(index) + "," + scaleY(value)
+          );
+          plot.appendChild(
+            svgNode("circle", {
+              class: "a-chart__point a-series-" + (position + 1),
+              cx: centerX(index),
+              cy: scaleY(value),
+              r: pointRadius,
+              "data-a-index": index
+            })
+          );
+        });
+        segments.forEach(function (coordinates) {
+          if (!coordinates.length) return;
+          plot.insertBefore(
+            svgNode("polyline", {
+              class: "a-chart__series a-series-" + (position + 1),
+              points: coordinates.join(" ")
+            }),
+            plot.firstChild
+          );
+        });
+      });
+    } else {
+      var inset = bandWidth * 0.18;
+      var slot = (bandWidth - inset * 2) / (stacked ? 1 : data.series.length);
+      var baseline = scaleY(Math.max(minY, 0));
+      data.categories.forEach(function (point, index) {
+        var stackTop = 0;
+        data.series.forEach(function (name, position) {
+          var value = point.values[position];
+          if (value === null) return;
+          var from = baseline;
+          var to;
+          if (stacked) {
+            from = scaleY(stackTop);
+            stackTop += value;
+            to = scaleY(stackTop);
+          } else {
+            to = scaleY(value);
+          }
+          plot.appendChild(
+            svgNode("rect", {
+              class: "a-chart__bar a-series-" + (position + 1),
+              x:
+                pad.left +
+                bandWidth * index +
+                inset +
+                slot * (stacked ? 0 : position),
+              y: Math.min(from, to),
+              width: Math.max(1, slot - 2),
+              height: Math.max(1, Math.abs(to - from)),
+              rx: 2,
+              "data-a-index": index
+            })
+          );
+        });
+      });
+    }
+
+    var crosshair = svgNode("line", {
+      class: "a-chart__crosshair",
+      x1: pad.left,
+      x2: pad.left,
+      y1: pad.top,
+      y2: pad.top + plotHeight,
+      hidden: "hidden"
+    });
+
+    var overlay = svgNode("g", { class: "a-chart__bands" });
+    var bands = data.categories.map(function (point, index) {
+      var band = svgNode("rect", {
+        class: "a-chart__band",
+        x: pad.left + bandWidth * index,
+        y: pad.top,
+        width: bandWidth,
+        height: plotHeight,
+        tabindex: index === 0 ? 0 : -1,
+        role: "img",
+        "aria-label": describe(index)
+      });
+      overlay.appendChild(band);
+      return band;
+    });
+
+    svg.appendChild(grid);
+    svg.appendChild(axis);
+    svg.appendChild(plot);
+    svg.appendChild(crosshair);
+    svg.appendChild(overlay);
+
+    figure.insertBefore(svg, state.details);
+    state.nodes.push(svg);
+
+    if (data.series.length > 1) {
+      var legend = document.createElement("ul");
+      legend.className = "a-legend";
+      data.series.forEach(function (name, position) {
+        var item = document.createElement("li");
+        item.className = "a-series-" + (position + 1);
+        var swatch = document.createElement("span");
+        swatch.className = "a-legend__swatch";
+        item.appendChild(swatch);
+        item.appendChild(document.createTextNode(name));
+        legend.appendChild(item);
+      });
+      figure.insertBefore(legend, state.details);
+      state.nodes.push(legend);
+    }
+
+    var readout = document.createElement("p");
+    readout.className = "a-visually-hidden";
+    readout.setAttribute("aria-live", "polite");
+    figure.appendChild(readout);
+    state.nodes.push(readout);
+
+    var clear = function () {
+      bands.forEach(function (band) {
+        band.removeAttribute("data-a-active");
+      });
+      plot.querySelectorAll("[data-a-index]").forEach(function (mark) {
+        mark.removeAttribute("data-a-active");
+      });
+      crosshair.setAttribute("hidden", "hidden");
+      readout.textContent = "";
+    };
+
+    var activate = function (index, pointer) {
+      if (index < 0 || index >= bands.length) return;
+      clear();
+      bands[index].setAttribute("data-a-active", "true");
+      plot
+        .querySelectorAll('[data-a-index="' + index + '"]')
+        .forEach(function (mark) {
+          mark.setAttribute("data-a-active", "true");
+        });
+      if (isLine) {
+        crosshair.setAttribute("x1", centerX(index));
+        crosshair.setAttribute("x2", centerX(index));
+        crosshair.removeAttribute("hidden");
+      }
+      readout.textContent = describe(index);
+      showTip(
+        {
+          title: data.categories[index].label,
+          rows: data.series.map(function (name, position) {
+            return {
+              name: name,
+              value: data.categories[index].texts[position],
+              series: position + 1
+            };
+          })
+        },
+        bands[index],
+        bands[index].getBoundingClientRect(),
+        pointer,
+        clear
+      );
+    };
+
+    /* -1 outside the plot area, so the axis and margins read as no category. */
+    var indexAt = function (clientX) {
+      var box = svg.getBoundingClientRect();
+      if (!box.width) return -1;
+      var local = ((clientX - box.left) / box.width) * CHART_WIDTH;
+      if (local < pad.left || local > pad.left + plotWidth) return -1;
+      var index = Math.floor((local - pad.left) / bandWidth);
+      return Math.max(0, Math.min(data.categories.length - 1, index));
+    };
+
+    svg.addEventListener("pointermove", function (event) {
+      if (event.pointerType === "touch") return;
+      var index = indexAt(event.clientX);
+      if (index === -1) {
+        if (bands.indexOf(document.activeElement) === -1) hideTip();
+        return;
+      }
+      activate(index, { x: event.clientX, y: event.clientY });
+    });
+
+    svg.addEventListener("pointerdown", function (event) {
+      if (event.pointerType !== "touch") return;
+      activate(indexAt(event.clientX), null);
+    });
+
+    /* Touch leaves as soon as the finger lifts, so a tap keeps its readout. */
+    svg.addEventListener("pointerleave", function (event) {
+      if (event.pointerType === "touch") return;
+      if (bands.indexOf(document.activeElement) === -1) hideTip();
+    });
+
+    bands.forEach(function (band, index) {
+      band.addEventListener("focus", function () {
+        state.focused = {
+          index: index,
+          row: data.categories[index].row,
+          label: data.categories[index].label
+        };
+        activate(index, null);
+      });
+      band.addEventListener("blur", function () {
+        if (tipHost === band) hideTip();
+      });
+    });
+
+    svg.addEventListener("keydown", function (event) {
+      var current = bands.indexOf(document.activeElement);
+      if (current === -1) return;
+      var next = current;
+      if (event.key === "ArrowRight") next = current + 1;
+      else if (event.key === "ArrowLeft") next = current - 1;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = bands.length - 1;
+      else return;
+      event.preventDefault();
+      next = Math.max(0, Math.min(bands.length - 1, next));
+      bands.forEach(function (band, position) {
+        band.setAttribute("tabindex", position === next ? "0" : "-1");
+      });
+      bands[next].focus();
+    });
+
+    if (refocus) {
+      /* The same row, not the same slot: filtering rows above the reader's
+         position must not move them onto a different bar. */
+      var target = data.categories.findIndex(function (category) {
+        return category.row === refocus.row;
+      });
+      /* Rows rebuilt wholesale lose their identity, so fall back to the label
+         and then to the old slot. */
+      if (target === -1) {
+        target = data.categories.findIndex(function (category) {
+          return category.label === refocus.label;
+        });
+      }
+      if (target === -1) target = Math.min(refocus.index, bands.length - 1);
+      bands.forEach(function (band, position) {
+        band.setAttribute("tabindex", position === target ? "0" : "-1");
+      });
+      bands[target].focus();
+    }
+  }
+
+  function renderCharts(target) {
+    if (target === undefined || target === null) {
+      document.querySelectorAll("[data-a-chart]").forEach(renderChart);
+      return;
+    }
+    var scope =
+      typeof target === "string" ? document.querySelector(target) : target;
+    if (!scope) return;
+    if (scope.matches && scope.matches("[data-a-chart]")) renderChart(scope);
+    else scope.querySelectorAll("[data-a-chart]").forEach(renderChart);
+  }
+
+  renderCharts();
+
+  /* The only public surface of the kit: artifacts that swap or filter a
+     chart's rows themselves can force a redraw, though the table observer
+     above already covers ordinary DOM edits. */
+  window.artifactKit = window.artifactKit || {};
+  window.artifactKit.renderCharts = renderCharts;
+
+  /* Print carries the numbers, not the hover: expand every chart's data
+     table before the page is rendered. */
+  var printReopened = [];
+  window.addEventListener("beforeprint", function () {
+    hideTip();
+    document.querySelectorAll(".a-chart__data").forEach(function (details) {
+      if (details.open) return;
+      printReopened.push(details);
+      details.open = true;
+    });
+  });
+
+  window.addEventListener("afterprint", function () {
+    printReopened.forEach(function (details) {
+      details.open = false;
+    });
+    printReopened = [];
+  });
+
+  /* ---------- diagram: pan, zoom, select ----------
+     Pointer drag and wheel pan/zoom the viewport group; arrow keys and
+     +/-/0 do the same from the keyboard so the diagram is operable without
+     a pointing device. Node clicks (or Enter/Space) update the inspector. */
+  document.querySelectorAll("[data-a-diagram]").forEach(function (diagram) {
+    var svg = diagram.querySelector("[data-a-diagram-canvas]");
+    var viewport = diagram.querySelector("[data-a-diagram-viewport]");
+    if (!svg || !viewport) return;
+
+    var view = { x: 0, y: 0, scale: 1 };
+    var drag = null;
+
+    var render = function () {
+      viewport.setAttribute(
+        "transform",
+        "translate(" + view.x + " " + view.y + ") scale(" + view.scale + ")"
+      );
+    };
+
+    var zoomBy = function (factor) {
+      view.scale = Math.min(2.5, Math.max(0.5, view.scale * factor));
+      render();
+    };
+
+    svg.addEventListener("pointerdown", function (event) {
+      if (event.target.closest("[data-a-node]")) return;
+      drag = { x: event.clientX, y: event.clientY };
+      svg.setPointerCapture(event.pointerId);
+    });
+
+    svg.addEventListener("pointermove", function (event) {
+      if (!drag) return;
+      view.x += event.clientX - drag.x;
+      view.y += event.clientY - drag.y;
+      drag = { x: event.clientX, y: event.clientY };
+      render();
+    });
+
+    var endDrag = function () {
+      drag = null;
+    };
+    svg.addEventListener("pointerup", endDrag);
+    svg.addEventListener("pointercancel", endDrag);
+
+    svg.addEventListener(
+      "wheel",
+      function (event) {
+        if (!event.ctrlKey && !event.metaKey) return;
+        event.preventDefault();
+        zoomBy(event.deltaY < 0 ? 1.1 : 0.9);
+      },
+      { passive: false }
+    );
+
+    diagram.addEventListener("keydown", function (event) {
+      var pan = { ArrowUp: [0, 24], ArrowDown: [0, -24], ArrowLeft: [24, 0], ArrowRight: [-24, 0] }[
+        event.key
+      ];
+      if (pan && !event.target.closest("[data-a-node]")) {
+        event.preventDefault();
+        view.x += pan[0];
+        view.y += pan[1];
+        render();
+        return;
+      }
+      if (event.key === "+" || event.key === "=") zoomBy(1.1);
+      else if (event.key === "-") zoomBy(0.9);
+      else if (event.key === "0") {
+        view = { x: 0, y: 0, scale: 1 };
+        render();
+      }
+    });
+
+    diagram.querySelectorAll("[data-a-zoom]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var action = button.getAttribute("data-a-zoom");
+        if (action === "in") zoomBy(1.15);
+        else if (action === "out") zoomBy(0.87);
+        else {
+          view = { x: 0, y: 0, scale: 1 };
+          render();
+        }
+      });
+    });
+
+    var inspector = diagram.querySelector("[data-a-inspector]");
+    var select = function (node) {
+      diagram.querySelectorAll("[data-a-node]").forEach(function (other) {
+        other.setAttribute("aria-current", String(other === node));
+      });
+      if (!inspector) return;
+      var title = inspector.querySelector("[data-a-inspector-title]");
+      var body = inspector.querySelector("[data-a-inspector-body]");
+      if (title) title.textContent = node.getAttribute("data-a-title") || "";
+      if (body) body.textContent = node.getAttribute("data-a-detail") || "";
+    };
+
+    diagram.querySelectorAll("[data-a-node]").forEach(function (node) {
+      node.addEventListener("click", function () {
+        select(node);
+      });
+      node.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        select(node);
+      });
+    });
+
+    render();
+  });
+})();
+    </script>
+  </body>
+</html>
