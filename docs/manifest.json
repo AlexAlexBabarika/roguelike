@@ -63,7 +63,7 @@
     },
     {
       "path": "boards/storm-fresco-engine-comparison-board.jpg",
-      "sha256": "b03506dd38e8ecb2dc03f8ecc3ff877079db04bdd2a0a0a93493d549e3b80682",
+      "sha256": "0ba5c94e148d9013311bfbf30416958abcb9981895f232bc715ff9fe24eb00b5",
       "kind": "derived Godot screenshot comparison",
       "source_session": "https://app.devin.ai/sessions/5d876fef59694cb9b9b23a09e4e845b8"
     }
@@ -136,7 +136,7 @@
     },
     {
       "path": "tools/build_storm_fresco_board.py",
-      "sha256": "02892a0f4c77d2fe83fdcbec78a2045b989526f4b00ee288c97da11524b0b9ae"
+      "sha256": "cdeb6943d53c676d613c87849e06bfd295a1dd37e0ad768b758006743ae17a63"
     }
   ]
 }

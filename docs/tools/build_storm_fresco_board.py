@@ -23,7 +23,7 @@ def build(font_dir):
         name = "DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf"
         return ImageFont.truetype(str(font_dir / name), size)
 
-    board = Image.new("RGB", (WIDTH, 2800), PAPER)
+    board = Image.new("RGB", (WIDTH, 3500), PAPER)
     draw = ImageDraw.Draw(board)
 
     def text(x, y, value, size=28, bold=False, color=INK):
@@ -86,7 +86,19 @@ def build(font_dir):
         height = image(name, x, 2190, month_width)
         text(x, 2190 + height + 12, month, 26, True)
 
-    footer_y = 2190 + round(1080 * month_width / 1920) + 70
+    text(MARGIN, 2600, "Accessibility spot check / C combat detail", 35, True)
+    text(MARGIN, 2652, "Derived greyscale and deuteranopia simulation; still-image comparison, not accessibility certification.", 27, color=MUTED)
+    accessibility = [
+        ("C_october_wind_up", "C / Original color"),
+        ("derived_greyscale_C_october_wind_up", "Derived / Rec.709 greyscale"),
+        ("derived_deuteranopia_C_october_wind_up", "Derived / Deuteranopia simulation"),
+    ]
+    for index, (name, title) in enumerate(accessibility):
+        x = MARGIN + index * (COLUMN + GAP)
+        height = image(name, x, 2710, COLUMN, crop=(750, 390, 1230, 710))
+        text(x, 2710 + height + 14, title, 27, True)
+
+    footer_y = 2710 + round(320 * COLUMN / 480) + 95
     draw.line((MARGIN, footer_y, WIDTH - MARGIN, footer_y), fill="#d0cec4", width=2)
     text(MARGIN, footer_y + 20, "DERIVED BOARD / resized and cropped from real engine captures. Full-resolution PNGs are archived separately.", 26, True)
     text(MARGIN, footer_y + 67, "Still-image look-dev only: overlay ignores world occlusion; no motion, live reflections or device performance validation.", 25, color=MUTED)
