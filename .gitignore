@@ -1,0 +1,15 @@
+# Godot/editor caches and generated exports
+.godot/
+build/
+artifacts/
+
+# Python environments and generated Blender files
+__pycache__/
+*.py[cod]
+.venv/
+*.blend
+*.blend1
+
+# Local machine metadata
+.DS_Store
+Thumbs.db

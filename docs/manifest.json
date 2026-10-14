@@ -1,0 +1,65 @@
+{
+  "source_session": "https://app.devin.ai/sessions/7bf89cb899334858a5f720f8dcdd9854",
+  "reports": [
+    {
+      "path": "reports/last-window-art-directions.html",
+      "title": "The Last Window: artistic directions",
+      "status": "historical",
+      "description": "Early glyph directions for the superseded admission-game concept.",
+      "sha256": "fb42dd68e695db10bf5a3bc535cde90f816c76e2ecd1a6526a8e8bed8b6ac9ed"
+    },
+    {
+      "path": "reports/art-directions.html",
+      "title": "An original visual language",
+      "status": "exploration",
+      "description": "Porcelain Night, Woodcut Weather, Cut-paper Nocturne and Afterimage.",
+      "sha256": "94ca76a24cedda53cd0518b1bf5674dc222d09700585583a6b6a6f075b333dc4"
+    },
+    {
+      "path": "reports/isometric-art-directions.html",
+      "title": "Art direction for a stormbound isometric action game",
+      "status": "exploration",
+      "description": "The earlier styles reconsidered for isometric combat and build spectacle.",
+      "sha256": "3a56f946e84f1edabbe73446f85fe70f996189305dc78eef39ebf59ecdd1f962"
+    },
+    {
+      "path": "reports/new-art-directions.html",
+      "title": "Four new artistic directions",
+      "status": "current shortlist",
+      "description": "Storm Fresco, Woven Blight, Amber Archive and Cold Flash with credited inspiration.",
+      "sha256": "98d2b6f4c350305faeb9cdc5b5db1e87fc3e5e32337facd79414a381cdb03bc6"
+    },
+    {
+      "path": "reports/shader-production-guide.html",
+      "title": "Art direction for affordable models",
+      "status": "production research",
+      "description": "Model simplification, shaders, readability and Godot/Blender trade-offs.",
+      "sha256": "434867387eff91f1cc1cdc058089c2c6237e3526e6962c3a4181affd974d745b"
+    },
+    {
+      "path": "reports/game-loop-design-report.html",
+      "title": "Combat, combinations and dread",
+      "status": "design proposal",
+      "description": "Verbatim mechanics brief, sourced loop/mechanics research and scoped prototype gates.",
+      "sha256": "82028ff5dcf6a084af6a10f065c86a35b47f95a7cc551f87d90e6cb5add2facd"
+    }
+  ],
+  "boards": [
+    {
+      "path": "boards/three-directions.png",
+      "sha256": "050920a932295aba0e97080b814d9d5278185403c5ae016e138343c18b5e5168"
+    },
+    {
+      "path": "boards/art-directions-board.jpg",
+      "sha256": "78269086782b992799b42a7389f9da6effd3c2c3f5d7202024ddccd13ff15da2"
+    },
+    {
+      "path": "boards/isometric-art-directions-board.jpg",
+      "sha256": "9faa4dbe5662e23c1961813d38d3d6ab7780c80849433245ec34aa75a7bdff6a"
+    },
+    {
+      "path": "boards/new-art-directions-board.jpg",
+      "sha256": "a4fefec4dbcdca8777ba0cb55c6bfcd385ee1b8470fc4a235c65717749c8748d"
+    }
+  ]
+}
