@@ -1,0 +1,137 @@
+{
+  "description": "Untouched Godot engine PNGs; no AI image, overpaint or compositing.",
+  "renderer": "Compatibility / OpenGL",
+  "msaa_samples": 4,
+  "seed": 40217,
+  "capture_settle_frames": 20,
+  "sources": [
+    {
+      "path": "prototype/project.godot",
+      "sha256": "07fbd7c115006a6523f9ce3a9b6cbac04f4b935427d22a163f043e90ec105687"
+    },
+    {
+      "path": "prototype/mock_scene.tscn",
+      "sha256": "f5163029b1f2b5f1b8e091a90ae7fd7e1d1eb5aac43091fee0f98bd82118a1e5"
+    },
+    {
+      "path": "prototype/mock_scene.gd",
+      "sha256": "13f6e6fbbfd9cd7c0b40aa3bc6c25781da66a0a23562705a02ac49c80ca04666"
+    },
+    {
+      "path": "prototype/assets/forest-clinic.glb",
+      "sha256": "9fd119444859c2e64948a05b8bd8912a6e4c971125cd7f86bbb040e4d91d87ef"
+    },
+    {
+      "path": "prototype/assets/forest-clinic.json",
+      "sha256": "f9bd703e74b2e56d6259dccfef4c2dc2ed54038f5096be615673aae1f4874af0"
+    },
+    {
+      "path": "prototype/tools/build_mock_scene.py",
+      "sha256": "12725476cde8d24fb01c3125a30f5d5b84c445aa5d4978eac8fdbd24110d2078"
+    },
+    {
+      "path": "prototype/tools/capture_mock.py",
+      "sha256": "7189436c0559ee2dba323bd712b4a4b1eb403c6980bc4cc35cc6b0f8819288c9"
+    },
+    {
+      "path": "prototype/shaders/mock_foliage.gdshader",
+      "sha256": "f99efc6f914514ea40e980aae2bcbd4845eb0dda8e420cabb28450c5b03e9b07"
+    },
+    {
+      "path": "prototype/shaders/mock_ground.gdshader",
+      "sha256": "b3bfddf77e7781a190d31e36174471f1f34669cd2ee85e037f33fd6dfb974c26"
+    },
+    {
+      "path": "prototype/shaders/mock_rain.gdshader",
+      "sha256": "2639edc3ad395bf0ed968b0015951e19dda43902cc772dbf3a6b0da7936b2362"
+    },
+    {
+      "path": "prototype/shaders/mock_water.gdshader",
+      "sha256": "114172aef913fc6e0851f9563fcc162985c6067608671106e2ea596ac39e6c0d"
+    }
+  ],
+  "captures": [
+    {
+      "path": "wide.png",
+      "kind": "Godot capture",
+      "sha256": "8c5e835058a45d0bfb5973ecbcec2e3f009ce76c7f21583d847cf09eb9cb91d0",
+      "settings": {
+        "clock_seconds": 6.0,
+        "elevation_radians": 0.62,
+        "engine": "4.5.1-stable (official)",
+        "preset": "wide",
+        "projection": "orthographic",
+        "rain": true,
+        "reflections": true,
+        "resolution": [
+          1920,
+          1080
+        ],
+        "size": 20.5,
+        "target": [
+          -0.699999988079071,
+          2.5,
+          -1.5
+        ],
+        "wind": true,
+        "yaw_radians": 0.57
+      },
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)"
+    },
+    {
+      "path": "clinic.png",
+      "kind": "Godot capture",
+      "sha256": "c26a65c1802c8aae2717044e61c96af84096f7b1206b682abbd459911b75b5c3",
+      "settings": {
+        "clock_seconds": 6.0,
+        "elevation_radians": 0.48,
+        "engine": "4.5.1-stable (official)",
+        "preset": "clinic",
+        "projection": "orthographic",
+        "rain": true,
+        "reflections": true,
+        "resolution": [
+          1920,
+          1080
+        ],
+        "size": 13.5,
+        "target": [
+          -0.5,
+          2.90000009536743,
+          -3.09999990463257
+        ],
+        "wind": true,
+        "yaw_radians": 0.48
+      },
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)"
+    },
+    {
+      "path": "traveler.png",
+      "kind": "Godot capture",
+      "sha256": "0f4614c6acf5ed42abc925f43af35fe427b498bf0ceb94cedc90ff842c66d6bf",
+      "settings": {
+        "clock_seconds": 6.0,
+        "elevation_radians": 0.34,
+        "engine": "4.5.1-stable (official)",
+        "preset": "traveler",
+        "projection": "orthographic",
+        "rain": true,
+        "reflections": true,
+        "resolution": [
+          1920,
+          1080
+        ],
+        "size": 5.0,
+        "target": [
+          -0.5,
+          1.25,
+          4.44999980926514
+        ],
+        "wind": true,
+        "yaw_radians": 0.65
+      },
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)"
+    }
+  ],
+  "limitations": "Static art study; no gameplay, animation or hardware performance validation."
+}

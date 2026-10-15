@@ -10,6 +10,13 @@ rendered report. These documents work offline; following an external source
 link naturally requires a connection. Print mode reveals the alternate views
 in the reports, including the game-loop report's optional detail sections.
 
+## New engine mock
+
+[Forest / field clinic](FOREST_CLINIC_MOCK.md): a separate model/composition study
+with three actual Godot captures, reproducible Blender geometry and its own
+provenance record. No AI concept image is used as an asset or background.
+The research reports and their archived fingerprints are unchanged.
+
 ## Current decisions and proposals
 
 | Report | Scope | Status |

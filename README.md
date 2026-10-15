@@ -23,6 +23,23 @@ or network connection is needed to read a downloaded report. Concept studies
 are explicitly labeled AI-generated, not engine renders. Mechanics and scope
 recommendations remain proposals, not approved features.
 
+## Forest / clinic art mock
+
+A separate, non-playable scene with a modeled rural clinic, layered spruce and
+birch trees, a cloaked traveler, warm windows and rain-disturbed puddles.
+This is **actual Godot output from original Blender geometry**, not AI concept
+art. The existing playable courtyard remains the default scene.
+
+![Forest clinic mock — actual Godot render](docs/screenshots/forest-clinic/wide.png)
+
+```sh
+make import
+make mock
+```
+
+See [captures, controls, rebuild commands and limitations](docs/FOREST_CLINIC_MOCK.md).
+This is a model/composition study, not a final art-direction choice.
+
 ## Play the migrated Godot prototype
 
 Install **Godot 4.5.1**, then run from this repository's root:
@@ -63,6 +80,7 @@ make rebuild-assets   # Headless Blender 4.5.3, then Godot import
 make check            # Report checks, Python/shell syntax, GDScript lint/format,
                       # Godot import/parse and headless movement/effect smoke tests
 make render-check     # Actual shader/reflection pixels under Xvfb/OpenGL
+make rebuild-mock     # Regenerate the separate forest/clinic Blender kit
 pre-commit run --all-files
 ```
 
