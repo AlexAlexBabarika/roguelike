@@ -75,6 +75,10 @@
     {
       "path": "boards/painted-forest-comparison.jpg",
       "sha256": "258a4b3b4e2635775ac51beb575ba0f4b22d6863dd6dfd02f625066107d0d31a"
+    },
+    {
+      "path": "boards/structured-forest.jpg",
+      "sha256": "f1046237a4dd7badff1b0fe7c2632f30fdbb34fe4edda170605d3315f6852864"
     }
   ],
   "captures": [

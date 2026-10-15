@@ -34,6 +34,18 @@ render-check: import
 	! grep -E 'SCRIPT ERROR:|^ERROR:' artifacts/storm-render.log
 	$(MAKE) mock-render-check
 	$(MAKE) style-render-check
+	$(MAKE) forest-render-check
+
+.PHONY: forest-slice forest-render-check forest-assets
+forest-slice:
+	$(GODOT) --path $(PROJECT) res://forest_slice.tscn
+
+forest-assets:
+	$(PYTHON) $(PROJECT)/tools/build_spruce.py --atlas-only
+	$(BLENDER) --background --python $(PROJECT)/tools/build_spruce.py
+
+forest-render-check: import
+	xvfb-run -a $(GODOT) --audio-driver Dummy --disable-vsync --resolution 720x450 --path $(PROJECT) --script tests/forest_render.gd
 
 style-render-check: import
 	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/style_render.gd 2>&1 | tee artifacts/style-render.log

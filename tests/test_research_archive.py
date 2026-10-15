@@ -29,6 +29,7 @@ BOARD_NAMES = {
     "storm-fresco-engine-comparison-board.jpg",
     "style-study-comparison.html",
     "painted-forest-comparison.jpg",
+    "structured-forest.jpg",
 }
 CAPTURE_NAMES = {
     "A_october_wind_up.png",

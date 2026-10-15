@@ -1,0 +1,34 @@
+{
+	"asset_sha256": "50f94b82ab2d1f518b0b65266512d84198906c6f25e1c60ae0f620bb19be5abb",
+	"atlas_sha256": "192f47cc3332ce46bf8e408d90eaf65cfab7a8987f6e352b1e2ec0eb0bf8972a",
+	"capture_sha256": "891a40ff289b977f54d15c61db3b04df90ecc353fd6d50550d670789ef6251f5",
+	"clock_seconds": 6.0,
+	"device": "llvmpipe (LLVM 15.0.7, 256 bits)",
+	"elevation_radians": 0.32,
+	"engine": "4.5.1-stable (official)",
+	"fog": false,
+	"isolated": false,
+	"msaa": "2x",
+	"preset": "tree",
+	"projection": "orthographic",
+	"rain": false,
+	"reflections": false,
+	"renderer": "gl_compatibility",
+	"resolution": [
+		1280,
+		800
+	],
+	"scene": "res://forest_slice.tscn",
+	"screen_filter": false,
+	"shadow_atlas": 2048,
+	"shadows": true,
+	"silhouette": true,
+	"size": 10.8,
+	"target": [
+		6.0,
+		4.0,
+		2.0
+	],
+	"wind": false,
+	"yaw_radians": 0.6
+}

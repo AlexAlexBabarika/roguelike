@@ -12,6 +12,11 @@ in the reports, including the game-loop report's optional detail sections.
 
 ## New engine mock
 
+[Structured forest slice](STRUCTURED_FOREST.md): the current reference-driven
+candidate. Spruce trunks/boughs, fixed lit cutouts and cast shadows in ordinary
+daylight. No screen-space paint filter. G1 was insufficient; I1 was rejected.
+No final art direction or target-hardware performance claim.
+
 [Material / atmosphere experiments](style-study.md): baseline, shared mesh prep,
 wet gouache and soft miniature at matched cameras, followed by the selected
 treatment with and without a value/atmosphere re-key. See the

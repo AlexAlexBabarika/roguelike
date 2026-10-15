@@ -1,3 +1,9 @@
+# Historical experiment — rejected
+
+I1 was rejected because its repeated painted crowns and screen filter destroyed
+recognizable tree structure. Preserved below without changing the old evidence.
+The current candidate is the [structured daylight forest](STRUCTURED_FOREST.md).
+
 # I1: a visibly stronger painted-forest treatment
 
 The previous material-only result was rejected for still looking low-poly. **G1 is not an accepted final direction.** I1 replaces the exposed spruce silhouettes as well as changing surface shading. It is a materially different candidate, not blanket art-direction approval.
