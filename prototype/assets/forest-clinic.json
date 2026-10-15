@@ -1,0 +1,44 @@
+{
+  "seed": 40217,
+  "asset": "forest-clinic.glb",
+  "blender": "4.5.3 LTS",
+  "groups": {
+    "Ground": {
+      "vertices": 5111,
+      "polygons": 9834
+    },
+    "Clinic": {
+      "vertices": 3266,
+      "polygons": 2692
+    },
+    "Windows": {
+      "vertices": 464,
+      "polygons": 348
+    },
+    "Porch": {
+      "vertices": 4668,
+      "polygons": 3546
+    },
+    "Roof": {
+      "vertices": 8616,
+      "polygons": 6450
+    },
+    "Forest": {
+      "vertices": 38128,
+      "polygons": 27912
+    },
+    "Undergrowth": {
+      "vertices": 11769,
+      "polygons": 5155
+    },
+    "Props": {
+      "vertices": 624,
+      "polygons": 453
+    },
+    "Traveler": {
+      "vertices": 436,
+      "polygons": 357
+    }
+  },
+  "provenance": "Original procedurally modeled geometry; no downloaded meshes, AI images or texture assets."
+}

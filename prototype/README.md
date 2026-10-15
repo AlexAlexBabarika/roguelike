@@ -10,6 +10,16 @@ This is a rendering proof of concept, not the proposed isometric forest/clinic
 roguelite. The original repository is unchanged. The root README provides
 commands that work from the repository root; commands below run inside `prototype/`.
 
+## Separate forest / clinic art mock
+
+Run `godot --path . res://mock_scene.tscn` for the new model and lighting study.
+It does not change the courtyard main scene, player or effects. The traveler
+is a static posed model, not a playable or rigged character.
+
+**1–3:** wide / clinic / traveler. **Q/E:** orbit. **Wheel:** zoom.
+**R:** rain. **F:** reflections. **Space:** freeze weather and orbit. **H:** HUD.
+See the [mock-scene guide and engine captures](../docs/FOREST_CLINIC_MOCK.md).
+
 ## Run without opening an editor
 
 Install the standard Godot 4.5.1 build for your OS, then from this directory:
