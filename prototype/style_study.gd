@@ -3,6 +3,11 @@ extends "res://mock_scene.gd"
 const PREPARED = preload("res://assets/forest-clinic-prepared.glb")
 const GOUACHE = preload("res://shaders/study_gouache.gdshader")
 const MINIATURE = preload("res://shaders/study_miniature.gdshader")
+const INK = preload("res://shaders/study_ink.gdshader")
+const PAINTED = preload("res://shaders/study_painted_crown.gdshader")
+const HIDDEN_BOUGH = preload("res://shaders/study_hidden_bough.gdshader")
+const CROWN_ATLAS = preload("res://assets/painted-crowns.png")
+const PAINTED_PASS = preload("res://painted_pass.gd")
 
 var arm := "A0"
 var atmosphere := false
@@ -12,6 +17,9 @@ var pigment_debug := false
 var pan_pixels := 0
 var probes := true
 var study_materials: Array[ShaderMaterial] = []
+var painted_material: ShaderMaterial
+var paint_pass: Node
+var filter_enabled := true
 
 
 func _read_options() -> void:
@@ -31,7 +39,9 @@ func _read_options() -> void:
 			pan_pixels = int(arg.trim_prefix("--pan="))
 		elif arg == "--no-probes":
 			probes = false
-	assert(arm in ["A0", "A1", "G1", "M1"])
+		elif arg == "--no-paint":
+			filter_enabled = false
+	assert(arm in ["A0", "A1", "G1", "M1", "I1"])
 
 
 func _setup_kit() -> void:
@@ -52,6 +62,8 @@ func _setup_kit() -> void:
 					continue
 				var material := _material(base, part.name)
 				part.set_surface_override_material(index, material)
+	if arm == "I1":
+		_setup_painted_crowns()
 	if probes:
 		_setup_probes()
 
@@ -71,15 +83,10 @@ func _material(base: StandardMaterial3D, group: String) -> Material:
 		clean.emission_enabled = false
 		return clean
 	var is_foliage := name_tag.begins_with("Fir needles")
+	if arm == "I1":
+		return _painted_material(base, clean, group, name_tag, is_foliage)
 	if arm == "A1":
-		if not is_foliage:
-			return clean
-		var foliage_material := ShaderMaterial.new()
-		foliage_material.shader = FOLIAGE
-		foliage_material.set_shader_parameter("pigment", base.albedo_color)
-		foliage_material.set_shader_parameter("wind_enabled", wind_enabled)
-		foliage_materials.append(foliage_material)
-		return foliage_material
+		return _prepared_material(base, clean, is_foliage)
 	if name_tag == "Brushed steel" or (group == "Traveler" and not "cloak" in name_tag):
 		return clean
 	var material := ShaderMaterial.new()
@@ -94,6 +101,126 @@ func _material(base: StandardMaterial3D, group: String) -> Material:
 	material.set_shader_parameter("pigment_debug", pigment_debug)
 	study_materials.append(material)
 	return material
+
+
+func _prepared_material(
+	base: StandardMaterial3D, clean: StandardMaterial3D, is_foliage: bool
+) -> Material:
+	if not is_foliage:
+		return clean
+	var foliage_material := ShaderMaterial.new()
+	foliage_material.shader = FOLIAGE
+	foliage_material.set_shader_parameter("pigment", base.albedo_color)
+	foliage_material.set_shader_parameter("wind_enabled", wind_enabled)
+	foliage_materials.append(foliage_material)
+	return foliage_material
+
+
+func _painted_material(
+	base: StandardMaterial3D,
+	clean: StandardMaterial3D,
+	group: String,
+	name_tag: String,
+	is_foliage: bool
+) -> Material:
+	if is_foliage:
+		var hidden := ShaderMaterial.new()
+		hidden.shader = HIDDEN_BOUGH
+		return hidden
+	if group == "Traveler" or name_tag == "Brushed steel":
+		return clean
+	var ink := ShaderMaterial.new()
+	ink.shader = INK
+	ink.set_shader_parameter("pigment", base.albedo_color)
+	ink.set_shader_parameter("roof", name_tag.begins_with("Blue slate"))
+	ink.set_shader_parameter("foliage", name_tag == "Late October leaf")
+	study_materials.append(ink)
+	return ink
+
+
+func _setup_painted_crowns() -> void:
+	var source = JSON.parse_string(
+		FileAccess.get_file_as_string("res://assets/painted-crowns.json")
+	)
+	assert(source is Dictionary and source.has("crowns"))
+	var trees: Array = source["crowns"]
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 40217
+	var clusters := MultiMesh.new()
+	clusters.transform_format = MultiMesh.TRANSFORM_3D
+	clusters.use_custom_data = true
+	clusters.mesh = QuadMesh.new()
+	clusters.instance_count = trees.size() * (7 * 7 + 2 * 4)
+	var index := 0
+	for tree in trees:
+		var origin: Array = tree["position"]
+		var center := Vector3(origin[0], origin[1], origin[2])
+		var height: float = tree["height"]
+		for tier in range(9):
+			var t := float(tier) / 9.0
+			var reach := height * 0.28 * pow(1.0 - t, 0.9)
+			var count := 7 if tier < 7 else 4
+			for branch in range(count):
+				var angle := float(branch) * TAU / count + tier * 1.7
+				var offset := reach * rng.randf_range(0.50, 0.88)
+				var location := (
+					center
+					+ Vector3(
+						cos(angle) * offset,
+						height * (0.2 + t * 0.83 + rng.randf_range(-0.018, 0.018)) - offset * 0.12,
+						sin(angle) * offset
+					)
+				)
+				var width := maxf(0.70, reach * rng.randf_range(1.0, 1.45))
+				var leaf_height := maxf(0.75, height * 0.18 * (1.0 - t * 0.3))
+				var transform := Transform3D(
+					Basis.IDENTITY.scaled(Vector3(width, leaf_height, 1)), location
+				)
+				clusters.set_instance_transform(index, transform)
+				var variant := rng.randi_range(0, 3)
+				clusters.set_instance_custom_data(
+					index,
+					Color(
+						float(variant % 2), floorf(float(variant) / 2.0), rng.randf(), rng.randf()
+					)
+				)
+				index += 1
+	assert(index == clusters.instance_count)
+	painted_material = ShaderMaterial.new()
+	painted_material.shader = PAINTED
+	painted_material.set_shader_parameter("atlas", CROWN_ATLAS)
+	var crowns := MultiMeshInstance3D.new()
+	crowns.name = "PaintedSpruceCrowns"
+	crowns.multimesh = clusters
+	crowns.material_override = painted_material
+	crowns.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(crowns)
+
+
+func _setup_hud() -> void:
+	super._setup_hud()
+	if arm == "I1":
+		paint_pass = PAINTED_PASS.new()
+		paint_pass.scene = self
+		add_child(paint_pass)
+		paint_pass.paint_layer.visible = filter_enabled
+		var overlay := hud.get_child(0)
+		var heading := overlay.get_child(0) as Label
+		heading.text = "THE LAST LIGHT\nI1 · painted-forest experiment"
+		var footer := overlay.get_child(1) as Label
+		footer.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+		footer.offset_left = 32
+		footer.offset_right = -24
+		footer.offset_top = -106
+		footer.offset_bottom = -12
+		footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		footer.text = (
+			"1–3 views · Q/E orbit · wheel zoom · Space pause · H HUD\n"
+			+ "P paint filter · R rain · F reflections\n"
+			+ "Actual Godot render · AI foliage texture / procedural geometry · art mock"
+		)
+		footer.add_theme_color_override("font_outline_color", Color("101a1b"))
+		footer.add_theme_constant_override("outline_size", 3)
 
 
 func _setup_reflection() -> void:
@@ -150,6 +277,17 @@ func _process(delta: float) -> void:
 		material.set_shader_parameter("clock", elapsed)
 		material.set_shader_parameter("raining", rain_enabled)
 		material.set_shader_parameter("wind_enabled", wind_enabled)
+	if painted_material != null:
+		painted_material.set_shader_parameter("clock", elapsed)
+		painted_material.set_shader_parameter("wind_enabled", wind_enabled)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	super._unhandled_input(event)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_P and paint_pass != null:
+			filter_enabled = not filter_enabled
+			paint_pass.paint_layer.visible = filter_enabled
 
 
 func _capture() -> void:
@@ -213,6 +351,10 @@ func _capture() -> void:
 		),
 	}
 	var metadata := FileAccess.open(capture_path + ".json", FileAccess.WRITE)
+	if arm == "I1":
+		record["painterly_filter"] = filter_enabled
+		record["crown_atlas_sha256"] = FileAccess.get_sha256("res://assets/painted-crowns.png")
+		record["crown_cards"] = get_node("PaintedSpruceCrowns").multimesh.instance_count
 	metadata.store_string(JSON.stringify(record, "\t") + "\n")
 	print("STYLE_CAPTURE: ", JSON.stringify(record))
 	get_tree().quit()

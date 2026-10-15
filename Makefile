@@ -40,6 +40,10 @@ style-render-check: import
 	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/style-render.log
 	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/style_render.gd -- --arm=M1 2>&1 | tee artifacts/style-miniature-render.log
 	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/style-miniature-render.log
+	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/painted_render.gd 2>&1 | tee artifacts/painted-render.log
+	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/painted-render.log
+	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/painted_render.gd -- --ignore-aspect 2>&1 | tee artifacts/painted-stretched-render.log
+	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/painted-stretched-render.log
 
 mock-render-check: import
 	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/mock_render.gd -- "$(CURDIR)/artifacts/forest-clinic.png" 2>&1 | tee artifacts/mock-render.log
@@ -59,5 +63,7 @@ play:
 mock:
 	$(GODOT) --path $(PROJECT) res://mock_scene.tscn
 
+STYLE_ARM ?= I1
+
 style-study:
-	$(GODOT) --path $(PROJECT) res://style_study.tscn -- --arm=G1
+	$(GODOT) --path $(PROJECT) res://style_study.tscn -- --arm=$(STYLE_ARM)

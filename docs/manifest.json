@@ -71,6 +71,10 @@
       "path": "boards/style-study-comparison.html",
       "sha256": "f151dba8af65b9684a0d4a423e93142fb3983ca13cb50e0accfed1614cea0dfc",
       "kind": "interactive same-camera Godot experiment comparison"
+    },
+    {
+      "path": "boards/painted-forest-comparison.jpg",
+      "sha256": "258a4b3b4e2635775ac51beb575ba0f4b22d6863dd6dfd02f625066107d0d31a"
     }
   ],
   "captures": [

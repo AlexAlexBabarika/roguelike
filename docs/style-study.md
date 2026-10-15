@@ -4,12 +4,16 @@ This executes [section 5 of the supplied decision memo](https://claude.ai/artifa
 
 Open the [standalone interactive comparison](boards/style-study-comparison.html) for matched arm/camera/resolution and accessibility views; download the HTML to use it offline.
 
-## Decision
+## Follow-up after visual rejection
+
+The user rejected G1 as still looking low-poly. The stronger **I1 painted-forest follow-up** adds silhouette replacement and a selective screen filter: [new matched board, implementation and limitations](PAINTED_FOREST.md). G1 below is only the historical provisional choice for the controlled atmosphere experiment, not an accepted final style.
+
+## Original two-test decision
 
 1. **Keep the shared preparation.** Unifying bough pigments, shortening exposed trunk tips, smoothing the cloak and reducing roof/coat palette variation make a clearer improvement than changing the lighting model alone.
 2. **Use G1, provisionally, for the atmosphere experiment.** Wet gouache preserves/improves the sampled traveler/path value contrast. Miniature reduces it below baseline and is not the safer choice on these meshes. This is one reviewer's choice, not the proposed three-person unlabelled preference study.
 3. **Do not adopt G1+H unchanged.** Its brighter floor helps the dark enemy probe, but reduces traveler/path contrast. None of the arms meets the proposal's minimum 15-level crown/roof/floor separation. Pointed crowns and repeated frond silhouettes remain visible.
-4. **No selective blur shipped.** The optional W+H+S arm was not run. The remaining obvious defect is modeled frond/grass silhouettes; a background filter would not repair that geometry, and safe gameplay-layer masking is not yet established. This is a deferred experiment, not a validated Compatibility-renderer solution.
+4. **No selective blur in the original two tests.** The optional W+H+S arm was not run. I1 is a separate follow-up after that result was rejected; its static prototype mask is not a validated production gameplay layer.
 
 ## Arms and controls
 
@@ -23,7 +27,7 @@ Open the [standalone interactive comparison](boards/style-study-comparison.html)
 
 Test 1 retains the existing ground and reflection shaders. Actor materials receive no pigment variation; windows, enemy and warning probes remain clean. All lights, positions and energies, tone mapping, fog density 0.004, ambient energy 0.28 and 4× MSAA remain fixed. Still clock: 6 seconds. Seed: 40217. All three cameras at 1920×1080 and 1280×720, plus wide dry and no-wind diagnostics per arm. Rain, wind and reflections are enabled otherwise. Per-capture JSON records the exact cameras, lights, flags, asset hash and driver.
 
-G1H raises the floor, darkens forest interiors, lowers rocks, adds a roof wetness gradient and sky Fresnel/wet puddle edges, and adds focus-relative haze beyond approximately 12 m. Actors and warnings are excluded from that new material haze; the original global engine fog remains identical in every arm. The new distance layer is radial from a fixed play focus, not screen-depth volumetric fog.
+G1H raises the floor, darkens forest interiors, lowers rocks, adds sky Fresnel/wet puddle edges, and adds focus-relative haze beyond approximately 12 m. Its intended special roof gradient did not bind because no mesh group was named `Roof`; I1 fixes classification independently without changing historical G1H captures. Actors and warnings are excluded from that new material haze; the original global engine fog remains identical in every arm. The new distance layer is radial from a fixed play focus, not screen-depth volumetric fog.
 
 The small dark capsule and pale warning sector are **non-gameplay readability probes**. Their simple opaque shapes do not validate enemy facing, actual telegraph colors/animation, combat, navigation or occlusion handling.
 

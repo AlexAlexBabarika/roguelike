@@ -83,6 +83,35 @@ class StyleStudyTests(unittest.TestCase):
         self.assertEqual(kits["G1"], kits["M1"])
         self.assertNotEqual(kits["A0"], kits["A1"])
 
+    def test_painted_followup_provenance(self):
+        folder = ROOT / "docs/screenshots/style-study"
+        provenance = json.loads((folder / "painted-provenance.json").read_text())
+        self.assertEqual(len(provenance["captures"]), 8)
+        self.assertIn("AI-generated", provenance["texture_provenance"])
+        for record in provenance["captures"]:
+            self.assertEqual(record["arm"], "I1")
+            self.assertFalse(record["atmosphere"])
+            self.assertEqual(record["crown_cards"], 1254)
+            self.assertEqual(record["frames"][0]["clock"], 6.0)
+            self.assertTrue(record["rain"] and record["wind"] and record["reflections"])
+            path = ROOT / record["file"]
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), record["sha256"])
+            self.assertEqual(struct.unpack(">II", path.read_bytes()[16:24]), tuple(record["resolution"]))
+            self.assertEqual(record["painterly_filter"], "no-paint" not in path.name)
+            size = "x".join(map(str, record["resolution"]))
+            baseline = json.loads((folder / f'G1-{record["view"]}-{size}.png.json').read_text())
+            for key in ["lights", "ambient", "fog_density", "frames", "asset_sha256"]:
+                self.assertEqual(record[key], baseline[key], key)
+        atlas = json.loads((ROOT / "prototype/assets/painted-crowns.json").read_text())
+        self.assertEqual(len(atlas["crowns"]), 22)
+        for name, key in [("painted-crowns.png", "atlas_sha256"),
+                          ("painted-boughs-source.png", "texture_source_sha256")]:
+            self.assertEqual(hashlib.sha256((ROOT / "prototype/assets" / name).read_bytes()).hexdigest(),
+                             atlas[key])
+        board = json.loads((folder / "painted-board.json").read_text())
+        for name, fingerprint in board["sources"].items():
+            self.assertEqual(hashlib.sha256((folder / name).read_bytes()).hexdigest(), fingerprint)
+
     def test_comparison_is_self_contained(self):
         path = ROOT / "docs/boards/style-study-comparison.html"
         source = path.read_text()

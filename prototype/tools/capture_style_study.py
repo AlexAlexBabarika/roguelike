@@ -44,6 +44,12 @@ def run(arm, view, size, *, suffix="", options=(), movie="", fps=15):
                         "-crf", "18", "-pix_fmt", "yuv420p", str(video)], check=True)
         record["file"] = str(video.relative_to(ROOT))
         record["sha256"] = hashlib.sha256(video.read_bytes()).hexdigest()
+        record["frame_sha256"] = [hashlib.sha256(p.read_bytes()).hexdigest()
+                                  for p in sorted(destination.glob("*.png"))]
+        record["encoded_video"] = json.loads(subprocess.check_output([
+            "ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+            "stream=width,height,nb_frames,r_frame_rate,duration", "-of", "json", str(video)
+        ], text=True))["streams"][0]
     else:
         record["file"] = str(destination.relative_to(ROOT))
         record["sha256"] = hashlib.sha256(destination.read_bytes()).hexdigest()
@@ -114,7 +120,8 @@ def build_motion_boards(winner):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("phase", choices=["test1", "test2", "motion", "anchor", "provenance", "boards"])
+    parser.add_argument("phase", choices=["test1", "test2", "motion", "anchor", "provenance", "boards",
+                                         "painted", "painted-motion"])
     parser.add_argument("--winner", choices=["G1", "M1"], default="G1")
     parser.add_argument("--fps", type=int, default=15)
     args = parser.parse_args()
@@ -127,7 +134,16 @@ def main():
         build_motion_boards(args.winner)
         return
     records = []
-    if args.phase in ["test1", "test2"]:
+    if args.phase == "painted":
+        for size in ["1920x1080", "1280x720"]:
+            for view in ["wide", "clinic", "traveler"]:
+                records.append(run("I1", view, size))
+        for view in ["wide", "traveler"]:
+            records.append(run("I1", view, "1920x1080", suffix="-no-paint", options=("--no-paint",)))
+    elif args.phase == "painted-motion":
+        for movie, view in [("orbit", "wide"), ("weather", "clinic"), ("zoom", "traveler")]:
+            records.append(run("I1", view, "1280x720", suffix="-" + movie, movie=movie, fps=args.fps))
+    elif args.phase in ["test1", "test2"]:
         arms = ["A0", "A1", "G1", "M1"] if args.phase == "test1" else [args.winner]
         for arm in arms:
             flags = () if args.phase == "test1" else ("--atmosphere",)
@@ -153,10 +169,16 @@ def main():
                "style_study.tscn", "assets/forest-clinic.glb", "assets/forest-clinic-prepared.glb",
                "tools/prepare_style_kit.py", "tools/capture_style_study.py"]]
     sources += list((ROOT / "prototype/shaders").glob("study_*"))
+    if args.phase.startswith("painted"):
+        sources += [ROOT / "prototype" / name for name in ["painted_pass.gd",
+                    "tools/build_painted_crowns.py", "assets/painted-crowns.png",
+                    "assets/painted-crowns.json", "assets/painted-boughs-source.png"]]
     provenance = {"phase": args.phase, "captures": records,
                   "sources": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                               for p in sources},
                   "provenance": "Untouched Godot output. Procedural Blender stand-in, not AI-generated geometry. Software renderer; no target hardware performance claim."}
+    if args.phase.startswith("painted"):
+        provenance["texture_provenance"] = "I1 uses an AI-generated gouache bough texture (gpt-image-2.5-flare), not an AI scene paint-over. Its committed source is chroma-keyed and recolored deterministically."
     (OUTPUT / f"{args.phase}-provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
 
 

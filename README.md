@@ -42,6 +42,8 @@ This is a model/composition study, not a final art-direction choice.
 
 ## Play the migrated Godot prototype
 
+For the stronger painted-forest follow-up (separate from the playable scene), see the [I1 same-camera comparison and controls](docs/PAINTED_FOREST.md).
+
 Install **Godot 4.5.1**, then run from this repository's root:
 
 ```sh

@@ -1,0 +1,12 @@
+{
+  "kind": "Script-derived board: labelled and resized Godot captures, no generative retouching",
+  "sources": {
+    "G1-wide-1920x1080.png": "6019d9a1d3df1809fca13e20007e80e8a5a940c8fc3a140e6403915e29ec3d9b",
+    "I1-wide-1920x1080.png": "79cfcbd9a14fc4e1a5757fe7cce6d46eed4309f1e0754f888c2599084a7ac16d",
+    "G1-clinic-1920x1080.png": "9e6ef29b4081df6e1d020deff7707c06ec92001a76fb87554ea36e9e470c1fd5",
+    "I1-clinic-1920x1080.png": "f299702ce4ba5b971508617e1bf87e6989d92edbe1aa9e87fc61d97c26b098cb",
+    "G1-traveler-1920x1080.png": "0a6acabb6da873e161e0b21fdd9919b8e52a872da58f116c28743ecfda28bed6",
+    "I1-traveler-1920x1080.png": "648323d144b3b87dc881d5fa81a6c58fcd9762e64a3607606c025a32302c26df"
+  },
+  "sha256": "258a4b3b4e2635775ac51beb575ba0f4b22d6863dd6dfd02f625066107d0d31a"
+}
