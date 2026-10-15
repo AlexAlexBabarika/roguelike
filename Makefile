@@ -6,7 +6,7 @@ BLENDER ?= blender
 PYTHON ?= python3
 PROJECT := prototype
 
-.PHONY: check reports-check syntax-check import smoke render-check mock-render-check rebuild-assets rebuild-mock play mock
+.PHONY: check reports-check syntax-check import smoke render-check mock-render-check style-render-check rebuild-assets rebuild-mock play mock style-study
 
 check: reports-check syntax-check import smoke
 
@@ -33,6 +33,13 @@ render-check: import
 	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/render.gd -- "$(CURDIR)/artifacts/storm.png" --verify 2>&1 | tee artifacts/storm-render.log
 	! grep -E 'SCRIPT ERROR:|^ERROR:' artifacts/storm-render.log
 	$(MAKE) mock-render-check
+	$(MAKE) style-render-check
+
+style-render-check: import
+	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/style_render.gd 2>&1 | tee artifacts/style-render.log
+	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/style-render.log
+	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/style_render.gd -- --arm=M1 2>&1 | tee artifacts/style-miniature-render.log
+	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/style-miniature-render.log
 
 mock-render-check: import
 	xvfb-run -a $(GODOT) --audio-driver Dummy --path $(PROJECT) --script tests/mock_render.gd -- "$(CURDIR)/artifacts/forest-clinic.png" 2>&1 | tee artifacts/mock-render.log
@@ -51,3 +58,6 @@ play:
 
 mock:
 	$(GODOT) --path $(PROJECT) res://mock_scene.tscn
+
+style-study:
+	$(GODOT) --path $(PROJECT) res://style_study.tscn -- --arm=G1

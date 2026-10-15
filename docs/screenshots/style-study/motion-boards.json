@@ -1,0 +1,174 @@
+{
+  "kind": "Derived, downscaled/lossy motion comparisons; labelled, no masking or blur.",
+  "clock": "15 Hz offline sampling over eight seconds, not target-device performance.",
+  "boards": [
+    {
+      "file": "docs/screenshots/style-study/test1-orbit-comparison.webp",
+      "test": "test1",
+      "movie": "orbit",
+      "panel_pixels": [
+        480,
+        270
+      ],
+      "source_resolution": [
+        1280,
+        720
+      ],
+      "sha256": "d92646d749f7de78fdd6ddc1eee36a2bc6b906d0053c296a149b31fe8b039cf4",
+      "sources": [
+        {
+          "file": "artifacts/style-study/A0-orbit-wide-1280x720.mp4",
+          "sha256": "5c64c845f910bcf25c42903d2866911b18a27dc918c9076a0775888cf7faa12f"
+        },
+        {
+          "file": "artifacts/style-study/A1-orbit-wide-1280x720.mp4",
+          "sha256": "241b3790ddf1e36709b45291eae4afb01312c6f1fe5a6fbb6f44026fe24e51a2"
+        },
+        {
+          "file": "artifacts/style-study/G1-orbit-wide-1280x720.mp4",
+          "sha256": "327596f5aa18a6f1b36b9f307bd51d0e8572cc3937a5dc63a7e9d605f6a09f5c"
+        },
+        {
+          "file": "artifacts/style-study/M1-orbit-wide-1280x720.mp4",
+          "sha256": "65aec64606ae5b62be454d64810db1ec29d309b22e7dc93b8c6b1d0e0289b96a"
+        }
+      ]
+    },
+    {
+      "file": "docs/screenshots/style-study/test2-orbit-comparison.webp",
+      "test": "test2",
+      "movie": "orbit",
+      "panel_pixels": [
+        640,
+        360
+      ],
+      "source_resolution": [
+        1280,
+        720
+      ],
+      "sha256": "11fb62f7581f6063d5bb0b0f50ed5a9ebb0bf4ff25e0b3ce80c6f80e2f0eed9f",
+      "sources": [
+        {
+          "file": "artifacts/style-study/G1-orbit-wide-1280x720.mp4",
+          "sha256": "327596f5aa18a6f1b36b9f307bd51d0e8572cc3937a5dc63a7e9d605f6a09f5c"
+        },
+        {
+          "file": "artifacts/style-study/G1H-orbit-wide-1280x720.mp4",
+          "sha256": "14ec918f77033496b34ee00a3844887c0aad70b36daea312cebb248784cc3879"
+        }
+      ]
+    },
+    {
+      "file": "docs/screenshots/style-study/test1-weather-comparison.webp",
+      "test": "test1",
+      "movie": "weather",
+      "panel_pixels": [
+        480,
+        270
+      ],
+      "source_resolution": [
+        1280,
+        720
+      ],
+      "sha256": "b2e2ae3cd57a66e0f8cab24d2b6290295ef25f7ea2ba2b857f04b18f2fdabb97",
+      "sources": [
+        {
+          "file": "artifacts/style-study/A0-weather-clinic-1280x720.mp4",
+          "sha256": "173d21e6f0c2fa2ba4977133f8152919aa2f9425f2dac82f2142c9b10958a8b6"
+        },
+        {
+          "file": "artifacts/style-study/A1-weather-clinic-1280x720.mp4",
+          "sha256": "97e074790181926cba6690cc49742845175ab91bc24be7ee30ef490df06aee27"
+        },
+        {
+          "file": "artifacts/style-study/G1-weather-clinic-1280x720.mp4",
+          "sha256": "222f0bc470a35eef157e56e293192a4584360a1111a0a09945cc51ff27b01a8d"
+        },
+        {
+          "file": "artifacts/style-study/M1-weather-clinic-1280x720.mp4",
+          "sha256": "bd7139b1c8cceaf65755f14bacb7d48176f999cb35d01f043f229463dd4c19e4"
+        }
+      ]
+    },
+    {
+      "file": "docs/screenshots/style-study/test2-weather-comparison.webp",
+      "test": "test2",
+      "movie": "weather",
+      "panel_pixels": [
+        640,
+        360
+      ],
+      "source_resolution": [
+        1280,
+        720
+      ],
+      "sha256": "1c8d9eb981845f3a4f95b9a60aad098689b521cb1318eafa12d7e652a16bec1b",
+      "sources": [
+        {
+          "file": "artifacts/style-study/G1-weather-clinic-1280x720.mp4",
+          "sha256": "222f0bc470a35eef157e56e293192a4584360a1111a0a09945cc51ff27b01a8d"
+        },
+        {
+          "file": "artifacts/style-study/G1H-weather-clinic-1280x720.mp4",
+          "sha256": "15f1199f4f0f2f4e92e600ff1c8a7e3382cfdc976b2a67a31bb636a875564494"
+        }
+      ]
+    },
+    {
+      "file": "docs/screenshots/style-study/test1-zoom-comparison.webp",
+      "test": "test1",
+      "movie": "zoom",
+      "panel_pixels": [
+        480,
+        270
+      ],
+      "source_resolution": [
+        1280,
+        720
+      ],
+      "sha256": "8b6f0bfa989435db6a289b230a1329434128f6aa55b8d94ea88a25f454976457",
+      "sources": [
+        {
+          "file": "artifacts/style-study/A0-zoom-traveler-1280x720.mp4",
+          "sha256": "6ecd6b9ad9ba8383993641969bc9b32136baa53840000824e96deba7faba3318"
+        },
+        {
+          "file": "artifacts/style-study/A1-zoom-traveler-1280x720.mp4",
+          "sha256": "d85ea03bf93f8b35cb8e736e7ed61228f829823d7ab79836f028ac0c2711a68e"
+        },
+        {
+          "file": "artifacts/style-study/G1-zoom-traveler-1280x720.mp4",
+          "sha256": "baa1c50c542bf7b67b11af7e4dd3891bfe17f518fb987c6235531b3fc09b979c"
+        },
+        {
+          "file": "artifacts/style-study/M1-zoom-traveler-1280x720.mp4",
+          "sha256": "91a3a8a550906aa60eadd10e17a6cba78ef31c46091552efbada5cf25d63b958"
+        }
+      ]
+    },
+    {
+      "file": "docs/screenshots/style-study/test2-zoom-comparison.webp",
+      "test": "test2",
+      "movie": "zoom",
+      "panel_pixels": [
+        640,
+        360
+      ],
+      "source_resolution": [
+        1280,
+        720
+      ],
+      "sha256": "8e232a1b7e13c86f34c2077327fda60454814d1b3a4f2cae10164053bb703b3d",
+      "sources": [
+        {
+          "file": "artifacts/style-study/G1-zoom-traveler-1280x720.mp4",
+          "sha256": "baa1c50c542bf7b67b11af7e4dd3891bfe17f518fb987c6235531b3fc09b979c"
+        },
+        {
+          "file": "artifacts/style-study/G1H-zoom-traveler-1280x720.mp4",
+          "sha256": "bc8167d60cd69cb28d5f2f57b5a5bd4ef234896cad02f41a2cd19a7bfc6a6205"
+        }
+      ]
+    }
+  ]
+}

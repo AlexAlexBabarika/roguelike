@@ -66,6 +66,11 @@
       "sha256": "0ba5c94e148d9013311bfbf30416958abcb9981895f232bc715ff9fe24eb00b5",
       "kind": "derived Godot screenshot comparison",
       "source_session": "https://app.devin.ai/sessions/5d876fef59694cb9b9b23a09e4e845b8"
+    },
+    {
+      "path": "boards/style-study-comparison.html",
+      "sha256": "f151dba8af65b9684a0d4a423e93142fb3983ca13cb50e0accfed1614cea0dfc",
+      "kind": "interactive same-camera Godot experiment comparison"
     }
   ],
   "captures": [

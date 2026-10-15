@@ -1,0 +1,198 @@
+{
+  "phase": "anchor",
+  "captures": [
+    {
+      "ambient": 0.280000001192093,
+      "arm": "G1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 13.5,
+          "yaw": 0.48
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": false,
+      "reflections": false,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "clinic",
+      "wind": false,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=G1",
+        "--view=clinic",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/G1-anchor-0-clinic-1920x1080.png",
+        "--fps=15",
+        "--pigment-debug",
+        "--dry",
+        "--no-wind",
+        "--no-reflections",
+        "--pan=0"
+      ],
+      "file": "docs/screenshots/style-study/G1-anchor-0-clinic-1920x1080.png",
+      "sha256": "32b6bd066094b5ea19e4e813ff99a2e0cc5a465852e6352811593cb2ef8d18a3",
+      "godot_version": "4.5.1.stable.official.f62fdbde1"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "G1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 13.5,
+          "yaw": 0.48
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "pan_pixels": 64,
+      "probes": true,
+      "rain": false,
+      "reflections": false,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "clinic",
+      "wind": false,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=G1",
+        "--view=clinic",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/G1-anchor-64-clinic-1920x1080.png",
+        "--fps=15",
+        "--pigment-debug",
+        "--dry",
+        "--no-wind",
+        "--no-reflections",
+        "--pan=64"
+      ],
+      "file": "docs/screenshots/style-study/G1-anchor-64-clinic-1920x1080.png",
+      "sha256": "585835eef963ba874dad6ce9ef2d24129d7e88dde3cf233692524176d8c425ee",
+      "godot_version": "4.5.1.stable.official.f62fdbde1"
+    }
+  ],
+  "sources": {
+    "prototype/mock_scene.gd": "13f6e6fbbfd9cd7c0b40aa3bc6c25781da66a0a23562705a02ac49c80ca04666",
+    "prototype/style_study.gd": "c13f748d009be971b1602b63b3f2d86e41788bdae29d53b7e05eb643ec4a50ad",
+    "prototype/style_study.tscn": "c550d8542918fcde3bc97cbc8c835c0824921f1e00d9b02876c1362565580653",
+    "prototype/assets/forest-clinic.glb": "9fd119444859c2e64948a05b8bd8912a6e4c971125cd7f86bbb040e4d91d87ef",
+    "prototype/assets/forest-clinic-prepared.glb": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+    "prototype/tools/prepare_style_kit.py": "65f7facb3ece920e8a7d02b3efe3edc409294b2e2fee1c5728317781b9baccb2",
+    "prototype/tools/capture_style_study.py": "70830fc8ce455e2f77c800067cea3125fb9e4bab468f56849617be8903d5ee05",
+    "prototype/shaders/study_water.gdshader": "f02467c1fbf4599c51baf5fcec5b2d003643abcc6d73b9463c1df005f40be3f1",
+    "prototype/shaders/study_surface.gdshaderinc": "30bff62689a4104247e64b3de50bf352b36a19b35d449ea8fa2e476c2bbee0a2",
+    "prototype/shaders/study_ground.gdshader.uid": "659561deab6c6df9b46ad9a2273cf008b769f00328547e694f1cdd08b958b79d",
+    "prototype/shaders/study_water.gdshader.uid": "b21ec9a5889a06db5f877a08f6590a87809423108291860fb1a857e264a92cc7",
+    "prototype/shaders/study_ground.gdshader": "ca5db6a4b6a3cb07f1aab55705150b8cec5207d8b77fd45b4ce4d681524103fa",
+    "prototype/shaders/study_gouache.gdshader.uid": "1c9d612adbcf73a34a6022fce733c284c1587b87507248c969819cd78c9b8625",
+    "prototype/shaders/study_gouache.gdshader": "27b5429fe1c1a62761f6a4cb36893382b531b1cf329e7e54786c8b59d1044d99",
+    "prototype/shaders/study_miniature.gdshader": "2776f9ccdedc124de1d01cc8d4e9f9a59ca69fb5248d1b6d3ec9bedb1e486bd8",
+    "prototype/shaders/study_miniature.gdshader.uid": "6c8be6d66561955fba54177721a73eb92560b744485e81b0983821db06856665",
+    "prototype/shaders/study_surface.gdshaderinc.uid": "5be995fa3b40b76c7eb17da6d9af7187983011abcc23e4afd1db78b5d0c634ec"
+  },
+  "provenance": "Untouched Godot output. Procedural Blender stand-in, not AI-generated geometry. Software renderer; no target hardware performance claim.",
+  "godot_version": "4.5.1.stable.official.f62fdbde1"
+}

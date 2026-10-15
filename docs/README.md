@@ -12,6 +12,13 @@ in the reports, including the game-loop report's optional detail sections.
 
 ## New engine mock
 
+[Material / atmosphere experiments](style-study.md): baseline, shared mesh prep,
+wet gouache and soft miniature at matched cameras, followed by the selected
+treatment with and without a value/atmosphere re-key. See the
+[offline interactive comparison](boards/style-study-comparison.html).
+Gouache is provisional; the atmosphere arm trades stronger dark-enemy contrast
+for weaker traveler/path contrast. No final art direction or hardware claim.
+
 [Forest / field clinic](FOREST_CLINIC_MOCK.md): a separate model/composition study
 with three actual Godot captures, reproducible Blender geometry and its own
 provenance record. No AI concept image is used as an asset or background.
@@ -35,6 +42,9 @@ The research reports and their archived fingerprints are unchanged.
 
 ## Comparison boards
 
+- [Gouache / miniature / atmosphere: same-camera Godot study](boards/style-study-comparison.html) —
+  offline arm/camera/resolution controls, greyscale and color-vision diagnostics,
+  luminance table; [methods and limitations](style-study.md).
 - [Storm Fresco: actual Godot A/B/C comparison](boards/storm-fresco-engine-comparison-board.jpg) —
   derived from captured PNGs; [selected originals, measurements and limitations](STORM_FRESCO.md).
 - [Four new styles](boards/new-art-directions-board.jpg)
