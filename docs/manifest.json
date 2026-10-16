@@ -86,6 +86,13 @@
       "status": "engine evidence, visual candidate; not final art",
       "description": "Actual Godot daylight captures, artist-authored CC0 assets; no screen filter.",
       "sha256": "344847a0bf551a6eb7b99a93662617a101b7b8f01fb6080adb6da3d44b41dcdc"
+    },
+    {
+      "path": "boards/clinic-grove-refinement.jpg",
+      "title": "Clinic grove — authored daylight context refinement",
+      "status": "engine evidence, visual candidate; not final art",
+      "description": "Matched actual Godot views of the prior and refined context/approach, no screen filter.",
+      "sha256": "0f7dd924a1aa0c9a1ac3efafc867660011fd044ad0371f307c5b178bb438bfe9"
     }
   ],
   "captures": [

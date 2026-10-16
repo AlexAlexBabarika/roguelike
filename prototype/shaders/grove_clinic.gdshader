@@ -5,6 +5,7 @@ uniform sampler2D metal : source_color, filter_linear_mipmap_anisotropic, repeat
 uniform sampler2D stone : source_color, filter_linear_mipmap, repeat_enable;
 uniform vec4 base_color : source_color = vec4(0.4, 0.42, 0.36, 1.0);
 uniform int surface_kind = 0;
+uniform float variation = 0.0;
 varying vec3 world;
 varying vec3 axis;
 
@@ -25,19 +26,19 @@ void fragment() {
     vec3 shade = base_color.rgb;
     if (surface_kind == 0) {
         shade *= mix(vec3(0.55, 0.65, 0.50), vec3(1.0), 1.0 - damp * 0.65);
-        shade *= 0.72 + 0.65 * grain;
+        shade *= 0.78 + 0.55 * grain;
     } else if (surface_kind == 1) {
         shade = grain * vec3(0.78, 0.87, 0.79);
     } else if (surface_kind == 2) {
         vec3 rust = texture(metal, world.xz * 0.20).rgb;
-        shade = mix(base_color.rgb, rust * 0.65, 0.34);
+        shade = mix(base_color.rgb, rust * 0.65, 0.30);
         shade *= 0.75 + texture(wood, world.xz * 0.1).r * 0.55;
     } else {
         shade = (texture(stone, world.xy * 0.6).rgb * weights.z
                    + texture(stone, world.zy * 0.6).rgb * weights.x
                    + texture(stone, world.xz * 0.6).rgb * weights.y) * vec3(0.77, 0.83, 0.75);
     }
-    ALBEDO = shade;
+    ALBEDO = shade * (1.0 + variation);
     ROUGHNESS = 0.92;
     SPECULAR = 0.12;
 }

@@ -15,9 +15,9 @@ draw.text((30, 23), 'BETTER SOURCE ASSETS, NOT A STRONGER FILTER', font=heading,
 draw.text((30, 70), 'Actual Godot 4.5.1 / Compatibility viewports. No AI paint-over or screen-space treatment.', font=small, fill='#aab6b1')
 panels = [
     ('structured-forest/daylight', '01 / EARLIER PROCEDURAL SLICE', 'Preserved capture: regular crown tiers and mostly bare ground.'),
-    ('clinic-grove/daylight', '02 / AUTHORED CONIFERS + TEXTURED GROUND', 'Identical camera; assets, dressing, materials and lighting changed.'),
-    ('clinic-grove/tree', '03 / ISOLATED ASSET IN DAYLIGHT', 'CC0 Poly Haven fir LOD2; fixed geometry, lit needle cutouts.'),
-    ('clinic-grove/approach', '04 / APPROACH CAMERA', 'Open path, grounded rocks and ferns; original clinic/traveler retained.'),
+    ('clinic-grove-v1/daylight', '02 / AUTHORED CONIFERS + TEXTURED GROUND', 'Identical camera; assets, dressing, materials and lighting changed.'),
+    ('clinic-grove-v1/tree', '03 / ISOLATED ASSET IN DAYLIGHT', 'CC0 Poly Haven fir LOD2; fixed geometry, lit needle cutouts.'),
+    ('clinic-grove-v1/approach', '04 / APPROACH CAMERA', 'Open path, grounded rocks and ferns; original clinic/traveler retained.'),
 ]
 for index, (path, title, note) in enumerate(panels):
     x = 30 + (index % 2) * 900

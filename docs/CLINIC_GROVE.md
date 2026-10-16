@@ -1,11 +1,55 @@
-# Clinic grove — authored asset / daylight revision
+# Clinic grove — authored asset / daylight revisions
 
-This is the next visual candidate after the user rejected both the painted
+This is a visual candidate after the user rejected both the painted
 I1 filter and the regular, tiered procedural spruces. The change is primarily
 **better source assets and surface treatment**, not a shader that hides arbitrary
 low-poly meshes. The playable `res://main.tscn` is unchanged.
 
-![Actual Godot dry-daylight viewport](screenshots/clinic-grove/daylight.png)
+![Refined actual Godot dry-daylight viewport](screenshots/clinic-grove/daylight.png)
+
+## Panel 02: matched refinement
+
+![Prior and refined 02/04 views](boards/clinic-grove-refinement.jpg)
+
+The earlier [02 daylight](screenshots/clinic-grove-v1/daylight.png) and
+[approach](screenshots/clinic-grove-v1/approach.png), plus their JSON sidecars
+and the other three earlier views, remain under `clinic-grove-v1`. The new
+[02 daylight](screenshots/clinic-grove/daylight.png) and
+[approach](screenshots/clinic-grove/approach.png) have the **same orthographic
+camera settings and resolution** as the originals. The board resizes them,
+but does not retouch or filter any viewport. This is not a shader-only A/B:
+terrain, deterministic tree placement, understory, material colors and
+daylight balance all changed together.
+
+- A worn dirt corridor now leads to the entrance with moss/litter gathered
+  beyond its edges and under the firs, rather than one repeated bright carpet.
+- The three already-licensed Poly Haven ground color/normal maps are blended
+  into a fixed world-space terrain field **offline**, sampled at runtime as
+  two mipmapped textures. A triangular random-patch arrangement reduces obvious
+  tiling without blurring tree geometry or applying any screen filter. It
+  borrows the patch-blending idea of [Heitz & Neyret's 2018 study](https://eheitzresearch.wordpress.com/722-2/),
+  but does **not** implement their histogram-preserving transform; soft blends
+  can still lose texture contrast. The tree positions and input/output SHA-256
+  fingerprints are recorded in the [terrain manifest](../prototype/assets/grove-terrain/terrain.json).
+- The foreground and distant trees are regrouped at the same camera; grass and
+  ferns are sparser along the route. The lights remain dry daylight, real cast
+  shadows and lit materials; no weather is required to read the scene.
+- Clinic colors and roof texture contrast are restrained. This is surface
+  treatment, **not** a new clinic/traveler mesh. Their simple silhouettes remain
+  the main visual weakness and still need authored replacements.
+
+Rebuild the derived terrain (NumPy + Pillow required **only** to rebuild):
+
+```sh
+python3 prototype/tools/build_grove_terrain.py
+make import
+```
+
+The input source URLs/authors/licenses and adaptation notes are in the
+[CC0 asset notes](../prototype/assets/reference-forest/README.md). Committed
+runtime JPEGs suffice for viewing the scene; NumPy is not a Godot dependency.
+
+## Original authored-asset revision
 
 ## What changed
 
@@ -25,12 +69,13 @@ low-poly meshes. The playable `res://main.tscn` is unchanged.
 
 ## Compare the actual engine output
 
-![Earlier procedural slice versus current authored assets](boards/clinic-grove-comparison.jpg)
+![Earlier procedural slice versus first authored revision](boards/clinic-grove-comparison.jpg)
 
 The board only resizes/arranges captures. Top row: identical orthographic
 camera and resolution, **but assets, materials, dressing and light balance
-all change**. This is not a controlled shader-only A/B experiment. Bottom:
-an isolated tree and the approach camera. Originals and JSON sidecars:
+all changed**. This historical comparison is also not a controlled shader-only
+A/B experiment. Bottom: an isolated tree and the approach camera. Originals
+and JSON sidecars are under `clinic-grove-v1`; the latest capture set is:
 
 - [Dry daylight context](screenshots/clinic-grove/daylight.png) / [provenance](screenshots/clinic-grove/daylight.json)
 - [Isolated tree](screenshots/clinic-grove/tree.png) / [provenance](screenshots/clinic-grove/tree.json)
@@ -52,13 +97,15 @@ make clinic-grove
 
 python3 prototype/tools/capture_clinic_grove.py
 python3 docs/tools/build_clinic_grove_board.py
+python3 docs/tools/build_clinic_grove_refinement_board.py
 make grove-render-check
 ```
 
 The checked-in assets suffice; rebuild instructions are in the asset notes.
 Each capture records engine, renderer/device, orthographic camera, wind/weather/
 shadow state, asset-manifest hashes, scene/shader hashes and the captured PNG
-fingerprint. Native render checks verify actual light/shadow pixel changes,
+fingerprint. Refined captures also record the baked terrain manifest fingerprint,
+light energy and placement count. Native render checks verify actual light/shadow pixel changes,
 visible terrain with upward-facing normals, texture mipmaps, deterministic
 placements, wind uniforms, non-billboarding and optional weather/isolation.
 
@@ -67,6 +114,10 @@ placements, wind uniforms, non-billboarding and optional weather/isolation.
 - This removes the old regular crown tiers and bare floor. It does **not**
   establish a finished Souls/Pathologic/NieR art direction: the cottage-like
   clinic silhouette and simple traveler remain the weakest, mismatched assets.
+- The 2048px terrain field spans 64m and will repeat outside those bounds.
+  It is a fixed look-dev slice, not a tiled/infinite production terrain solution.
+- The offline bake spends storage and texture memory instead of fragment-shader
+  work; target-device memory and frame time are not measured here.
 - Photo-derived foliage can shimmer at distance. These checks do not establish
   subtle temporal stability or full combat readability; no combat is added.
 - About **1.04M full-detail tree triangles** across nineteen placements before

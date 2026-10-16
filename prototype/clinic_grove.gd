@@ -31,27 +31,28 @@ const FIR_PLACEMENTS := [
 	[Vector3(6.0, 0, 2.0), 0, 0.0, 0.51],
 	[Vector3(7.4, 0, -2.5), 2, 1.9, 0.69],
 	[Vector3(4.7, 0, -8.4), 1, 0.7, 0.69],
-	[Vector3(-1.0, 0, -10.6), 0, 2.1, 0.58],
+	[Vector3(-1.0, 0, -13.6), 0, 2.1, 0.73],
 	[Vector3(-6.3, 0, -8.7), 1, 4.2, 0.72],
 	[Vector3(-8.0, 0, -3.2), 2, 1.3, 0.68],
-	[Vector3(-7.5, 0, 3.4), 1, 3.0, 0.60],
+	[Vector3(-8.2, 0, 4.5), 1, 3.0, 0.72],
 	[Vector3(9.5, 0, -6.5), 0, 4.1, 0.54],
 	[Vector3(-9.9, 0, -7.2), 0, 2.8, 0.55],
-	[Vector3(1.8, 0, -12.3), 2, 0.3, 0.70],
+	[Vector3(2.8, 0, -14.3), 2, 0.3, 0.81],
 	[Vector3(-9.0, 0, 0.2), 0, 1.2, 0.48],
 	[Vector3(9.4, 0, 0.9), 1, 3.4, 0.61],
-	[Vector3(-4.9, 0, -12.8), 0, 1.5, 0.62],
-	[Vector3(-8.0, 0, -11.4), 1, 0.8, 0.60],
+	[Vector3(-4.9, 0, -14.8), 0, 1.5, 0.70],
+	[Vector3(-5.9, 0, -15.8), 1, 0.8, 0.85],
 	[Vector3(-11.2, 0, -10.3), 2, 2.8, 0.80],
 	[Vector3(7.5, 0, -11.2), 0, 3.5, 0.57],
 	[Vector3(11.5, 0, -7.6), 1, 1.7, 0.65],
-	[Vector3(-9.7, 0, 5.9), 2, 4.5, 0.40],
-	[Vector3(9.3, 0, 6.0), 1, 0.9, 0.34],
+	[Vector3(-11.5, 0, 0.4), 2, 4.5, 0.72],
+	[Vector3(11.7, 0, -11.0), 1, 0.9, 0.69],
 ]
 
 var texture_cache: Dictionary = {}
 var material_cache: Dictionary = {}
 var cover: Node3D
+var ground_material: ShaderMaterial
 
 
 func _ready() -> void:
@@ -155,8 +156,9 @@ func _setup_clinic() -> void:
 					kind = 3
 				material.set_shader_parameter("surface_kind", kind)
 				material.set_shader_parameter(
-					"base_color", Color("808879") if kind == 0 else Color("35434a")
+					"base_color", Color("888f7d") if kind == 0 else Color("35434a")
 				)
+				material.set_shader_parameter("variation", float(name.right(1).to_int()) * 0.005)
 				part.set_surface_override_material(index, material)
 			else:
 				var material := base.duplicate() as StandardMaterial3D
@@ -164,7 +166,9 @@ func _setup_clinic() -> void:
 				material.roughness = maxf(material.roughness, 0.85)
 				material.metallic_specular = 0.12
 				if name.begins_with("Traveler cloak"):
-					material.albedo_color = Color("817c63")
+					material.albedo_color = Color("575c54")
+				if name.begins_with("Ivory enamel"):
+					material.albedo_color = Color("b4af92")
 				if material.emission_enabled:
 					material.emission_energy_multiplier = 0.35
 					material.albedo_color = Color("9b824f")
@@ -201,10 +205,13 @@ func _setup_earth() -> void:
 	floor_part.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	var soil := ShaderMaterial.new()
 	soil.shader = GROVE_GROUND
-	soil.set_shader_parameter("litter", _texture("forest_floor_diff.jpg"))
-	soil.set_shader_parameter("litter_normal", _texture("forest_floor_nor_gl.jpg"))
-	soil.set_shader_parameter("moss", _texture("mossy_rock_diff.jpg"))
-	soil.set_shader_parameter("moss_normal", _texture("mossy_rock_nor_gl.jpg"))
+	for channel in ["color", "normal"]:
+		var source := load("res://assets/grove-terrain/" + channel + ".jpg") as Texture2D
+		var image := source.get_image()
+		if not image.has_mipmaps():
+			image.generate_mipmaps()
+		soil.set_shader_parameter("terrain_" + channel, ImageTexture.create_from_image(image))
+	ground_material = soil
 	floor_part.material_override = soil
 	add_child(floor_part)
 
@@ -220,6 +227,14 @@ func _scatter(
 	for mesh in prop.find_children("*", "MeshInstance3D", true, false):
 		mesh.material_override = material
 	cover.add_child(prop)
+
+
+func _path_distance(x: float, z: float) -> float:
+	return absf(x + 0.55 - sin(maxf(z - 0.8, 0.0) * 0.23) * 1.05)
+
+
+func _near_clinic(x: float, z: float) -> bool:
+	return x > -6.0 and x < 6.6 and z < 0.5 and z > -8.6
 
 
 func _setup_cover() -> void:
@@ -239,11 +254,10 @@ func _setup_cover() -> void:
 		[Vector3(-4.5, -0.18, -7.5), 0.65],
 	]:
 		_scatter(ROCKS[rng.randi_range(0, 2)], item[0], item[1], rng.randf() * TAU, rock_material)
-	for index in range(210):
+	for index in range(280):
 		var x := rng.randf_range(-12.0, 12.0)
 		var z := rng.randf_range(-12.0, 11.0)
-		var path_center := -0.55 + sin(z * 0.3) * 0.9
-		if (x > -6.0 and x < 6.6 and z < 0.5 and z > -8.6) or absf(x - path_center) < 2.1:
+		if _near_clinic(x, z) or _path_distance(x, z) < 1.8:
 			continue
 		_scatter(
 			FERNS[index % 4],
@@ -268,23 +282,24 @@ func _setup_grass() -> void:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	for index in range(2500):
-		var x := rng.randf_range(-14.0, 14.0)
-		var z := rng.randf_range(-14.0, 12.0)
-		var path_center := -0.55 + sin(z * 0.3) * 0.9
-		if (absf(x) < 6.6 and z < 0.5 and z > -8.6) or absf(x - path_center) < 2.2:
+		var x := rng.randf_range(-16.0, 16.0)
+		var z := rng.randf_range(-19.0, 12.0)
+		if _near_clinic(x, z) or _path_distance(x, z) < 1.55:
+			continue
+		if sin(x * 1.2 + cos(z * 0.9)) * cos(z * 0.7) < -0.15:
 			continue
 		var center := Vector3(x, _height(x, z), z)
 		for blade in range(5):
 			var angle := rng.randf() * TAU
 			var sideways := Vector3(cos(angle), 0, sin(angle)) * rng.randf_range(0.015, 0.035)
 			var lean := Vector3(-sin(angle), 0, cos(angle)) * rng.randf_range(0.07, 0.16)
-			var height := rng.randf_range(0.16, 0.35)
+			var height := rng.randf_range(0.12, 0.27)
 			var foot := (
 				center + Vector3(rng.randf_range(-0.18, 0.18), 0, rng.randf_range(-0.18, 0.18))
 			)
 			var mid := foot + Vector3.UP * height * 0.6 + lean * 0.3
 			var tip := foot + Vector3.UP * height + lean
-			var shade := Color("526044").lerp(Color("8c8b59"), rng.randf())
+			var shade := Color("3c4b39").lerp(Color("697451"), rng.randf())
 			for vertex in [
 				foot - sideways,
 				mid - sideways * 0.6,
@@ -317,9 +332,9 @@ func _apply_conditions() -> void:
 	environment.fog_enabled = atmospheric
 	environment.fog_density = 0.006 if atmospheric else 0.0
 	environment.ambient_light_color = Color("b7c6ce")
-	environment.ambient_light_energy = 0.44 if not atmospheric else 0.38
-	sun.light_energy = 1.2 if not atmospheric else 0.8
-	sun.light_color = Color("fff4e4") if not atmospheric else Color("d6e2e5")
+	environment.ambient_light_energy = 0.42 if not atmospheric else 0.38
+	sun.light_energy = 1.0 if not atmospheric else 0.8
+	sun.light_color = Color("f3f0e8") if not atmospheric else Color("d6e2e5")
 	sun.shadow_enabled = shadows_enabled
 	rain_enabled = atmospheric
 	if is_instance_valid(rain):
@@ -340,6 +355,13 @@ func _setup_hud() -> void:
 func _capture_record(image: Image) -> Dictionary:
 	var record := super._capture_record(image)
 	record.scene = "res://clinic_grove.tscn"
+	record["revision"] = "02-refined"
+	record["terrain_manifest_sha256"] = FileAccess.get_sha256(
+		"res://assets/grove-terrain/terrain.json"
+	)
+	record["tree_count"] = trees.size()
+	record["sun_energy"] = sun.light_energy
+	record["ambient_energy"] = environment.ambient_light_energy
 	record.erase("asset_sha256")
 	record.erase("atlas_sha256")
 	record["source_manifest_sha256"] = FileAccess.get_sha256(ASSET_ROOT + "sources.json")

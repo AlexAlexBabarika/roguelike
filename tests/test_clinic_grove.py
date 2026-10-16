@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+import re
 import struct
 import unittest
 
@@ -10,6 +11,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'prototype/assets/reference-forest'
 CAPTURES = ROOT / 'docs/screenshots/clinic-grove'
+ARCHIVE = ROOT / 'docs/screenshots/clinic-grove-v1'
+TERRAIN = ROOT / 'prototype/assets/grove-terrain'
 
 
 def digest(path):
@@ -17,6 +20,34 @@ def digest(path):
 
 
 class ClinicGroveTests(unittest.TestCase):
+    def test_baked_terrain_is_reproducible_and_traced_to_cc0_sources(self):
+        record = json.loads((TERRAIN / 'terrain.json').read_text())
+        self.assertEqual(record['source_license'], 'CC0-1.0')
+        self.assertEqual(record['world_span_m'], 64.0)
+        self.assertEqual(record['resolution'], 2048)
+        self.assertEqual(record['builder_sha256'], digest(ROOT / 'prototype/tools/build_grove_terrain.py'))
+        for name, expected in record['runtime_files'].items():
+            self.assertEqual(digest(TERRAIN / name), expected)
+            self.assertTrue((TERRAIN / name).read_bytes().startswith(b'\xff\xd8'))
+        for name, expected in record['sources'].items():
+            self.assertEqual(digest(ASSETS / name), expected)
+        scene = (ROOT / 'prototype/clinic_grove.gd').read_text()
+        placements = scene.split('const FIR_PLACEMENTS := [')[1].split('\n]')[0]
+        pattern = r'Vector3\(([-\d.]+), 0, ([-\d.]+)\), \d, [-\d.]+, ([-\d.]+)'
+        roots = [[float(x), float(z), float(size) * 5]
+                 for x, z, size in re.findall(pattern, placements)]
+        self.assertEqual(len(roots), 19)
+        self.assertEqual(record['roots_xz_radius'], roots)
+
+    def test_prior_capture_is_preserved_with_its_original_provenance(self):
+        for name in ['daylight', 'tree', 'silhouette', 'approach', 'weather']:
+            with self.subTest(name=name):
+                path = ARCHIVE / (name + '.png')
+                record = json.loads(path.with_suffix('.json').read_text())
+                self.assertEqual(record['capture_sha256'], digest(path))
+                self.assertEqual(record['scene'], 'res://clinic_grove.tscn')
+                self.assertNotIn('revision', record)
+
     def test_licensed_sources_and_maps(self):
         record = json.loads((ASSETS / 'sources.json').read_text())
         self.assertEqual(record['license'], 'CC0-1.0')
@@ -72,6 +103,10 @@ class ClinicGroveTests(unittest.TestCase):
                 self.assertEqual(record['fog'], name == 'weather')
                 self.assertEqual(record['source_manifest_sha256'], digest(ASSETS / 'sources.json'))
                 self.assertEqual(record['mesh_manifest_sha256'], digest(ASSETS / 'meshes.json'))
+                self.assertEqual(record['revision'], '02-refined')
+                self.assertEqual(record['tree_count'], 19)
+                self.assertEqual(record['terrain_manifest_sha256'], digest(TERRAIN / 'terrain.json'))
+                self.assertGreater(record['sun_energy'], 0.0)
                 self.assertEqual(record['scene_sha256'], digest(ROOT / 'prototype/clinic_grove.gd'))
                 for shader, expected in record['shaders'].items():
                     self.assertEqual(digest(ROOT / f'prototype/shaders/{shader}.gdshader'), expected)
@@ -81,6 +116,12 @@ class ClinicGroveTests(unittest.TestCase):
         for key in ['target', 'size', 'yaw_radians', 'elevation_radians', 'resolution']:
             self.assertEqual(before[key], after[key], key)
             self.assertEqual(after[key], weather[key], key)
+        original = json.loads((ARCHIVE / 'daylight.json').read_text())
+        earlier_approach = json.loads((ARCHIVE / 'approach.json').read_text())
+        refined_approach = json.loads((CAPTURES / 'approach.json').read_text())
+        for key in ['target', 'size', 'yaw_radians', 'elevation_radians', 'resolution']:
+            self.assertEqual(original[key], after[key], key)
+            self.assertEqual(earlier_approach[key], refined_approach[key], key)
 
     def test_materials_are_lit_and_not_screen_filtered(self):
         for shader in ['grove_surface', 'grove_ground', 'grove_clinic']:

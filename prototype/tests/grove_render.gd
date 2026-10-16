@@ -44,6 +44,11 @@ func _run() -> void:
 	var arrays := floor_part.mesh.surface_get_arrays(0)
 	var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
 	_check(normals[0].dot(Vector3.UP) > 0.95, "ground winding and normals face the camera")
+	for channel in ["color", "normal"]:
+		var terrain := scene.ground_material.get_shader_parameter("terrain_" + channel) as Texture2D
+		_check(terrain.get_image().has_mipmaps(), "baked terrain " + channel + " has mipmaps")
+	_check(scene._path_distance(-0.55, 0.8) < 0.01, "worn path meets clinic entrance")
+	_check(scene._path_distance(4.0, 5.0) > 3.0, "understory stays outside the path")
 	for material in scene.foliage_materials:
 		_check(not material.get_shader_parameter("wind_enabled"), "wind-off reaches source foliage")
 		var texture := material.get_shader_parameter("color_map") as Texture2D
@@ -67,6 +72,16 @@ func _run() -> void:
 		"surfaces respond to sunlight"
 	)
 	scene._apply_conditions()
+	await _frames()
+	var detailed := root.get_texture().get_image()
+	scene.ground_material.set_shader_parameter("detail_strength", 0.0)
+	await _frames()
+	_check(
+		_difference(detailed, root.get_texture().get_image()) > 100.0,
+		"baked terrain affects actual rendered pixels"
+	)
+	scene.ground_material.set_shader_parameter("detail_strength", 1.0)
+	await _frames()
 	floor_part.visible = false
 	await _frames()
 	_check(

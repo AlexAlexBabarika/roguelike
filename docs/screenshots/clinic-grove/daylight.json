@@ -1,5 +1,6 @@
 {
-	"capture_sha256": "267ea788f0e2e3232d6851fe2a286ea274e93df90ad944f1fc9dbb691d2b6c95",
+	"ambient_energy": 0.419999986886978,
+	"capture_sha256": "5bfabed110eafe8846d66ff4a6779d98e9cc36be15ceb967dca6cf3290584d06",
 	"clock_seconds": 6.0,
 	"content": "CC0 Poly Haven conifers, rocks, ferns, PBR maps; original clinic/traveler",
 	"device": "llvmpipe (LLVM 15.0.7, 256 bits)",
@@ -18,12 +19,13 @@
 		1280,
 		800
 	],
+	"revision": "02-refined",
 	"scene": "res://clinic_grove.tscn",
-	"scene_sha256": "cc355d14071839763eeaa31be29435d6db050319f0e25d3a987be8355c238be9",
+	"scene_sha256": "577a8b5ff53788035af179b4abbc89976c68e7a009acba9445d27061a2dbc9eb",
 	"screen_filter": false,
 	"shaders": {
-		"grove_clinic": "e03c38f83785830d7484db19dd2371ca6a6c97b9c89b0b5738397d80bdf965f7",
-		"grove_ground": "0ceb7778650cfa1c38e981077c237decda94dd390fe03da27683ba88053dcc3a",
+		"grove_clinic": "6cd2b24c393b7d1cdf66064d76155bbbef72d45808327b815e71f8e1372d8982",
+		"grove_ground": "ae515609ce5b963ed54948ad54d01f8075394b4c11af211a8f6a9d7d27ea978f",
 		"grove_surface": "dfd836f4a4222bc646cdb43453b7ff1087fceffcd6e6764418e8f9ce357370a2"
 	},
 	"shadow_atlas": 2048,
@@ -31,11 +33,14 @@
 	"silhouette": false,
 	"size": 20.5,
 	"source_manifest_sha256": "eec99a942bbad401ba399f7d312b781eb5d47dcf5319d5d41794c29952c1f357",
+	"sun_energy": 1.0,
 	"target": [
 		-0.600000023841858,
 		3.0,
 		-1.5
 	],
+	"terrain_manifest_sha256": "38a2b4db5684afa70e76941267c001caf059dfbb7f7c733e7e5ea0097e87be8c",
+	"tree_count": 19,
 	"wind": false,
 	"yaw_radians": 0.57
 }
