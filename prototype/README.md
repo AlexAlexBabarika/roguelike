@@ -12,6 +12,17 @@ commands that work from the repository root; commands below run inside `prototyp
 
 ## Separate forest / clinic art mock
 
+The latest look-development scene is the
+[clinic grove](../docs/CLINIC_GROVE.md): run `godot --path . res://clinic_grove.tscn`.
+It uses artist-authored CC0 conifers, textured earth/rocks/ferns, dry daylight
+and real shadows, without a screen filter. It remains separate from the playable
+courtyard and the historical mocks below. Higher geometry cost, not a final
+production or performance claim.
+
+**1–3:** context / isolated tree / approach. **Q/E:** orbit. **Wheel:** zoom.
+**I:** isolate. **S:** silhouette. **L:** shadows. **T:** weather. **Space:** pause.
+**H:** HUD. Earlier `res://forest_slice.tscn` remains a historical procedural test.
+
 Run `godot --path . res://mock_scene.tscn` for the new model and lighting study.
 It does not change the courtyard main scene, player or effects. The traveler
 is a static posed model, not a playable or rigged character.

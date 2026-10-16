@@ -1,0 +1,717 @@
+{
+  "phase": "painted",
+  "captures": [
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 20.5,
+          "yaw": 0.57
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": true,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "wide",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=wide",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-wide-1920x1080.png",
+        "--fps=15"
+      ],
+      "file": "docs/screenshots/style-study/I1-wide-1920x1080.png",
+      "sha256": "79cfcbd9a14fc4e1a5757fe7cce6d46eed4309f1e0754f888c2599084a7ac16d"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 13.5,
+          "yaw": 0.48
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": true,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "clinic",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=clinic",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-clinic-1920x1080.png",
+        "--fps=15"
+      ],
+      "file": "docs/screenshots/style-study/I1-clinic-1920x1080.png",
+      "sha256": "f299702ce4ba5b971508617e1bf87e6989d92edbe1aa9e87fc61d97c26b098cb"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 5.0,
+          "yaw": 0.65
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": true,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "traveler",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=traveler",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-traveler-1920x1080.png",
+        "--fps=15"
+      ],
+      "file": "docs/screenshots/style-study/I1-traveler-1920x1080.png",
+      "sha256": "648323d144b3b87dc881d5fa81a6c58fcd9762e64a3607606c025a32302c26df"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 20.5,
+          "yaw": 0.57
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": true,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1280,
+        720
+      ],
+      "view": "wide",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1280x720",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=wide",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-wide-1280x720.png",
+        "--fps=15"
+      ],
+      "file": "docs/screenshots/style-study/I1-wide-1280x720.png",
+      "sha256": "ac604866c9a37893e3eead9b3045a00357ef7630aac6f766562ded7de3450852"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 13.5,
+          "yaw": 0.48
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": true,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1280,
+        720
+      ],
+      "view": "clinic",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1280x720",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=clinic",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-clinic-1280x720.png",
+        "--fps=15"
+      ],
+      "file": "docs/screenshots/style-study/I1-clinic-1280x720.png",
+      "sha256": "06a2820242a737a965e4d1b02cf3ce448c68d402c73964eb7c255432a5dfe086"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 5.0,
+          "yaw": 0.65
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": true,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1280,
+        720
+      ],
+      "view": "traveler",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1280x720",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=traveler",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-traveler-1280x720.png",
+        "--fps=15"
+      ],
+      "file": "docs/screenshots/style-study/I1-traveler-1280x720.png",
+      "sha256": "2c6723e6ed9c93b44d0f8e839c4b7a510145c55b98adb8b023412b65074abaa5"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 20.5,
+          "yaw": 0.57
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": false,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "wide",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=wide",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-no-paint-wide-1920x1080.png",
+        "--fps=15",
+        "--no-paint"
+      ],
+      "file": "docs/screenshots/style-study/I1-no-paint-wide-1920x1080.png",
+      "sha256": "e957373c778df187c53096faf9d9cd84f4715bcbd5098dd9cecfca39652a9a9b"
+    },
+    {
+      "ambient": 0.280000001192093,
+      "arm": "I1",
+      "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+      "atmosphere": false,
+      "crown_atlas_sha256": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+      "crown_cards": 1254,
+      "fog_density": 0.00400000018998981,
+      "fps": 15,
+      "frames": [
+        {
+          "clock": 6.0,
+          "frame": 0,
+          "size": 5.0,
+          "yaw": 0.65
+        }
+      ],
+      "lights": [
+        [
+          "DirectionalLight3D",
+          "Vector3(0, 0, 0)",
+          0.850000023841858
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-3.7, 2.4, -0.8)",
+          1.10000002384186
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.55, 2.1, -0.4)",
+          1.5
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(3.4, 2.4, -3.7)",
+          0.899999976158142
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-5.28, 2.9, 0.9)",
+          1.39999997615814
+        ],
+        [
+          "OmniLight3D",
+          "Vector3(-0.5, 4, 5.4)",
+          0.550000011920929
+        ]
+      ],
+      "movie": "",
+      "painterly_filter": false,
+      "pan_pixels": 0,
+      "probes": true,
+      "rain": true,
+      "reflections": true,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "view": "traveler",
+      "wind": true,
+      "driver": "OpenGL API 4.5 (Core Profile) Mesa 23.2.1-1ubuntu3.1~22.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 15.0.7, 256 bits)",
+      "godot_version": "4.5.1.stable.official.f62fdbde1",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--disable-vsync",
+        "--resolution",
+        "1920x1080",
+        "--path",
+        "/home/ubuntu/repos/roguelike/prototype",
+        "res://style_study.tscn",
+        "--",
+        "--arm=I1",
+        "--view=traveler",
+        "--capture=/home/ubuntu/repos/roguelike/docs/screenshots/style-study/I1-no-paint-traveler-1920x1080.png",
+        "--fps=15",
+        "--no-paint"
+      ],
+      "file": "docs/screenshots/style-study/I1-no-paint-traveler-1920x1080.png",
+      "sha256": "679bdbbc7987f3462caf0c30c28540edd42246dc1073c27823a7b96fbab9d762"
+    }
+  ],
+  "sources": {
+    "prototype/mock_scene.gd": "13f6e6fbbfd9cd7c0b40aa3bc6c25781da66a0a23562705a02ac49c80ca04666",
+    "prototype/style_study.gd": "fab49631465661114154c962e68c458ba29af9807acaac7c8b1bffaec0fda043",
+    "prototype/style_study.tscn": "c550d8542918fcde3bc97cbc8c835c0824921f1e00d9b02876c1362565580653",
+    "prototype/assets/forest-clinic.glb": "9fd119444859c2e64948a05b8bd8912a6e4c971125cd7f86bbb040e4d91d87ef",
+    "prototype/assets/forest-clinic-prepared.glb": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b",
+    "prototype/tools/prepare_style_kit.py": "65f7facb3ece920e8a7d02b3efe3edc409294b2e2fee1c5728317781b9baccb2",
+    "prototype/tools/capture_style_study.py": "582731b55aaa3c9275f0a773b044e8f5e030d91b8d692c41a01ac1e208059613",
+    "prototype/shaders/study_painterly.gdshader": "4319cf2354fb70d221a9a229cb5bf47cea734452ec008677b087950f57455164",
+    "prototype/shaders/study_painterly.gdshader.uid": "2b9028d7f7af89a63a7d48aff7a16c8582ae86eaee6010797f0b5a0446ba87e9",
+    "prototype/shaders/study_water.gdshader": "f02467c1fbf4599c51baf5fcec5b2d003643abcc6d73b9463c1df005f40be3f1",
+    "prototype/shaders/study_surface.gdshaderinc": "30bff62689a4104247e64b3de50bf352b36a19b35d449ea8fa2e476c2bbee0a2",
+    "prototype/shaders/study_protection.gdshader": "6fd10c0622021f18c9a98dce06829fec3fe6306bb56c2e65e9504d9e436eb2b7",
+    "prototype/shaders/study_protection.gdshader.uid": "58c841a4ae04daf0487fe1f0e8fc86026f643e9ba4c2fd8e9b0da8f19ef2748d",
+    "prototype/shaders/study_painted_crown.gdshader": "c5f93b30799dd894fb43675a913a434f80ca093efc152a6e78393cfd9b5d1070",
+    "prototype/shaders/study_rain_protection.gdshader": "db4d284cf50b87bd98275d5fac28dd3dd5016a0f4d03ceebaa081b5e5cabf2da",
+    "prototype/shaders/study_ground.gdshader.uid": "659561deab6c6df9b46ad9a2273cf008b769f00328547e694f1cdd08b958b79d",
+    "prototype/shaders/study_ink.gdshader.uid": "ad774987775e7ce30926b31d286baf50ad34a44dbfe96c85592d6ab61f31093c",
+    "prototype/shaders/study_water.gdshader.uid": "b21ec9a5889a06db5f877a08f6590a87809423108291860fb1a857e264a92cc7",
+    "prototype/shaders/study_ground.gdshader": "ca5db6a4b6a3cb07f1aab55705150b8cec5207d8b77fd45b4ce4d681524103fa",
+    "prototype/shaders/study_hidden_bough.gdshader": "4b15b2f197eca17cb7ed2dcbd0239be7d6516c5bb69801c399f9080abdb359e9",
+    "prototype/shaders/study_gouache.gdshader.uid": "1c9d612adbcf73a34a6022fce733c284c1587b87507248c969819cd78c9b8625",
+    "prototype/shaders/study_gouache.gdshader": "27b5429fe1c1a62761f6a4cb36893382b531b1cf329e7e54786c8b59d1044d99",
+    "prototype/shaders/study_ink.gdshader": "b00541f5f7a835731f1e682df96e7bd28fe34d16ca8b942942a1a8b91167aec6",
+    "prototype/shaders/study_miniature.gdshader": "2776f9ccdedc124de1d01cc8d4e9f9a59ca69fb5248d1b6d3ec9bedb1e486bd8",
+    "prototype/shaders/study_miniature.gdshader.uid": "6c8be6d66561955fba54177721a73eb92560b744485e81b0983821db06856665",
+    "prototype/shaders/study_hidden_bough.gdshader.uid": "34d8488740157f6c67bebaffa0d1246955b508b2edbc7359002341818aed2f48",
+    "prototype/shaders/study_rain_protection.gdshader.uid": "2c59bec506a9074828158c4441025daed955a369ea0eccb3677ecdb472306f36",
+    "prototype/shaders/study_surface.gdshaderinc.uid": "5be995fa3b40b76c7eb17da6d9af7187983011abcc23e4afd1db78b5d0c634ec",
+    "prototype/shaders/study_painted_crown.gdshader.uid": "1a775444429e2c8be4f95b934bafd6fc1b3e8d6e5ae0ef5668013f5c30655235",
+    "prototype/painted_pass.gd": "e92990c0b5fc31d1368ba5eb9aabc753730a13dbd13c9ae02c52798d8f6a4c3e",
+    "prototype/tools/build_painted_crowns.py": "97e0ffc7af30e24b10c5ceef7165e740c88c42340d1bfba9f940ad047c0123d7",
+    "prototype/assets/painted-crowns.png": "64e1942729564d80c6a2ad0c60596f97a7eb885530f49250ff2909ba5b0d9ddb",
+    "prototype/assets/painted-crowns.json": "238f123adaf2019338ba44d0c67e8847e770a1ac6728b22ef2290f222dfefd53",
+    "prototype/assets/painted-boughs-source.png": "bd955fe54d4e8766daecc5eab14ddc9804f8e46c8108b3cdc0ae03cacfdc718d"
+  },
+  "provenance": "Untouched Godot output. Procedural Blender stand-in, not AI-generated geometry. Software renderer; no target hardware performance claim.",
+  "texture_provenance": "I1 uses an AI-generated gouache bough texture (gpt-image-2.5-flare), not an AI scene paint-over. Its committed source is chroma-keyed and recolored deterministically."
+}

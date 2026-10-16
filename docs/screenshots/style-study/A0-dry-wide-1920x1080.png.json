@@ -1,0 +1,59 @@
+{
+	"ambient": 0.280000001192093,
+	"arm": "A0",
+	"asset_sha256": "9fd119444859c2e64948a05b8bd8912a6e4c971125cd7f86bbb040e4d91d87ef",
+	"atmosphere": false,
+	"fog_density": 0.00400000018998981,
+	"fps": 15,
+	"frames": [
+		{
+			"clock": 6.0,
+			"frame": 0,
+			"size": 20.5,
+			"yaw": 0.57
+		}
+	],
+	"lights": [
+		[
+			"DirectionalLight3D",
+			"Vector3(0, 0, 0)",
+			0.850000023841858
+		],
+		[
+			"OmniLight3D",
+			"Vector3(-3.7, 2.4, -0.8)",
+			1.10000002384186
+		],
+		[
+			"OmniLight3D",
+			"Vector3(-0.55, 2.1, -0.4)",
+			1.5
+		],
+		[
+			"OmniLight3D",
+			"Vector3(3.4, 2.4, -3.7)",
+			0.899999976158142
+		],
+		[
+			"OmniLight3D",
+			"Vector3(-5.28, 2.9, 0.9)",
+			1.39999997615814
+		],
+		[
+			"OmniLight3D",
+			"Vector3(-0.5, 4, 5.4)",
+			0.550000011920929
+		]
+	],
+	"movie": "",
+	"pan_pixels": 0,
+	"probes": true,
+	"rain": false,
+	"reflections": true,
+	"resolution": [
+		1920,
+		1080
+	],
+	"view": "wide",
+	"wind": true
+}

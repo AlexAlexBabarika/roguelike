@@ -23,7 +23,25 @@ or network connection is needed to read a downloaded report. Concept studies
 are explicitly labeled AI-generated, not engine renders. Mechanics and scope
 recommendations remain proposals, not approved features.
 
-## Forest / clinic art mock
+## Clinic grove — current look-development candidate
+
+The [authored-asset revision](docs/CLINIC_GROVE.md) uses CC0 Poly Haven conifers,
+textured earth, mossy rocks, ferns and weathered clinic materials. Dry daylight,
+lit foliage, real shadows, no screen filter. Run `make clinic-grove`.
+This is a visual candidate, not an optimized level or finished art direction.
+
+![Clinic grove — actual Godot daylight render](docs/screenshots/clinic-grove/daylight.png)
+
+## Earlier structured forest
+
+The [daylight forest slice](docs/STRUCTURED_FOREST.md) replaces the rejected
+paint-smear approach with structured spruce boughs, lit fixed foliage cutouts and
+cast shadows. Run `make forest-slice`. This is separate from the playable scene;
+the earlier G1/I1 experiments remain historical evidence, not approved art.
+
+![Structured forest — actual Godot daylight render](docs/screenshots/structured-forest/daylight.png)
+
+## Earlier forest / clinic art mock
 
 A separate, non-playable scene with a modeled rural clinic, layered spruce and
 birch trees, a cloaked traveler, warm windows and rain-disturbed puddles.
@@ -41,6 +59,8 @@ See [captures, controls, rebuild commands and limitations](docs/FOREST_CLINIC_MO
 This is a model/composition study, not a final art-direction choice.
 
 ## Play the migrated Godot prototype
+
+The [I1 painted-forest comparison](docs/PAINTED_FOREST.md) is preserved as a rejected experiment, not the current direction.
 
 Install **Godot 4.5.1**, then run from this repository's root:
 

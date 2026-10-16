@@ -1,0 +1,36 @@
+{
+  "seed": 74013,
+  "variants": [
+    {
+      "variant": 0,
+      "height_m": 8.6,
+      "primary_branches": 64,
+      "fixed_branch_cards": 1435,
+      "wood_vertices": 7258,
+      "foliage_vertices": 12915,
+      "triangles": 21317
+    },
+    {
+      "variant": 1,
+      "height_m": 7.2,
+      "primary_branches": 70,
+      "fixed_branch_cards": 1361,
+      "wood_vertices": 7082,
+      "foliage_vertices": 12249,
+      "triangles": 20565
+    },
+    {
+      "variant": 2,
+      "height_m": 9.5,
+      "primary_branches": 69,
+      "fixed_branch_cards": 1696,
+      "wood_vertices": 8402,
+      "foliage_vertices": 15264,
+      "triangles": 24885
+    }
+  ],
+  "asset_sha256": "50f94b82ab2d1f518b0b65266512d84198906c6f25e1c60ae0f620bb19be5abb",
+  "atlas_sha256": "192f47cc3332ce46bf8e408d90eaf65cfab7a8987f6e352b1e2ec0eb0bf8972a",
+  "provenance": "Original procedural branch geometry and needle atlas. No AI images, downloaded meshes or third-party game assets.",
+  "method": "Tapered wood tubes and fixed bent alpha-scissor branch cards; no camera-facing transforms."
+}

@@ -1,0 +1,24 @@
+{
+  "source": "tools/build_mock_scene.py",
+  "source_sha256": "12725476cde8d24fb01c3125a30f5d5b84c445aa5d4978eac8fdbd24110d2078",
+  "seed": 40217,
+  "blender": "4.5.3 LTS",
+  "fronds_unified": 4840,
+  "trunks_shortened": 22,
+  "masks": {
+    "R": "analytic occlusion/interior",
+    "G": "analytic exposure, not shelter raycasting",
+    "B": "reserved edge wear (zero)",
+    "A": "object pigment seed"
+  },
+  "changes": [
+    "one pigment per four-triangle frond",
+    "narrower slate and fir palette",
+    "lower-value rocks",
+    "unified cloak swatch and smooth side normals",
+    "foliage crown proxy normals",
+    "trunk tips shortened within crowns"
+  ],
+  "limitations": "Procedural Blender stand-in, not representative AI meshes. No new silhouette loops, AO bake, skinning or animation.",
+  "asset_sha256": "d896d67c03077b34408c36909722b3acca293de4a58f071dbbf001fff38bfa0b"
+}

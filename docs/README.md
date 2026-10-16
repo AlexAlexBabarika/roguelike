@@ -12,6 +12,22 @@ in the reports, including the game-loop report's optional detail sections.
 
 ## New engine mock
 
+[Clinic grove](CLINIC_GROVE.md): current authored-asset candidate. CC0 Poly Haven
+conifers, textured ground, rocks/ferns and weathered clinic surfaces. Actual
+daylight Godot output, no screen filter. Higher geometry cost, not final art.
+
+[Structured forest slice](STRUCTURED_FOREST.md): earlier procedural candidate,
+not visually approved. Spruce trunks/boughs, fixed lit cutouts and cast shadows in ordinary
+daylight. No screen-space paint filter. G1 was insufficient; I1 was rejected.
+No final art direction or target-hardware performance claim.
+
+[Material / atmosphere experiments](style-study.md): baseline, shared mesh prep,
+wet gouache and soft miniature at matched cameras, followed by the selected
+treatment with and without a value/atmosphere re-key. See the
+[offline interactive comparison](boards/style-study-comparison.html).
+Gouache is provisional; the atmosphere arm trades stronger dark-enemy contrast
+for weaker traveler/path contrast. No final art direction or hardware claim.
+
 [Forest / field clinic](FOREST_CLINIC_MOCK.md): a separate model/composition study
 with three actual Godot captures, reproducible Blender geometry and its own
 provenance record. No AI concept image is used as an asset or background.
@@ -35,6 +51,12 @@ The research reports and their archived fingerprints are unchanged.
 
 ## Comparison boards
 
+- [Clinic grove: earlier procedural slice versus authored assets](boards/clinic-grove-comparison.jpg) —
+  actual Godot output; [methods, licensing and limitations](CLINIC_GROVE.md).
+
+- [Gouache / miniature / atmosphere: same-camera Godot study](boards/style-study-comparison.html) —
+  offline arm/camera/resolution controls, greyscale and color-vision diagnostics,
+  luminance table; [methods and limitations](style-study.md).
 - [Storm Fresco: actual Godot A/B/C comparison](boards/storm-fresco-engine-comparison-board.jpg) —
   derived from captured PNGs; [selected originals, measurements and limitations](STORM_FRESCO.md).
 - [Four new styles](boards/new-art-directions-board.jpg)

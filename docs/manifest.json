@@ -66,6 +66,33 @@
       "sha256": "0ba5c94e148d9013311bfbf30416958abcb9981895f232bc715ff9fe24eb00b5",
       "kind": "derived Godot screenshot comparison",
       "source_session": "https://app.devin.ai/sessions/5d876fef59694cb9b9b23a09e4e845b8"
+    },
+    {
+      "path": "boards/style-study-comparison.html",
+      "sha256": "f151dba8af65b9684a0d4a423e93142fb3983ca13cb50e0accfed1614cea0dfc",
+      "kind": "interactive same-camera Godot experiment comparison"
+    },
+    {
+      "path": "boards/painted-forest-comparison.jpg",
+      "sha256": "258a4b3b4e2635775ac51beb575ba0f4b22d6863dd6dfd02f625066107d0d31a"
+    },
+    {
+      "path": "boards/structured-forest.jpg",
+      "sha256": "f1046237a4dd7badff1b0fe7c2632f30fdbb34fe4edda170605d3315f6852864"
+    },
+    {
+      "path": "boards/clinic-grove-comparison.jpg",
+      "title": "Clinic grove \u2014 procedural slice versus authored assets",
+      "status": "engine evidence, visual candidate; not final art",
+      "description": "Actual Godot daylight captures, artist-authored CC0 assets; no screen filter.",
+      "sha256": "344847a0bf551a6eb7b99a93662617a101b7b8f01fb6080adb6da3d44b41dcdc"
+    },
+    {
+      "path": "boards/clinic-grove-refinement.jpg",
+      "title": "Clinic grove — authored daylight context refinement",
+      "status": "engine evidence, visual candidate; not final art",
+      "description": "Matched actual Godot views of the prior and refined context/approach, no screen filter.",
+      "sha256": "0f7dd924a1aa0c9a1ac3efafc867660011fd044ad0371f307c5b178bb438bfe9"
     }
   ],
   "captures": [

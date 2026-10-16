@@ -27,6 +27,11 @@ BOARD_NAMES = {
     "isometric-art-directions-board.jpg",
     "new-art-directions-board.jpg",
     "storm-fresco-engine-comparison-board.jpg",
+    "style-study-comparison.html",
+    "painted-forest-comparison.jpg",
+    "structured-forest.jpg",
+    "clinic-grove-comparison.jpg",
+    "clinic-grove-refinement.jpg",
 }
 CAPTURE_NAMES = {
     "A_october_wind_up.png",

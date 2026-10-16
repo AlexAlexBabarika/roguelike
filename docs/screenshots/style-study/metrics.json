@@ -1,0 +1,509 @@
+{
+  "method": "Linear-light Rec.709 ROI mean, encoded back to sRGB 0-255. Hand-picked normalized rectangles; not a perceptual/playability score.",
+  "rois": {
+    "crown": [
+      0.2,
+      0.35,
+      0.26,
+      0.43
+    ],
+    "roof": [
+      0.57,
+      0.33,
+      0.615,
+      0.37
+    ],
+    "ground": [
+      0.2,
+      0.81,
+      0.24,
+      0.85
+    ],
+    "path": [
+      0.369,
+      0.898,
+      0.385,
+      0.919
+    ],
+    "cloak": [
+      0.407,
+      0.706,
+      0.422,
+      0.732
+    ],
+    "rock": [
+      0.52,
+      0.735,
+      0.526,
+      0.748
+    ],
+    "enemy": [
+      0.459,
+      0.718,
+      0.468,
+      0.745
+    ],
+    "enemy_floor": [
+      0.477,
+      0.779,
+      0.486,
+      0.793
+    ],
+    "warning": [
+      0.442,
+      0.783,
+      0.456,
+      0.79
+    ],
+    "window": [
+      0.414,
+      0.44,
+      0.422,
+      0.453
+    ],
+    "blade": [
+      0.436,
+      0.713,
+      0.451,
+      0.732
+    ]
+  },
+  "color_vision": "Machado et al. 2009 severity 1.0; linear RGB transforms clipped to display gamut.",
+  "matrices": {
+    "protan": [
+      [
+        0.152286,
+        1.052583,
+        -0.204868
+      ],
+      [
+        0.114503,
+        0.786281,
+        0.099216
+      ],
+      [
+        -0.003882,
+        -0.048116,
+        1.051998
+      ]
+    ],
+    "deutan": [
+      [
+        0.367322,
+        0.860646,
+        -0.227968
+      ],
+      [
+        0.280085,
+        0.672501,
+        0.047413
+      ],
+      [
+        -0.01182,
+        0.04294,
+        0.968881
+      ]
+    ],
+    "tritan": [
+      [
+        1.255528,
+        -0.076749,
+        -0.178779
+      ],
+      [
+        -0.078411,
+        0.930809,
+        0.147602
+      ],
+      [
+        0.004733,
+        0.691367,
+        0.3039
+      ]
+    ]
+  },
+  "arms": {
+    "A0": {
+      "color": {
+        "crown": 76.65,
+        "roof": 77.49,
+        "roof_edge_energy": 1.033,
+        "ground": 66.11,
+        "path": 78.31,
+        "cloak": 137.76,
+        "rock": 134.67,
+        "enemy": 40.52,
+        "enemy_floor": 66.22,
+        "warning": 207.82,
+        "window": 248.63,
+        "blade": 68.58,
+        "blade_p99": 214.39,
+        "cloak_path_delta": 59.45,
+        "enemy_floor_delta": 25.7,
+        "crown_roof_ground_min_gap": 0.84
+      },
+      "protan": {
+        "crown": 78.5,
+        "roof": 79.97,
+        "roof_edge_energy": 1.04,
+        "ground": 67.41,
+        "path": 78.69,
+        "cloak": 138.08,
+        "rock": 136.74,
+        "enemy": 41.7,
+        "enemy_floor": 67.42,
+        "warning": 202.4,
+        "window": 242.15,
+        "blade": 69.1,
+        "blade_p99": 215.78,
+        "cloak_path_delta": 59.39,
+        "enemy_floor_delta": 25.72,
+        "crown_roof_ground_min_gap": 1.47
+      },
+      "deutan": {
+        "crown": 75.34,
+        "roof": 75.84,
+        "roof_edge_energy": 1.029,
+        "ground": 65.18,
+        "path": 78.01,
+        "cloak": 137.43,
+        "rock": 133.23,
+        "enemy": 39.73,
+        "enemy_floor": 65.37,
+        "warning": 211.17,
+        "window": 245.94,
+        "blade": 68.19,
+        "blade_p99": 213.35,
+        "cloak_path_delta": 59.42,
+        "enemy_floor_delta": 25.64,
+        "crown_roof_ground_min_gap": 0.5
+      },
+      "tritan": {
+        "crown": 76.41,
+        "roof": 77.7,
+        "roof_edge_energy": 1.032,
+        "ground": 65.9,
+        "path": 78.1,
+        "cloak": 137.25,
+        "rock": 134.47,
+        "enemy": 40.61,
+        "enemy_floor": 66.0,
+        "warning": 207.17,
+        "window": 243.89,
+        "blade": 68.42,
+        "blade_p99": 213.87,
+        "cloak_path_delta": 59.15,
+        "enemy_floor_delta": 25.39,
+        "crown_roof_ground_min_gap": 1.29
+      }
+    },
+    "A1": {
+      "color": {
+        "crown": 71.28,
+        "roof": 76.13,
+        "roof_edge_energy": 0.281,
+        "ground": 66.09,
+        "path": 78.31,
+        "cloak": 136.13,
+        "rock": 110.29,
+        "enemy": 40.52,
+        "enemy_floor": 66.22,
+        "warning": 207.82,
+        "window": 181.32,
+        "blade": 68.34,
+        "blade_p99": 215.45,
+        "cloak_path_delta": 57.82,
+        "enemy_floor_delta": 25.7,
+        "crown_roof_ground_min_gap": 4.85
+      },
+      "protan": {
+        "crown": 73.0,
+        "roof": 78.58,
+        "roof_edge_energy": 0.281,
+        "ground": 67.39,
+        "path": 78.69,
+        "cloak": 136.61,
+        "rock": 112.11,
+        "enemy": 41.7,
+        "enemy_floor": 67.42,
+        "warning": 202.4,
+        "window": 171.26,
+        "blade": 68.87,
+        "blade_p99": 216.91,
+        "cloak_path_delta": 57.92,
+        "enemy_floor_delta": 25.72,
+        "crown_roof_ground_min_gap": 5.58
+      },
+      "deutan": {
+        "crown": 70.06,
+        "roof": 74.51,
+        "roof_edge_energy": 0.281,
+        "ground": 65.17,
+        "path": 78.01,
+        "cloak": 135.7,
+        "rock": 109.03,
+        "enemy": 39.73,
+        "enemy_floor": 65.37,
+        "warning": 211.17,
+        "window": 187.38,
+        "blade": 67.96,
+        "blade_p99": 214.35,
+        "cloak_path_delta": 57.69,
+        "enemy_floor_delta": 25.64,
+        "crown_roof_ground_min_gap": 4.45
+      },
+      "tritan": {
+        "crown": 71.06,
+        "roof": 76.34,
+        "roof_edge_energy": 0.281,
+        "ground": 65.88,
+        "path": 78.1,
+        "cloak": 135.64,
+        "rock": 110.14,
+        "enemy": 40.61,
+        "enemy_floor": 66.0,
+        "warning": 207.17,
+        "window": 179.26,
+        "blade": 68.19,
+        "blade_p99": 214.93,
+        "cloak_path_delta": 57.54,
+        "enemy_floor_delta": 25.39,
+        "crown_roof_ground_min_gap": 5.18
+      }
+    },
+    "G1": {
+      "color": {
+        "crown": 74.46,
+        "roof": 69.17,
+        "roof_edge_energy": 0.354,
+        "ground": 66.52,
+        "path": 78.31,
+        "cloak": 146.79,
+        "rock": 96.02,
+        "enemy": 40.52,
+        "enemy_floor": 66.22,
+        "warning": 207.82,
+        "window": 181.32,
+        "blade": 68.33,
+        "blade_p99": 215.45,
+        "cloak_path_delta": 68.48,
+        "enemy_floor_delta": 25.7,
+        "crown_roof_ground_min_gap": 2.65
+      },
+      "protan": {
+        "crown": 76.39,
+        "roof": 71.47,
+        "roof_edge_energy": 0.357,
+        "ground": 67.83,
+        "path": 78.69,
+        "cloak": 147.16,
+        "rock": 97.7,
+        "enemy": 41.7,
+        "enemy_floor": 67.42,
+        "warning": 202.4,
+        "window": 171.26,
+        "blade": 68.86,
+        "blade_p99": 216.91,
+        "cloak_path_delta": 68.47,
+        "enemy_floor_delta": 25.72,
+        "crown_roof_ground_min_gap": 3.64
+      },
+      "deutan": {
+        "crown": 73.09,
+        "roof": 67.64,
+        "roof_edge_energy": 0.352,
+        "ground": 65.58,
+        "path": 78.01,
+        "cloak": 146.42,
+        "rock": 94.86,
+        "enemy": 39.73,
+        "enemy_floor": 65.37,
+        "warning": 211.17,
+        "window": 187.38,
+        "blade": 67.95,
+        "blade_p99": 214.35,
+        "cloak_path_delta": 68.41,
+        "enemy_floor_delta": 25.64,
+        "crown_roof_ground_min_gap": 2.06
+      },
+      "tritan": {
+        "crown": 74.21,
+        "roof": 69.37,
+        "roof_edge_energy": 0.354,
+        "ground": 66.3,
+        "path": 78.1,
+        "cloak": 146.24,
+        "rock": 95.9,
+        "enemy": 40.61,
+        "enemy_floor": 66.0,
+        "warning": 207.17,
+        "window": 179.26,
+        "blade": 68.18,
+        "blade_p99": 214.93,
+        "cloak_path_delta": 68.14,
+        "enemy_floor_delta": 25.39,
+        "crown_roof_ground_min_gap": 3.07
+      }
+    },
+    "M1": {
+      "color": {
+        "crown": 61.34,
+        "roof": 69.91,
+        "roof_edge_energy": 0.311,
+        "ground": 65.43,
+        "path": 78.31,
+        "cloak": 125.59,
+        "rock": 82.13,
+        "enemy": 40.52,
+        "enemy_floor": 66.22,
+        "warning": 207.82,
+        "window": 181.32,
+        "blade": 68.33,
+        "blade_p99": 215.45,
+        "cloak_path_delta": 47.28,
+        "enemy_floor_delta": 25.7,
+        "crown_roof_ground_min_gap": 4.09
+      },
+      "protan": {
+        "crown": 62.94,
+        "roof": 72.24,
+        "roof_edge_energy": 0.312,
+        "ground": 66.73,
+        "path": 78.69,
+        "cloak": 126.04,
+        "rock": 83.62,
+        "enemy": 41.7,
+        "enemy_floor": 67.42,
+        "warning": 202.4,
+        "window": 171.26,
+        "blade": 68.86,
+        "blade_p99": 216.91,
+        "cloak_path_delta": 47.35,
+        "enemy_floor_delta": 25.72,
+        "crown_roof_ground_min_gap": 3.79
+      },
+      "deutan": {
+        "crown": 60.22,
+        "roof": 68.37,
+        "roof_edge_energy": 0.31,
+        "ground": 64.51,
+        "path": 78.01,
+        "cloak": 125.18,
+        "rock": 81.1,
+        "enemy": 39.73,
+        "enemy_floor": 65.37,
+        "warning": 211.17,
+        "window": 187.38,
+        "blade": 67.94,
+        "blade_p99": 214.35,
+        "cloak_path_delta": 47.17,
+        "enemy_floor_delta": 25.64,
+        "crown_roof_ground_min_gap": 3.86
+      },
+      "tritan": {
+        "crown": 61.14,
+        "roof": 70.12,
+        "roof_edge_energy": 0.31,
+        "ground": 65.22,
+        "path": 78.1,
+        "cloak": 125.12,
+        "rock": 82.02,
+        "enemy": 40.61,
+        "enemy_floor": 66.0,
+        "warning": 207.17,
+        "window": 179.26,
+        "blade": 68.18,
+        "blade_p99": 214.93,
+        "cloak_path_delta": 47.02,
+        "enemy_floor_delta": 25.39,
+        "crown_roof_ground_min_gap": 4.08
+      }
+    },
+    "G1H": {
+      "color": {
+        "crown": 67.68,
+        "roof": 64.79,
+        "roof_edge_energy": 0.338,
+        "ground": 102.64,
+        "path": 112.82,
+        "cloak": 146.87,
+        "rock": 99.77,
+        "enemy": 40.52,
+        "enemy_floor": 103.12,
+        "warning": 207.82,
+        "window": 181.32,
+        "blade": 89.35,
+        "blade_p99": 215.45,
+        "cloak_path_delta": 34.05,
+        "enemy_floor_delta": 62.6,
+        "crown_roof_ground_min_gap": 2.89
+      },
+      "protan": {
+        "crown": 69.38,
+        "roof": 66.99,
+        "roof_edge_energy": 0.342,
+        "ground": 103.99,
+        "path": 113.17,
+        "cloak": 147.25,
+        "rock": 101.44,
+        "enemy": 41.7,
+        "enemy_floor": 104.33,
+        "warning": 202.4,
+        "window": 171.26,
+        "blade": 89.84,
+        "blade_p99": 216.91,
+        "cloak_path_delta": 34.08,
+        "enemy_floor_delta": 62.63,
+        "crown_roof_ground_min_gap": 2.39
+      },
+      "deutan": {
+        "crown": 66.47,
+        "roof": 63.33,
+        "roof_edge_energy": 0.336,
+        "ground": 101.67,
+        "path": 112.52,
+        "cloak": 146.5,
+        "rock": 98.62,
+        "enemy": 39.73,
+        "enemy_floor": 102.24,
+        "warning": 211.17,
+        "window": 187.38,
+        "blade": 88.98,
+        "blade_p99": 214.35,
+        "cloak_path_delta": 33.98,
+        "enemy_floor_delta": 62.51,
+        "crown_roof_ground_min_gap": 3.14
+      },
+      "tritan": {
+        "crown": 67.45,
+        "roof": 64.98,
+        "roof_edge_energy": 0.338,
+        "ground": 102.35,
+        "path": 112.53,
+        "cloak": 146.32,
+        "rock": 99.64,
+        "enemy": 40.61,
+        "enemy_floor": 102.83,
+        "warning": 207.17,
+        "window": 179.26,
+        "blade": 89.15,
+        "blade_p99": 214.93,
+        "cloak_path_delta": 33.79,
+        "enemy_floor_delta": 62.22,
+        "crown_roof_ground_min_gap": 2.47
+      }
+    }
+  },
+  "anchor": {
+    "roi": [
+      0.57,
+      0.3,
+      0.62,
+      0.34
+    ],
+    "pan_pixels": 64,
+    "aligned_mae_0_255": 0.007348191214470284,
+    "unaligned_mae_0_255": 19.37734173126615,
+    "scope": "Emission-only pigment diagnostic on a static roof; not whole-scene or foliage temporal stability."
+  }
+}
