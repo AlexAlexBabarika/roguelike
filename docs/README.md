@@ -12,8 +12,12 @@ in the reports, including the game-loop report's optional detail sections.
 
 ## New engine mock
 
-[Structured forest slice](STRUCTURED_FOREST.md): the current reference-driven
-candidate. Spruce trunks/boughs, fixed lit cutouts and cast shadows in ordinary
+[Clinic grove](CLINIC_GROVE.md): current authored-asset candidate. CC0 Poly Haven
+conifers, textured ground, rocks/ferns and weathered clinic surfaces. Actual
+daylight Godot output, no screen filter. Higher geometry cost, not final art.
+
+[Structured forest slice](STRUCTURED_FOREST.md): earlier procedural candidate,
+not visually approved. Spruce trunks/boughs, fixed lit cutouts and cast shadows in ordinary
 daylight. No screen-space paint filter. G1 was insufficient; I1 was rejected.
 No final art direction or target-hardware performance claim.
 
@@ -46,6 +50,9 @@ The research reports and their archived fingerprints are unchanged.
 | [The Last Window: artistic directions](reports/last-window-art-directions.html) | Carbon Witness, Sodium Noir and Signal Gothic for the earlier admission-game pitch. | Historical graphics exploration only; its setting and mechanics are superseded. |
 
 ## Comparison boards
+
+- [Clinic grove: earlier procedural slice versus authored assets](boards/clinic-grove-comparison.jpg) —
+  actual Godot output; [methods, licensing and limitations](CLINIC_GROVE.md).
 
 - [Gouache / miniature / atmosphere: same-camera Godot study](boards/style-study-comparison.html) —
   offline arm/camera/resolution controls, greyscale and color-vision diagnostics,

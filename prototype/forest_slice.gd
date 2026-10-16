@@ -212,7 +212,19 @@ func _capture() -> void:
 		push_error("Forest capture failed: " + capture_path)
 		get_tree().quit(error)
 		return
-	var record := {
+	var record := _capture_record(image)
+	var sidecar := FileAccess.open(capture_path.get_basename() + ".json", FileAccess.WRITE)
+	if sidecar == null:
+		push_error("Forest capture metadata could not be written")
+		get_tree().quit(1)
+		return
+	sidecar.store_string(JSON.stringify(record, "\t") + "\n")
+	print("FOREST_CAPTURE: ", JSON.stringify(record), " / error ", error)
+	get_tree().quit(error)
+
+
+func _capture_record(image: Image) -> Dictionary:
+	return {
 		"scene": "res://forest_slice.tscn",
 		"engine": Engine.get_version_info().string,
 		"renderer": RenderingServer.get_current_rendering_method(),
@@ -239,14 +251,6 @@ func _capture() -> void:
 		"atlas_sha256": FileAccess.get_sha256("res://assets/spruce-branches.png"),
 		"capture_sha256": FileAccess.get_sha256(capture_path),
 	}
-	var sidecar := FileAccess.open(capture_path.get_basename() + ".json", FileAccess.WRITE)
-	if sidecar == null:
-		push_error("Forest capture metadata could not be written")
-		get_tree().quit(1)
-		return
-	sidecar.store_string(JSON.stringify(record, "\t") + "\n")
-	print("FOREST_CAPTURE: ", JSON.stringify(record), " / error ", error)
-	get_tree().quit(error)
 
 
 func _unhandled_input(event: InputEvent) -> void:

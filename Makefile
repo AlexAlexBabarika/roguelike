@@ -35,6 +35,15 @@ render-check: import
 	$(MAKE) mock-render-check
 	$(MAKE) style-render-check
 	$(MAKE) forest-render-check
+	$(MAKE) grove-render-check
+
+.PHONY: clinic-grove grove-render-check
+clinic-grove:
+	$(GODOT) --path $(PROJECT) res://clinic_grove.tscn
+
+grove-render-check: import
+	xvfb-run -a $(GODOT) --audio-driver Dummy --disable-vsync --resolution 720x450 --path $(PROJECT) --script tests/grove_render.gd 2>&1 | tee artifacts/grove-render.log
+	! grep -E 'SCRIPT ERROR:|SHADER ERROR:|^ERROR:' artifacts/grove-render.log
 
 .PHONY: forest-slice forest-render-check forest-assets
 forest-slice:

@@ -23,7 +23,16 @@ or network connection is needed to read a downloaded report. Concept studies
 are explicitly labeled AI-generated, not engine renders. Mechanics and scope
 recommendations remain proposals, not approved features.
 
-## Structured forest — current look-development candidate
+## Clinic grove — current look-development candidate
+
+The [authored-asset revision](docs/CLINIC_GROVE.md) uses CC0 Poly Haven conifers,
+textured earth, mossy rocks, ferns and weathered clinic materials. Dry daylight,
+lit foliage, real shadows, no screen filter. Run `make clinic-grove`.
+This is a visual candidate, not an optimized level or finished art direction.
+
+![Clinic grove — actual Godot daylight render](docs/screenshots/clinic-grove/daylight.png)
+
+## Earlier structured forest
 
 The [daylight forest slice](docs/STRUCTURED_FOREST.md) replaces the rejected
 paint-smear approach with structured spruce boughs, lit fixed foliage cutouts and

@@ -1,0 +1,114 @@
+{
+  "meshes": [
+    {
+      "file": "fir_tree_01_a_LOD2.glb",
+      "triangles": 70661,
+      "sha256": "42d651360d29aa3dbb167a16748221942d783b5808a6ed4723b9c2cbbb3653a4",
+      "source_object": "fir_tree_01_a_LOD2",
+      "dimensions_m": [
+        6.583094120025635,
+        6.467402458190918,
+        18.957046508789062
+      ]
+    },
+    {
+      "file": "fir_tree_01_b_LOD2.glb",
+      "triangles": 54927,
+      "sha256": "1f624a5bc2a1bce545a9376af76426954c635d95e175cba8406d35c42cef72a1",
+      "source_object": "fir_tree_01_b_LOD2",
+      "dimensions_m": [
+        5.631947040557861,
+        6.084495544433594,
+        14.077526092529297
+      ]
+    },
+    {
+      "file": "fir_tree_01_c_LOD2.glb",
+      "triangles": 31512,
+      "sha256": "7c2528dcb180699e1038155a6775ed0eb384fa847ee70e325d9a5cbbf7f0a40e",
+      "source_object": "fir_tree_01_c_LOD2",
+      "dimensions_m": [
+        6.3499040603637695,
+        6.005417823791504,
+        14.552308082580566
+      ]
+    },
+    {
+      "file": "rock_moss_set_01_0.glb",
+      "triangles": 11000,
+      "sha256": "2e0374ad5d0c3aae2e8209a71f418c301c32a3f1f50d67e2cb5e19d85f0505f8",
+      "source_object": "rock_moss_set_01_rock01",
+      "dimensions_m": [
+        2.2376322746276855,
+        3.368804454803467,
+        1.4726980924606323
+      ]
+    },
+    {
+      "file": "rock_moss_set_01_1.glb",
+      "triangles": 10996,
+      "sha256": "34d93fc82d136c6c1a09ce94ced1e03fd9384d1d5c591955a15d65a74fbf3ee6",
+      "source_object": "rock_moss_set_01_rock02",
+      "dimensions_m": [
+        2.6553807258605957,
+        3.2637205123901367,
+        1.2619911432266235
+      ]
+    },
+    {
+      "file": "rock_moss_set_01_2.glb",
+      "triangles": 5000,
+      "sha256": "b1e53d7332aab34a4154366ae743a426a105c3cf2528711dd1a292643fe81d17",
+      "source_object": "rock_moss_set_01_rock03",
+      "dimensions_m": [
+        2.1085824966430664,
+        2.079585552215576,
+        1.0996944904327393
+      ]
+    },
+    {
+      "file": "fern_02_0.glb",
+      "triangles": 784,
+      "sha256": "4861f6d2f847ba929389aca0576ae63b52d495420b1c1e7854b7703246569ccf",
+      "source_object": "fern_02_a",
+      "dimensions_m": [
+        0.5519406199455261,
+        0.6134210824966431,
+        0.28680354356765747
+      ]
+    },
+    {
+      "file": "fern_02_1.glb",
+      "triangles": 2384,
+      "sha256": "f3dcf5122dfcff14df81089135a484d16f79cc71425b1666269237c2160ef05a",
+      "source_object": "fern_02_b",
+      "dimensions_m": [
+        0.9897474050521851,
+        0.893689751625061,
+        0.427694708108902
+      ]
+    },
+    {
+      "file": "fern_02_2.glb",
+      "triangles": 2248,
+      "sha256": "065707b626c7437e4efe637035e463a8a62b63285c8a0a8aaa411d4358e8cd05",
+      "source_object": "fern_02_c",
+      "dimensions_m": [
+        0.8743258118629456,
+        0.7652256488800049,
+        0.3490203619003296
+      ]
+    },
+    {
+      "file": "fern_02_3.glb",
+      "triangles": 816,
+      "sha256": "26df22ae2953956c9bcc783bef5c7662d1948d4607b1ec0d68ef6f4f8f8df8bd",
+      "source_object": "fern_02_d",
+      "dimensions_m": [
+        0.5727821588516235,
+        0.5932782888412476,
+        0.2130875587463379
+      ]
+    }
+  ]
+}

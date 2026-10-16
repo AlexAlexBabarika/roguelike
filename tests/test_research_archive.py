@@ -30,6 +30,7 @@ BOARD_NAMES = {
     "style-study-comparison.html",
     "painted-forest-comparison.jpg",
     "structured-forest.jpg",
+    "clinic-grove-comparison.jpg",
 }
 CAPTURE_NAMES = {
     "A_october_wind_up.png",

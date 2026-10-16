@@ -79,6 +79,13 @@
     {
       "path": "boards/structured-forest.jpg",
       "sha256": "f1046237a4dd7badff1b0fe7c2632f30fdbb34fe4edda170605d3315f6852864"
+    },
+    {
+      "path": "boards/clinic-grove-comparison.jpg",
+      "title": "Clinic grove \u2014 procedural slice versus authored assets",
+      "status": "engine evidence, visual candidate; not final art",
+      "description": "Actual Godot daylight captures, artist-authored CC0 assets; no screen filter.",
+      "sha256": "344847a0bf551a6eb7b99a93662617a101b7b8f01fb6080adb6da3d44b41dcdc"
     }
   ],
   "captures": [

@@ -1,6 +1,7 @@
 # Structured forest slice — daylight first
 
-**New candidate, not an accepted final art direction.** The earlier G1 material
+**Historical candidate, not visually approved.** See the next
+[authored-asset clinic grove](CLINIC_GROVE.md). The earlier G1 material
 change was insufficient; I1's painted crowns and screen filter were rejected.
 Both experiments and all historical captures remain untouched. This scene starts
 over with asset structure and ordinary lighting, not another image treatment.
